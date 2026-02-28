@@ -1,7 +1,7 @@
 import "dotenv-flow/config";
 import { randomUUID } from "crypto";
 import { AlleviateDebtCore, CreditService, UnderwritingService } from "../src/index.js";
-import spinwheel from "./spinwheel.json" with { type: "json" };
+import cloverCreditReport from "./clover_credit_report.json" with { type: "json" };
 
 async function main() {
   const client = new AlleviateDebtCore({
@@ -21,8 +21,8 @@ async function main() {
   const creditResult = await client.creditService.NormalizeRawReport({
     input: {
       reqOrgContactId: contactId,
-      reportType: CreditService.Supported_Report_Products.Spinwheel,
-      reportJson: { data: spinwheel },
+      reportType: CreditService.Supported_Report_Products.CrsStandardPrequalVantage4,
+      reportJson: cloverCreditReport,
     },
   });
 
@@ -52,15 +52,15 @@ async function main() {
       primaryReportId: creditReportId,
       leadId: null,
       applicantContactInfo: {
-        firstName: "Bugs",
-        lastName: "Bunny",
-        dob: "1940-07-27",
-        ssn: "999999999",
-        phone: "+15555550123",
-        cellPhone: "+15555550123",
-        homeAddress: "123 Carrot Lane, Toon Town, CA 90210",
-        applicantState: "CA",
         employerName: "ACME CORPORATION",
+        homeAddress: "22603 CHRISTINE STATION",
+        applicantState: "GA",
+        ssn: "999887766",
+        dob: "1985-06-15",
+        phone: "+16575553358",
+        cellPhone: "+16575552268",
+        firstName: "Clover",
+        lastName: "Fandango",
         jobTitle: "Analyst",
         email: "clover@test.com",
         hardship: "Loss Of Employment",
@@ -68,7 +68,7 @@ async function main() {
         routingNumber: "99999999",
         bankName: "Bells Fargo",
         bankAccountNumber: "1121214",
-        bankAccountHolderName: "Bugs Bunny",
+        bankAccountHolderName: "Clover",
         bankAccountType: "Checking",
         eligibilityReqMilitary: "NO",
         eligibilityReqCreditCounselling: "NO",

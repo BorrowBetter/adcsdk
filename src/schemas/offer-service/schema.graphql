@@ -1,0 +1,205 @@
+"""
+Indicates exactly one field must be supplied and this field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
+type Query {
+  """Get enrollment plan for a state"""
+  enrollmentPlan(input: EnrollmentPlanInput!): EnrollmentPlanResponse!
+
+  """Get offer by ID"""
+  getOffer(ogId: String!): GetOfferResponse!
+}
+
+input EnrollmentPlanInput {
+  """Applicant state of residence"""
+  primaryApplicantState: String!
+}
+
+type EnrollmentPlanResponse {
+  data: EnrollmentPlanResult
+  errors: [EnrollmentPlanResponseError]
+}
+
+type EnrollmentPlanResult {
+  servicingCompany: String
+}
+
+type EnrollmentPlanResponseError {
+  message: [String]
+}
+
+scalar JSON
+
+type Mutation {
+  """
+  Calculate payment plan offers. Can be used as a calculator to simulate different payment plan options.
+  """
+  offers(input: OffersInput!): OffersResponse!
+
+  """Save the selected payment plan of an eligible applicant. """
+  saveOffer(input: CreateOfferInput!): CreateOfferResponse!
+}
+
+"""
+Input for getting offers
+depositFrequency values can be BW' for 'biWeekly', 'SM' for 'semiMonthly', and 'M' for 'monthly' - Default is 'M'
+
+depositIntervals values can be
+  If depositFrequency is biWeekly valid options are 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' - Default is 'Monday'. Example 'Monday'
+  If depositFrequency is 'semiMonthly' then 2 values need to be passed  where valid options are the 1-30. Example '2,23'
+  If depositFrequency is 'monthly' valid options are the 1-30. Example '1'
+
+firstPaymentDate in yyyy/mm/dd format (required)
+
+uwResultId is the Application ID from underwriting (required)
+"""
+input OffersInput {
+  """firstPaymentDate in yyyy/mm/dd format"""
+  firstPaymentDate: String!
+
+  """uwResultId is the Application ID from underwriting"""
+  uwResultId: String!
+
+  """uwResultId is the Application ID from underwriting"""
+  revision: Int
+
+  """
+  depositFrequency values can be BW' for 'biWeekly', 'SM' for 'semiMonthly', and 'M' for 'monthly' - Default is 'BW'
+  """
+  depositFrequency: String
+
+  """
+  depositIntervals values can be
+  If depositFrequency is biWeekly valid options are 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' - Default is 'Monday'. Example 'Monday'
+  If depositFrequency is 'semiMonthly' then 2 values need to be passed  where valid options are the 1-30. Example '1,15'
+  If depositFrequency is 'monthly' valid options are the 1-30. Example '1'
+  """
+  depositIntervals: String
+
+  """maxPaymentTerm is the maximum number of months to make the plan"""
+  paymentTerm: String
+
+  """sentry fee opt-out by setting to false"""
+  includeSentryFee: Boolean
+}
+
+"""
+Input for creating/saving an offer
+Reads payment plan fields from the underwriting application's PlanInput
+"""
+input CreateOfferInput {
+  """uwResultId is the Application ID from underwriting"""
+  uwResultId: String!
+
+  """Revision number of the underwriting application"""
+  revision: Int
+}
+
+type OffersResponse {
+  data: [OfferResult]
+  errors: [OffersResponseError]
+}
+
+type CreateOfferResponse {
+  data: Offer
+  errors: [OffersResponseError]
+}
+
+type OffersResponseError {
+  message: [String]
+}
+
+type OfferResult {
+  compTemplateId: Int
+  frequency: String!
+  frequencyInterval: String!
+  firstPaymentDate: String!
+  paymentTerm: String!
+  maxPaymentTerm: String!
+  enrolledDebt: String!
+  enrollmentPlanId: String!
+  enrollmentPlanName: String!
+  serviceFee: Int
+  estimatedSettlementFee: Int!
+  totals: OfferTotals!
+  payments: [OfferPayment]!
+  forthRequestParameters: ForthRequestParameters!
+}
+
+type Offer {
+  id: String!
+  uwResultId: String!
+  uwResultRevision: Int!
+  frequency: String!
+  frequencyInterval: String!
+  firstPaymentDate: String!
+  paymentTerm: String!
+  maxPaymentTerm: String!
+  enrolledDebt: String!
+  enrollmentPlanId: String!
+  enrollmentPlanName: String!
+  serviceFee: Int
+  estimatedSettlementFee: Int!
+  totals: OfferTotals!
+  payments: [OfferPayment]!
+  forthRequestParameters: ForthRequestParameters!
+  compTemplateId: Int
+}
+
+type OfferTotals {
+  fee1: String
+  fee2: String
+  fee3: String
+  fee4: String
+  fee5: String
+  fee6: String
+  fee7: String
+  savings: String
+  totalPayment: String
+}
+
+type OfferPayment {
+  fee1: String
+  fee2: String
+  fee3: String
+  fee4: String
+  fee5: String
+  fee6: String
+  fee7: String
+  paymentDate: String
+  paymentNumber: String
+  savings: String
+  totalPayment: String
+}
+
+type ForthRequestParameters {
+  epFee1Amount: Boolean!
+  epFee2Monthly: Boolean!
+  epFee3Amount: Boolean!
+  epFee3Monthly: Boolean!
+  epFee4Monthly: Boolean!
+  epFee4Amount: Boolean!
+  epFee5Monthly: Boolean!
+  epFee5Amount: Boolean!
+  firstPaymentDate: String!
+  recurringStartDate: String!
+  epFrequency: String!
+  epFreqInterval: String!
+  debt: String!
+  enrollmentPlan: String!
+  programMonths: String!
+  maxPaymentTerm: String!
+  estSettlement: String!
+}
+
+type GetOfferResponse {
+  data: Offer
+  errors: [ResponseError]
+}
+
+"""Response Error"""
+type ResponseError {
+  """Error message"""
+  message: String
+}

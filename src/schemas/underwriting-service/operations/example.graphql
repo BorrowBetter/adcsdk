@@ -1,0 +1,10 @@
+query GetUwConfig($reqOrgId: String!) {
+  uwConfig(reqOrgId: $reqOrgId) {
+    data {
+      reqOrgId
+    }
+    errors {
+      message
+    }
+  }
+}

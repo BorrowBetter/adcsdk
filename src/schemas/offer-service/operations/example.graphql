@@ -1,0 +1,12 @@
+query GetOffer($ogId: String!) {
+  getOffer(ogId: $ogId) {
+    data {
+      id
+      uwResultId
+      frequency
+    }
+    errors {
+      message
+    }
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.env
+.env*
+
+# Codegen output — commit or gitignore depending on your workflow.
+# Typically you'd commit generated files so consumers don't need codegen tooling.
+# Uncomment the line below to ignore them instead:
+# src/schemas/*/__generated__/

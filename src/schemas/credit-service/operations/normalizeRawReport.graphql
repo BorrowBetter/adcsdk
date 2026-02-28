@@ -1,0 +1,42 @@
+mutation NormalizeRawReport($input: NormalizeRawReportInput!) {
+  normalizeRawReport(input: $input) {
+    data {
+      creditReportId
+      secondaryCreditReportId
+      reqOrgContactId
+      applicantResidenceState
+      debts {
+        id
+        creditorId
+        accountNumber
+        applicantState
+        ecoaCode
+        creditorName
+        parentCreditorName
+        parentCreditorId
+        originalCreditorName
+        creditorType
+        accountType
+        portfolioType
+        debtType
+        currentBalance
+        openDate
+        lastPaymentDate
+        hasLastPayment
+        narrativeCodes
+        bankruptcyDateFiled
+        applicantId
+        coApplicantId
+        originalBalance
+        isCollection
+        delinquency
+        monthlyPayment
+        forthDebtTypeId
+        remarks
+      }
+    }
+    errors {
+      message
+    }
+  }
+}

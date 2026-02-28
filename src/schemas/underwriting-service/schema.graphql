@@ -1,0 +1,3347 @@
+"""
+Indicates exactly one field must be supplied and this field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
+"""Direction of ordering."""
+enum OrderDirection {
+  """Ascending order (A-Z, 0-9, oldest to newest)"""
+  ASC
+
+  """Descending order (Z-A, 9-0, newest to oldest)"""
+  DESC
+}
+
+"""Page information for navigating collections."""
+type PageInfo {
+  """Whether there are more items after the current page"""
+  hasNextPage: Boolean!
+
+  """Cursor for the first item in the current page"""
+  startCursor: String
+
+  """Cursor for the last item in the current page"""
+  endCursor: String
+}
+
+type Query {
+  """
+  fetch Underwriting Results with various filtering and pagination options.
+  """
+  debtsUwResults(
+    """Filter conditions for querying debts underwriting results"""
+    where: UwDebtsResultWhereInput
+
+    """Ordering options for the results"""
+    order: [UwResultOrder!]
+
+    """Number of results to skip (for offset-based pagination)"""
+    skip: Int
+
+    """Search term to filter results"""
+    search: String
+
+    """Cursor to fetch results after (for cursor-based pagination)"""
+    after: String
+
+    """Number of results to return from the start"""
+    first: Int
+
+    """Cursor to fetch results before (for cursor-based pagination)"""
+    before: String
+
+    """Number of results to return from the end"""
+    last: Int
+  ): UwDebtsResultResponse
+
+  """Fetch uwConfig by reqOrgId"""
+  uwConfig(
+    """Requesting organization ID (required)"""
+    reqOrgId: String!
+
+    """Underwriting organization ID (ALV or GLG)"""
+    uwOrgId: String
+
+    """State code to filter configuration"""
+    state: String
+  ): UwConfigResponse
+
+  """
+  Deprecating: Use uwResultsV2 instead.
+  
+  fetch Underwriting Results with various filtering and pagination options.
+  """
+  uwResults(
+    """Filter conditions for querying underwriting results"""
+    where: UwResultWhereInput
+
+    """Ordering options for the results"""
+    order: [UwResultOrder!]
+
+    """Number of results to skip (for offset-based pagination)"""
+    skip: Int
+
+    """Search term to filter results"""
+    search: String
+
+    """Cursor to fetch results after (for cursor-based pagination)"""
+    after: String
+
+    """Number of results to return from the start"""
+    first: Int
+
+    """Cursor to fetch results before (for cursor-based pagination)"""
+    before: String
+
+    """Number of results to return from the end"""
+    last: Int
+  ): UwResultsResponse @deprecated(reason: "Use uwResultsV2 instead")
+
+  """
+  V2: Fetch Underwriting Results with various filtering and pagination options.
+  Filter-related fields are removed from the response to improve data security.
+  Errors are grouped by debtId.
+  """
+  uwResultsV2(
+    """Filter conditions for querying underwriting results"""
+    where: UwResultWhereInput
+
+    """Ordering options for the results"""
+    order: [UwResultOrder!]
+
+    """Number of results to skip (for offset-based pagination)"""
+    skip: Int
+
+    """Search term to filter results"""
+    search: String
+
+    """Cursor to fetch results after (for cursor-based pagination)"""
+    after: String
+
+    """Number of results to return from the start"""
+    first: Int
+
+    """Cursor to fetch results before (for cursor-based pagination)"""
+    before: String
+
+    """Number of results to return from the end"""
+    last: Int
+  ): UwResultsResponseV2
+}
+
+"""Response from debts underwriting results query"""
+type UwDebtsResultResponse {
+  """Debts underwriting result connection"""
+  data: UwDebtsResultConnection
+
+  """List of errors from the query"""
+  errors: [UwResultsResponseError]
+}
+
+"""Pagination connection for debts underwriting results"""
+type UwDebtsResultConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+
+  """List of result edges"""
+  edges: [UwDebtsResultEdge]!
+
+  """Total count of results matching the query"""
+  totalCount: Int!
+}
+
+"""Edge type for Debts Uw Results."""
+type UwDebtsResultEdge {
+  """The debts underwriting result"""
+  node: UwDebtsResult
+
+  """List of eligibility errors for this result"""
+  errors: [EligibilityResponseError]
+
+  """Cursor for pagination"""
+  cursor: String!
+}
+
+"""Where conditions for filtering Uw Results."""
+input UwDebtsResultWhereInput {
+  """Filter by requesting organization ID"""
+  reqOrgId: String
+
+  """Filter by requesting organization contact ID"""
+  reqOrgContactId: String
+
+  """Filter by lead ID"""
+  leadId: String
+
+  """Filter by underwriting result ID"""
+  uwResultId: String
+
+  """Filter to only return the latest revision"""
+  isLatestRevision: Boolean
+}
+
+type Mutation {
+  """Check if an applicant is eligible for enrollment based on SSN"""
+  checkEnrollmentEligibility(
+    """Applicant SSN (9 digits)"""
+    ssn: String!
+  ): EnrollmentEligibilityResponse
+
+  """Run underwriting on debts."""
+  checkDebtsEligibility(
+    """Type of application (SINGLE or JOINT)"""
+    applicationType: ApplicationTypeInput!
+
+    """Input data for checking debts eligibility"""
+    input: UwResultCheckDebtsInput!
+  ): DebtsEligibilityResponse!
+
+  """
+  Deprecating: Use checkApplicantEligibilityV2 instead.
+  
+  Run underwriting on a credit report and generate an underwriting document listing eligible and ineligible debts.
+  """
+  checkApplicantEligibility(
+    """Type of application (SINGLE or JOINT)"""
+    applicationType: ApplicationTypeInput!
+
+    """Input data for checking applicant eligibility"""
+    input: UwResultCheckInput!
+  ): EligibilityResponse! @deprecated(reason: "Use checkApplicantEligibilityV2 instead")
+
+  """
+  Deprecating: Use updateApplicantEligibilityV2 instead.
+  
+  Update debts on an existing underwriting document. Used to overwrite auto generated underwriting results and update debts by either removing, adding or editing them. Underwriting is run against the updated input.
+  """
+  updateApplicantEligibility(
+    """
+    Type of application (SINGLE or JOINT) - used to identify the current UW result, not to change the application type
+    """
+    applicationType: ApplicationTypeInput!
+
+    """Fields to update on the underwriting result"""
+    updatedUWFields: UwResultUpdateInput!
+  ): EligibilityResponse! @deprecated(reason: "Use updateApplicantEligibilityV2 instead")
+
+  """
+  V2: Run underwriting on a credit report and generate an underwriting document listing eligible and ineligible debts.
+  """
+  checkApplicantEligibilityV2(
+    """Type of application (SINGLE or JOINT)"""
+    applicationType: ApplicationTypeInput!
+
+    """Input data for checking applicant eligibility"""
+    input: UwResultCheckInputV2!
+  ): EligibilityResponseV2!
+
+  """
+  V2: Update debts on an existing underwriting document. Used to overwrite auto generated underwriting results and update debts by either removing, adding or editing them. Underwriting is run against the updated input.
+  Validation: The same debtId may not appear in more than one section (applicantUwResult, coApplicantUwResult, jointUwResult).
+  """
+  updateApplicantEligibilityV2(
+    """
+    Type of application (SINGLE or JOINT) - used to identify the current UW result, not to change the application type
+    """
+    applicationType: ApplicationTypeInput!
+
+    """Fields to update on the underwriting result"""
+    updatedUWFields: UwResultUpdateInputV2!
+  ): EligibilityResponseV2!
+}
+
+"""Response from enrollment eligibility check"""
+type EnrollmentEligibilityResponse {
+  """Enrollment eligibility result data"""
+  data: EnrollmentEligibility
+
+  """List of errors from the eligibility check"""
+  errors: [EnrollmentEligibilityResponseError]
+}
+
+"""Enrollment eligibility result"""
+type EnrollmentEligibility {
+  """Eligibility status (e.g., ELIGIBLE, INELIGIBLE)"""
+  eligibility: String
+
+  """Reason for the eligibility status"""
+  reason: String
+}
+
+"""Error from enrollment eligibility check"""
+type EnrollmentEligibilityResponseError {
+  """Error message"""
+  message: String!
+}
+
+"""Reference information for an applicant's underwriting result"""
+type ApplicantUwResultInfo {
+  """Underwriting result ID"""
+  id: ID
+
+  """Current revision number of the underwriting result"""
+  revision: Int
+}
+
+type JointUwApplicantInfo {
+  """Applicant's contact information"""
+  applicantContactInfo: ApplicantContactInfo
+
+  """Co-applicant's contact information"""
+  coApplicantContactInfo: ApplicantContactInfo
+}
+
+"""Historical record of changes made to a joint underwriting result"""
+type JointUwResultHistory {
+  """Applicant information at this revision"""
+  applicantInfo: JointUwApplicantInfo
+
+  """Lead ID at this revision"""
+  leadId: String
+
+  """User ID who made this update"""
+  updatedBy: ID
+
+  """The revision number this history entry was created from"""
+  fromRevision: Int
+}
+
+"""Joint underwriting result containing shared debts between applicants"""
+type JointUwResult {
+  """Unique identifier for the joint underwriting result"""
+  id: ID!
+
+  """Primary applicant uw result id"""
+  primaryApplicantUwResult: ApplicantUwResultInfo
+
+  """Co-applicant uw result id"""
+  coApplicantUwResult: ApplicantUwResultInfo
+
+  """
+  The organization underwriting rules used for this application. For example alv or glg
+  """
+  uwOrgId: String
+
+  """Requesting organization ID"""
+  reqOrgId: String
+
+  """
+  Document revision number. Each time the document is edited the revision number is incremented
+  """
+  revision: Int!
+
+  """Sigma lead ID"""
+  leadId: String
+
+  """Primary applicant credit report ID"""
+  creditReportId: String
+
+  """
+  Secondary applicant credit report ID, if applicable (For JOINT application only)
+  """
+  coCreditReportId: String
+
+  """Applicant information needed for the root filters"""
+  applicantInfo: JointUwApplicantInfo!
+
+  """
+  List of debts. Each debt will have additional underwriting pass/fail information
+  """
+  debts: [UwResultDebt]!
+
+  """Source can be SPINWHEEL, CRS_TRANSUNION, or CRS_EQUIFAX"""
+  creditReportSource: String!
+
+  """History of edits applied to the top level fields of this application"""
+  rootHistory: [JointUwResultHistory]
+
+  """Date and time this joint underwriting result was created"""
+  createdAt: Date
+}
+
+"""UwConfig Response"""
+type UwConfigResponse {
+  """Uw Result Connection."""
+  data: UwConfig
+
+  """Error(s) list"""
+  errors: [UwConfigResponseError]
+}
+
+"""UwConfigResponse Error"""
+type UwConfigResponseError {
+  """Error message"""
+  message: String
+}
+
+"""Uw Filter Config"""
+type UwConfig {
+  """Unique identifier for the configuration"""
+  id: ID
+
+  """Requesting organization ID"""
+  reqOrgId: String
+
+  """Underwriting organization ID (ALV or GLG)"""
+  uwOrgId: String
+
+  """Configuration revision number"""
+  revision: Int
+
+  """Debt-level filter configuration (JSON string)"""
+  debtFilterConfig: String
+
+  """Root-level filter configuration (JSON string)"""
+  rootFilterConfig: String
+
+  """Aggregate debts filter configuration (JSON string)"""
+  aggregateDebtsFilterConfig: String
+
+  """Post-debt filter configuration (JSON string)"""
+  postDebtFilterConfig: String
+
+  """Prescreen filter configuration (JSON string)"""
+  prescreenFilterConfig: String
+
+  """Underwriting settings configuration (JSON string)"""
+  uwSettingsConfig: String
+
+  """Notes configuration (JSON string)"""
+  notesConfig: String
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+"""
+Input for checking debts eligibility. Contains applicant info and list of debts to check.
+"""
+input UwResultCheckDebtsInput {
+  """Application basic info input"""
+  applicantInfo: CheckDebtsApplicantInfoInput!
+
+  """Application debts"""
+  unenrolledDebts: [UwDebtsResultDebtInput]!
+
+  """Enrolled debts"""
+  enrolledDebts: [UwDebtsResultDebtInput]
+
+  """Contact ID"""
+  contactId: ID!
+
+  """Lead ID"""
+  leadId: String
+}
+
+"""Applicant information input for debts eligibility check"""
+input CheckDebtsApplicantInfoInput {
+  """Applicant employer name"""
+  employerName: String
+
+  """Whether the applicant is married to the co-applicant"""
+  isMarriedToCoApplicant: Boolean
+
+  """Applicant home address"""
+  homeAddress: String
+
+  """Applicant state (required, must be a valid U.S. state code)"""
+  applicantState: String!
+}
+
+"""Response from debts eligibility check"""
+type DebtsEligibilityResponse {
+  """Debts underwriting result data"""
+  data: UwDebtsResult
+
+  """List of eligibility errors"""
+  errors: [EligibilityResponseError]
+}
+
+"""Input for updating underwriting individual debts"""
+input UwDebtsResultDebtInput {
+  """Debt ID (for existing debts)"""
+  id: ID
+
+  """Primary applicant ID"""
+  applicantId: String
+
+  """Co-applicant ID (for JOINT applications)"""
+  coApplicantId: String
+
+  """Whether this debt is selected for enrollment"""
+  isSelected: Boolean
+
+  """Whether the eligibility status is being overridden"""
+  isOverridden: Boolean
+
+  """creditorId used to map to the credit report debt"""
+  creditorId: String
+
+  """
+  Only applicable to JOINT debt. True/False flag to identify if this debt is selected by the co-applicant
+  """
+  coApplicantIsSelected: Boolean
+
+  """
+  This is replaced by accountNumber
+  @deprecated Use accountNumber instead
+  """
+  externalDebtId: String @deprecated(reason: "Use accountNumber instead")
+
+  """Debt Id assigned on the credit report"""
+  accountNumber: String
+
+  """Optional field to identify the debt in the requesting CRM"""
+  externalCrmId: String
+
+  """Creditor name"""
+  creditorName: String
+
+  """Parent creditor ID"""
+  parentCreditorId: String
+
+  """Parent creditor name"""
+  parentCreditorName: String
+
+  """Original creditor name from credit report"""
+  originalCreditorName: String
+
+  """Creditor Type"""
+  creditorType: String
+
+  """ECOA Code"""
+  ecoaCode: String
+
+  """Account type"""
+  accountType: String
+
+  """Portfolio type"""
+  portfolioType: String
+
+  """Debt type"""
+  debtType: String
+
+  """Debt open date"""
+  openDate: String
+
+  """Date of last payment since the credit report was originally pulled"""
+  lastPaymentDate: String
+
+  """Current balance as of the date the credit report was originally pulled"""
+  currentBalance: Float
+
+  """Original debt balance"""
+  originalBalance: Float
+
+  """True/False flag to identify if this debts most recet payment was made"""
+  hasLastPayment: Boolean
+
+  """Narrative codes that might include bankcruptcy codes"""
+  narrativeCodes: [String]
+
+  """Bankruptcy Record Date"""
+  bankruptcyDateFiled: String
+
+  """
+  True/False flag to identify if proof of liability has been provided for the debt
+  """
+  hasProofOfLiability: Boolean
+
+  """Flag to show if the debt is in collection"""
+  isCollection: Boolean
+
+  """Remarks"""
+  remarks: [String]
+}
+
+type UwDebtsApplicantInfo {
+  """Applicant's contact information"""
+  applicantContactInfo: ApplicantContactInfo
+}
+
+"""Debts underwriting result"""
+type UwDebtsResult {
+  """Unique identifier for the debts underwriting result"""
+  id: ID!
+
+  """Requesting organization ID"""
+  reqOrgId: String
+
+  """Underwriting organization ID"""
+  uwOrgId: String
+
+  """Requesting organization contact ID"""
+  reqOrgContactId: String
+
+  """Lead ID"""
+  leadId: String
+
+  """Fileter configuration revision number"""
+  configRevision: Int
+
+  """Application type"""
+  applicationType: String
+
+  """Applicant information"""
+  applicantInfo: UwDebtsApplicantInfo
+
+  """
+  List of debts. Each debt will have additional underwriting pass/fail information
+  """
+  debts: [UwDebtsResultDebt]
+
+  """Flag to identify if the latest revision is enrolled"""
+  isLatestRevision: Boolean
+
+  """Updated at"""
+  updatedAt: Date
+
+  """Created at"""
+  createdAt: Date
+}
+
+"""Debt with underwriting check results"""
+type UwDebtsResultDebt {
+  """Unique identifier for the debt"""
+  id: ID!
+
+  """
+  True/False flag to identify if this debt is selected for program enrollment
+  """
+  isSelected: Boolean
+
+  """
+  True/False flag to identify if the eligibility status is being overriden
+  """
+  isOverridden: Boolean
+
+  """Primary applicant ID"""
+  applicantId: String
+
+  """Secondary applicant ID, if applicable (For JOINT application only)"""
+  coApplicantId: String
+
+  """
+  This is replaced by accountNumber
+  @deprecated Use accountNumber instead
+  """
+  externalDebtId: String @deprecated(reason: "Use accountNumber instead")
+
+  """Debt Id assigned on the credit report"""
+  accountNumber: String
+
+  """Optional field to identify the debt in the requesting CRM"""
+  externalCrmId: String
+
+  """
+  Only applicable to JOINT debt. True/False flag to identify if this debt is selected by the co-applicant
+  """
+  coApplicantIsSelected: Boolean
+
+  """Identify the eligibility status"""
+  eligibilityStatus: EligibilityStatus!
+
+  """List of reasons the eligibility status is being overridden"""
+  exceptions: [String]
+
+  """creditor name"""
+  creditorName: String
+
+  """Parent creditor name"""
+  parentCreditorName: String
+
+  """Original creditor name"""
+  originalCreditorName: String
+
+  """Creditor ID from Forth"""
+  creditorId: ID
+
+  """creditor type"""
+  creditorType: String
+
+  """ECOA Code"""
+  ecoaCode: String
+
+  """Account type"""
+  accountType: String
+
+  """Portfolio type"""
+  portfolioType: String
+
+  """Debt type"""
+  debtType: String
+
+  """Date debt was opened"""
+  openDate: String
+
+  """Date of the last payment"""
+  lastPaymentDate: String
+
+  """Current debt balance"""
+  currentBalance: Float
+
+  """Original debt balance"""
+  originalBalance: Float
+
+  """Flag to show if the debt is in collection"""
+  isCollection: Boolean
+
+  """Remarks"""
+  remarks: [String]
+
+  """True/False flag to identify if this underwriting check passed"""
+  approvedAccountTypeCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  unacceptableCreditorCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  creditUnionAndStateCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  debtOwnershipCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  minimumDebtValueCheck: Boolean
+
+  """
+  True/False flag to identify if this debt is selected and a duplicate debt
+  """
+  duplicateDebtsCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  multipleCreditUnionCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  paymentHistoryCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  unsecuredDebtCheck: Boolean
+
+  """True/False flag to identify if the creditor is the same as employer"""
+  employerIsCreditorCheck: Boolean
+
+  """True/False flag to identify if the creditor is a standalone debt"""
+  standaloneDebtsCheck: Boolean
+
+  """Current and original balance check"""
+  currAndOgBalanceCheck: Boolean
+}
+
+scalar JSON
+
+"""Enrollment payment plan configuration"""
+input PlanInput {
+  """Payment frequency. Ex: Monthly, Bi-Weekly"""
+  frequency: String
+
+  """First payment amount. Ex: 100, 123.45,"""
+  firstPaymentAmount: Float
+
+  """Second payment amount. Ex: 100, 123.45,"""
+  secondPaymentAmount: Float
+
+  """First payment date."""
+  firstPaymentDate: String
+
+  """First draft exception. Ex: YES, NO"""
+  firstDraftException: String
+
+  """Program term."""
+  programTerm: Int
+
+  """Fee percentage. Ex: 27"""
+  feePercentage: Float
+
+  """EPF reduction. Ex: YES, NO"""
+  epfReduction: String
+
+  """Second payment date."""
+  secondPaymentDate: String
+
+  """Enrollment plan ID."""
+  planId: String
+
+  """
+  depositIntervals values can be
+  If depositFrequency is biWeekly valid options are 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' - Default is 'Monday'. Example 'Monday'
+  If depositFrequency is 'semiMonthly' then 2 values need to be passed  where valid options are the 1-30. Example '1,15'
+  If depositFrequency is 'monthly' valid options are the 1-30. Example '1'
+  """
+  depositIntervals: String
+
+  """sentry fee opt-out by setting to false"""
+  includeSentryFee: Boolean
+}
+
+"""
+Input for checking applicant eligibility. Contains credit report IDs, contact information, and enrollment details.
+"""
+input UwResultCheckInput {
+  """Applicant normalized credit report ID from the credit report service"""
+  primaryReportId: String!
+
+  """
+  Co-Applicant normalized credit report ID from the credit report service
+  """
+  secondaryReportId: String
+
+  """
+  Applicant leadId set by the integrating CRM to identify the lead in its system.
+  """
+  leadId: String
+
+  """Applicant contact information"""
+  applicantContactInfo: ApplicantContactInfoInput!
+
+  """Co-applicant contact information. Required for JOINT application."""
+  coApplicantContactInfo: ApplicantContactInfoInput
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment payment plan"""
+  plan: PlanInput
+
+  """Budget"""
+  budget: BudgetInput
+
+  """Additional underwriting configuration options"""
+  additionalInfo: AdditionalInfoInput
+}
+
+"""
+Input for checking joint applicant eligibility. Contains credit report IDs for both applicants, contact information, and enrollment details.
+"""
+input UwResultCheckJointInput {
+  """Applicant normalized credit report ID from the credit report service"""
+  primaryReportId: String!
+
+  """
+  Co-Applicant normalized credit report ID from the credit report service
+  """
+  secondaryReportId: String!
+
+  """
+  By default underwriting is based on the applicants state.
+  
+  Pass a value to override the default behavior and force ALV or GLG underwriting.
+  
+  Values:
+  
+  - ALV
+  
+  - GLG
+  """
+  uwOrgId: String
+
+  """
+  Applicant leadId set by the integrating CRM to identify the lead in its system.
+  """
+  leadId: String
+
+  """Applicant contact information"""
+  applicantContactInfo: ApplicantContactInfoInput!
+
+  """Co-applicant contact information. Required for JOINT application."""
+  coApplicantContactInfo: ApplicantContactInfoInput!
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment payment plan"""
+  plan: PlanInput
+
+  """Budget"""
+  budget: BudgetInput
+
+  """Additional underwriting configuration options"""
+  additionalInfo: AdditionalInfoInput
+}
+
+"""Additional underwriting configuration options and exceptions"""
+input AdditionalInfoInput {
+  """Debt amount exception"""
+  debtAmountException: String
+
+  """Include unacceptable creditor"""
+  includeUnacceptableCreditor: Boolean
+
+  """Term extension exception value"""
+  termExtensionException: Float
+
+  """Standalone debts exception"""
+  standaloneDebtsException: Boolean
+
+  """EOM first draft date exception"""
+  eomFirstDraftDateException: Boolean
+}
+
+"""Applicant budget information for affordability calculations"""
+input BudgetInput {
+  """
+  Deprecating: Use BudgetInputV2 with itemized income breakdown instead.
+  
+  Total monthly income.
+  """
+  totalMonthlyIncome: Float @deprecated(reason: "Use BudgetInputV2 with itemized income breakdown instead.")
+
+  """
+  Deprecating: Use BudgetInputV2 with itemized expense breakdown instead.
+  
+  Total monthly expenses.
+  """
+  totalMonthlyExpense: Float @deprecated(reason: "Use BudgetInputV2 with itemized expense breakdown instead.")
+}
+
+"""Application type for underwriting"""
+enum ApplicationTypeInput {
+  """Joint application with primary applicant and co-applicant"""
+  JOINT
+
+  """Single applicant application"""
+  SINGLE
+}
+
+"""Application type identifier"""
+enum ApplicationType {
+  """Joint application with both applicants"""
+  JOINT
+
+  """Single applicant application"""
+  SINGLE
+
+  """Primary applicant in a joint application"""
+  JOINT_APPLICANT
+
+  """Co-applicant in a joint application"""
+  JOINT_CO_APPLICANT
+}
+
+"""Applicant contact and personal information for eligibility check"""
+input ApplicantContactInfoInput {
+  """Employer name"""
+  employerName: String
+
+  """
+  Identify if the applicant is married to the co-applicant.
+  
+  Values:
+  
+  - true
+  
+  - false
+  """
+  isMarriedToCoApplicant: Boolean
+
+  """Applicant home address"""
+  homeAddress: String
+
+  """
+  Applicant state. Must be a valid U.S. state.
+  
+  Sample Values:
+  
+  - AL
+  
+  - AK
+  
+  - AZ
+  
+  - AR
+  
+  - CA
+  
+  - CO
+  """
+  applicantState: String!
+
+  """Applicant SSN must be 9 digits long. Ex:000000000."""
+  ssn: String
+
+  """Applicant date of birth must be in the format YYYY-MM-DD."""
+  dob: String
+
+  """Applicant phone number must be U.S. phone number in E.164 format."""
+  phone: String
+
+  """Applicant cell phone number must be U.S. phone number in E.164 format."""
+  cellPhone: String
+
+  """Applicant first name."""
+  firstName: String
+
+  """Applicant last name."""
+  lastName: String
+
+  """Applicant job title."""
+  jobTitle: String
+
+  """Applicant email must be a valid email address."""
+  email: String
+
+  """
+  Applicant hardship reason.
+  
+  Sample Values:
+  
+  - Significant decrease in income.
+  
+  - Loss of employment.
+  
+  - Significant medical expenses.
+  """
+  hardship: String
+
+  """
+  Has the applicant filed bankruptcy.
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  filedBankruptcy: String
+
+  """Applicant routing number."""
+  routingNumber: String
+
+  """Applicant bank name."""
+  bankName: String
+
+  """Applicant bank account number."""
+  bankAccountNumber: String
+
+  """Applicant bank account holder name"""
+  bankAccountHolderName: String
+
+  """Applicant bank account type"""
+  bankAccountType: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are you in the military, work in law enforcement, work for a Financial institution or have security clearance?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqMilitary: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are you currently enrolled in a credit counseling program?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqCreditCounselling: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are you currently involved in a Bankruptcy proceeding?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqBankruptcy: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are any of the accounts being submitted for enrollment backed by the U.S. Federal government?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqFederalGovDebt: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are any of the accounts being submitted for enrollment secured by any type of collateral?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqSecuredDebt: String
+
+  """The Forth Pay company ID that the applicant belongs to."""
+  belongsToCompanyId: String
+}
+
+"""Applicant contact and personal information for eligibility update"""
+input ApplicantContactInfoUpdateInput {
+  """Employer name"""
+  employerName: String
+
+  """
+  Identify if the applicant is married to the co-applicant.
+  
+  Values:
+  
+  - true
+  
+  - false
+  """
+  isMarriedToCoApplicant: Boolean
+
+  """Applicant home address"""
+  homeAddress: String
+
+  """
+  Applicant state. Must be a valid U.S. state.
+  
+  Sample Values:
+  
+  - AL
+  
+  - AK
+  
+  - AZ
+  
+  - AR
+  
+  - CA
+  
+  - CO
+  """
+  applicantState: String!
+
+  """Applicant SSN must be 9 digits long."""
+  ssn: String
+
+  """Applicant date of birth must be in the format YYYY-MM-DD."""
+  dob: String
+
+  """Applicant phone number must be U.S. phone number in E.164 format."""
+  phone: String
+
+  """Applicant cell phone number must be U.S. phone number in E.164 format."""
+  cellPhone: String
+
+  """Applicant first name."""
+  firstName: String
+
+  """Applicant last name."""
+  lastName: String
+
+  """Applicant job title."""
+  jobTitle: String
+
+  """Applicant email must be a valid email address."""
+  email: String
+
+  """
+  Applicant hardship reason.
+  
+  Sample Values:
+  
+  - Significant decrease in income.
+  
+  - Loss of employment.
+  
+  - Significant medical expenses.
+  """
+  hardship: String
+
+  """
+  Has the applicant filed bankruptcy.
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  filedBankruptcy: String
+
+  """Applicant routing number."""
+  routingNumber: String
+
+  """Applicant bank name."""
+  bankName: String
+
+  """Applicant bank account number."""
+  bankAccountNumber: String
+
+  """Applicant bank account holder name"""
+  bankAccountHolderName: String
+
+  """Applicant bank account type"""
+  bankAccountType: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are you in the military, work in law enforcement, work for a Financial institution or have security clearance?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqMilitary: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are you currently enrolled in a credit counseling program?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqCreditCounselling: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are you currently involved in a Bankruptcy proceeding?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqBankruptcy: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are any of the accounts being submitted for enrollment backed by the U.S. Federal government?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqFederalGovDebt: String
+
+  """
+  An answer must be provided for Question:
+  
+  Are any of the accounts being submitted for enrollment secured by any type of collateral?
+  
+  Values:
+  
+  - YES
+  
+  - NO
+  """
+  eligibilityReqSecuredDebt: String
+
+  """The Forth Pay company ID that the applicant belongs to."""
+  belongsToCompanyId: String
+}
+
+"""Input for updating SINGLE or JOINT_APPLICANT underwriting"""
+input UwResultUpdateFieldsInput {
+  """Application debts"""
+  debts: [UwResultDebtUpdateInput]
+}
+
+"""Input for updating JOINT underwriting"""
+input JointUwResultUpdateFieldsInput {
+  """Application debts"""
+  debts: [UwResultDebtUpdateInput]
+}
+
+"""
+Input for updating an existing underwriting result. Contains the UW result ID, revision, and fields to update.
+"""
+input UwResultUpdateInput {
+  """Underwriting document ID that is being updated"""
+  id: ID!
+
+  """
+  Revision number that is being updated.
+  
+  Revision is used to track the changes made to the underwriting document.
+  
+  Can be used to start a new revision based any previous revision.
+  """
+  revision: Int!
+
+  """Lead ID set by the integrating CRM to identify the lead in its system."""
+  leadId: String
+
+  """
+  Applicant debts (tradelines).
+  
+  Used to add/remove manual debts for the applicant.
+  
+  Used to update credit report debts for the applicant.
+  """
+  applicantUwResult: UwResultUpdateFieldsInput
+
+  """
+  Co-applicant debts (tradelines).
+  
+  Used to add/remove manual debts for the co-applicant.
+  
+  Used to update credit report debts for the co-applicant.
+  """
+  coApplicantUwResult: UwResultUpdateFieldsInput
+
+  """
+  Joint debts (tradelines).
+  
+  Used to add/remove manual joint debts.
+  
+  Used to update credit report joint debts.
+  """
+  jointUwResult: JointUwResultUpdateFieldsInput
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  updatedBy: ID!
+
+  """Applicant contact information"""
+  applicantContactInfo: ApplicantContactInfoUpdateInput!
+
+  """Co-applicant contact information. Required for JOINT application."""
+  coApplicantContactInfo: ApplicantContactInfoUpdateInput
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment payment plan"""
+  plan: PlanInput
+
+  """Budget"""
+  budget: BudgetInput
+
+  """Additional info"""
+  additionalInfo: AdditionalInfoInput
+}
+
+"""Public record information from credit report (e.g., bankruptcy)"""
+input PublicRecordInput {
+  """Bankcrupty code"""
+  bankruptcyCode: String!
+
+  """Bankcrupty date filed"""
+  bankruptcyDateFiled: String
+
+  """Bankcrupty disposition type"""
+  bankruptcyDispositionType: String
+}
+
+"""
+Input for updating underwriting individual debts.
+
+Minimum required field:
+
+- id
+
+Optional fields:
+
+- all fields are optional. Provide the entire debt object or just the changed fields.
+"""
+input UwResultDebtUpdateInput {
+  """
+  Debt ID. Required for updating existing debts. Leave empty when adding new manual debts.
+  """
+  id: ID
+
+  """ForthPay creditor ID."""
+  creditorId: String
+
+  """
+  True/False flag to identify if this debt is selected for program enrollment
+  """
+  isSelected: Boolean
+
+  """
+  Identify if this debt is selected by the co-applicant for program enrollment.
+  
+  Only applicable to JOINT debt.
+  
+  Values:
+  
+  - true
+  
+  - false
+  """
+  coApplicantIsSelected: Boolean
+
+  """
+  Optional field to add reasons why debt was selected for program enrollment even after failing the underwriting checks.
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  exceptions: [String]
+
+  """
+  This is replaced by accountNumber
+  @deprecated Use accountNumber instead
+  """
+  externalDebtId: String @deprecated(reason: "Use accountNumber instead")
+
+  """Debt account number"""
+  accountNumber: String
+
+  """
+  Optional field set by the integrating CRM to identify the debt in its system.
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  externalCrmId: String
+
+  """ForthPay creditor name"""
+  creditorName: String
+
+  """Original creditor name from credit report."""
+  originalCreditorName: String
+
+  """
+    Creditor Type
+  
+    Values:
+  
+  - LEASE_/_RENT
+  
+  - MEDICAL_COLLECTION_AGENCY
+  
+  - FED_STUDENT_LOAN
+  
+  - ORIGINATOR_LEGAL
+  
+  - UTILITY
+  
+  - PAY_DAY_LOAN
+  
+  - DEPARTMENT_STORE
+  
+  - STUDENT_LOAN
+  
+  - DECEASED_COLLECTIONS
+  
+  - CREDIT_UNION
+  
+  - COLLECTION_ATTORNEY
+  
+  - INSURANCE
+  
+  - RENT_TO_OWN
+  
+  - COLLECTION_AGENCY
+  
+  - ORIGINATOR
+  
+  - AUTO
+  """
+  creditorType: String
+
+  """
+  ECOA Code
+  
+  Values:
+  - "I" (Individual)
+  
+  - "M" (Maker)
+  
+  - "C" (Comaker)
+  
+  - "J" (Joint)
+  
+  - "A" (AuthorizedUser)
+  
+  - "S" (OnBehalfOf)
+  
+  - "P" (JointParticipating)
+  
+  - "U" (Undesignated)
+  
+  - "T" (Terminated)
+  
+  - "X" (Deceased)
+  """
+  ecoaCode: String
+
+  """
+  Account type
+  
+  Values:
+  
+  - AUTO_LOAN
+  
+  - CHARGE_ACCOUNT
+  
+  - COLLECTIONS
+  
+  - CREDIT_CARD
+  
+  - FLEXIBLE_SPENDING_CREDIT_CARD
+  
+  - INSTALLMENT
+  
+  - INSTALLMENT_SALES_CONTRACT
+  
+  - LEASE
+  
+  - LINE_OF_CREDIT
+  
+  - MEDICAL_BILL
+  
+  - MORTGAGE_DEBT
+  
+  - NOTE_LOAN
+  
+  - PERSONAL_LOAN
+  
+  - SECURED
+  
+  - STUDENT_LOAN
+  
+  - UNSECURED
+  """
+  accountType: String
+
+  """
+  Portfolio type
+  
+  Values:
+  
+  - OPEN
+  
+  - REVOLVING
+  
+  - CREDIT_LINE
+  
+  - INSTALLMENT
+  """
+  portfolioType: String
+
+  """
+  Debt type
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  debtType: String
+
+  """
+  Debt open date in YYYY-MM-DD format
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  openDate: String
+
+  """Date of last payment in YYYY-MM-DD format"""
+  lastPaymentDate: String
+
+  """Current balance"""
+  currentBalance: Float
+
+  """
+  Original balance as of the date the credit report was originally pulled
+  """
+  originalBalance: Float
+
+  """
+  Identify if this debts most recent payment was made.
+  
+  Values:
+  
+  - true
+  
+  - false
+  """
+  hasLastPayment: Boolean
+
+  """
+  Narrative codes that might include bankcruptcy codes.
+  
+  These values come from the credit report and are different from vendor to vendor.
+  """
+  narrativeCodes: [String]
+
+  """Bankruptcy Record Date in YYYY-MM-DD format"""
+  bankruptcyDateFiled: String
+
+  """
+  Remarks
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  remarks: [String]
+
+  """
+  The date when the non-applicant waiver has been signed in YYYY-MM-DD format.
+  
+  Only applicable to JOINT debt.
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  nawSignedDate: Date
+
+  """
+  URL to the non-applicant waiver document's file
+  
+  Only applicable to JOINT debt.
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  nawUrl: String
+
+  """
+  Identify if proof of liability has been provided for the debt.
+  
+   Values:
+  
+   - true
+  
+   - false
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  hasProofOfLiability: Boolean
+
+  """
+  Identify if the debt is in collection.
+  
+  Values:
+  
+  - true
+  
+  - false
+  """
+  isCollection: Boolean
+
+  """
+  account rating /delinquency value
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  delinquency: String
+
+  """Monthly payment"""
+  monthlyPayment: Float
+
+  """
+  Notes
+  
+  IMPORTANT: This field does not affect the underwriting result.
+  """
+  notes: [String]
+}
+
+"""Response from eligibility check or update operations"""
+type EligibilityResponse {
+  """The underwriting eligibility result data"""
+  data: UwEligibilityResult
+
+  """List of errors or warnings from underwriting checks"""
+  errors: [EligibilityResponseError]
+}
+
+"""
+Includes a list of reasons why the underwriting did not pass
+
+Possible reason are Ineligible, Condition, and Update Needed.
+
+If an error does not include a debtId then it is an application level error.
+"""
+type EligibilityResponseError {
+  """The debtId of the debt that caused the error."""
+  debtId: String
+
+  """
+  Deprecating: Removed in V2. Use EligibilityResponseErrorV2 instead.
+  
+  The name of the underwriting check that caused the error.
+  """
+  filterName: String @deprecated(reason: "Removed in V2. Use EligibilityResponseErrorV2 instead.")
+
+  """The list of reasons why the underwriting check did not pass."""
+  message: [String]
+}
+
+type ApplicationRootFilters {
+  """True/False flag to identify if this underwriting check passed"""
+  totalDebtValueCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  tenPercentRuleCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  agentAssignedCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  creditReport30DaysCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  psStateServiceCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  uniqueEmailPhoneCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  programTermCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  budgetHardshipCheck: Boolean
+}
+
+type ApplicantRootFilters {
+  """True/False flag to identify if this underwriting check passed"""
+  stateServiceCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  bankruptcyCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  ssnCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  dobCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  phoneCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  firstNameCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  lastNameCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  applicantEmployerCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  jobTitleCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  addressCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  emailCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantFirstNameCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantLastNameCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantEmployerCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantJobTitleCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantSsnCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantDobCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantPhoneCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  coApplicantCellPhoneCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  hardshipCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  duplicateSsnCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  duplicateCoApplicantSsnCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  routingNumberCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  bankNameCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  bankAccountNumberCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  bankAccountHolderNameCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  bankAccountTypeCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  debtsBackedByUsFedGovCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  eligibilityReqMilitaryCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  eligibilityReqCreditCounsellingCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  eligibilityReqBankruptcyCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  eligibilityReqFederalGovDebtCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  eligibilityReqSecuredDebtCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  frequencyMinimumPaymentCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  budgetAffordabilityCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  firstDraftDateCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  feeValidationCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  secondDraftDateCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  companyIsAuthorizedCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  enrollmentPlanCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  termExtensionExceptionCheck: Boolean
+
+  """
+  True/False flag to identify if the co-applicant has ssn when state is CA and application type is JOINT
+  """
+  caStateFileCheck: Boolean
+}
+
+type ApplicantContactInfo {
+  """Applicant employer name"""
+  employerName: String
+
+  """
+  True/False flag to identify if the applicant is married to the co-applicant
+  """
+  isMarriedToCoApplicant: Boolean
+
+  """Applicant home address."""
+  homeAddress: String
+
+  """Applicant state."""
+  applicantState: String!
+
+  """Applicant SSN."""
+  ssn: String
+
+  """Applicant date of birth."""
+  dob: String
+
+  """Applicant phone number."""
+  phone: String
+
+  """Applicant cell phone number."""
+  cellPhone: String
+
+  """Applicant first name."""
+  firstName: String
+
+  """Applicant last name."""
+  lastName: String
+
+  """Applicant job title."""
+  jobTitle: String
+
+  """Applicant email."""
+  email: String
+
+  """Applicant hardship reason."""
+  hardship: String
+
+  """Has the applicant filed bankruptcy."""
+  filedBankruptcy: String
+
+  """Applicant routing number."""
+  routingNumber: String
+
+  """Applicant bank name."""
+  bankName: String
+
+  """Applicant bank account number."""
+  bankAccountNumber: String
+
+  """Applicant bank account holder name."""
+  bankAccountHolderName: String
+
+  """Applicant bank account type."""
+  bankAccountType: String
+
+  """Applicant eligibility requirement for military."""
+  eligibilityReqMilitary: String
+
+  """Applicant eligibility requirement for credit counselling."""
+  eligibilityReqCreditCounselling: String
+
+  """Applicant eligibility requirement for bankruptcy."""
+  eligibilityReqBankruptcy: String
+
+  """Applicant eligibility requirement for federal government debt."""
+  eligibilityReqFederalGovDebt: String
+
+  """Applicant eligibility requirement for secured debt."""
+  eligibilityReqSecuredDebt: String
+
+  """The Forth Pay company ID that the applicant belongs to."""
+  belongsToCompanyId: String
+}
+
+type ApplicantInfo {
+  """Public records from the credit report."""
+  publicRecords: [PublicRecord]
+
+  """Applicant's contact information"""
+  applicantContactInfo: ApplicantContactInfo
+
+  """Co-applicant's contact information"""
+  coApplicantContactInfo: ApplicantContactInfo
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment plan."""
+  plan: Plan
+
+  """Budget."""
+  budget: Budget
+
+  """Additional info"""
+  additionalInfo: AdditionalInfo
+}
+
+type AdditionalInfo {
+  """Debt amount exception"""
+  debtAmountException: String
+
+  """Include unacceptable creditor"""
+  includeUnacceptableCreditor: Boolean
+
+  """Term extension exception value"""
+  termExtensionException: Float
+
+  """Standalone debts exception"""
+  standaloneDebtsException: Boolean
+
+  """EOM first draft date exception"""
+  eomFirstDraftDateException: Boolean
+}
+
+type Budget {
+  """
+  Deprecating: Use BudgetV2 with itemized income breakdown instead.
+  
+  Total monthly income.
+  """
+  totalMonthlyIncome: Float @deprecated(reason: "Use BudgetV2 with itemized income breakdown instead.")
+
+  """
+  Deprecating: Use BudgetV2 with itemized expense breakdown instead.
+  
+  Total monthly expenses.
+  """
+  totalMonthlyExpense: Float @deprecated(reason: "Use BudgetV2 with itemized expense breakdown instead.")
+}
+
+type Plan {
+  """
+  Frequency of the enrollment plan. Values: 'BW' (biWeekly), 'SM' (semiMonthly), 'M' (monthly).
+  """
+  frequency: String
+
+  """First payment amount. Ex: 100, 123.45,"""
+  firstPaymentAmount: Float
+
+  """Second payment amount. Ex: 100, 123.45,"""
+  secondPaymentAmount: Float
+
+  """First payment date."""
+  firstPaymentDate: String
+
+  """Second payment date."""
+  secondPaymentDate: String
+
+  """First draft exception."""
+  firstDraftException: String
+
+  """Program term."""
+  programTerm: Int
+
+  """Fee percentage."""
+  feePercentage: Float
+
+  """EPF reduction. Ex: YES, NO"""
+  epfReduction: String
+
+  """Enrollment plan ID."""
+  planId: String
+
+  """
+  depositIntervals values can be
+  If depositFrequency is biWeekly valid options are 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' - Default is 'Monday'. Example 'Monday'
+  If depositFrequency is 'semiMonthly' then 2 values need to be passed  where valid options are the 1-30. Example '1,15'
+  If depositFrequency is 'monthly' valid options are the 1-30. Example '1'
+  """
+  depositIntervals: String
+
+  """sentry fee opt-out by setting to false"""
+  includeSentryFee: Boolean
+}
+
+type ApplicationUwResult {
+  """
+  True/False flag to identify if this application passed all underwriting criteria
+  """
+  applicantPrequalified: Boolean!
+
+  """Type of application can be SINGLE or JOINT"""
+  applicationType: String
+
+  """
+  Deprecating.
+  
+  Application level filters
+  """
+  rootFilters: ApplicationRootFilters! @deprecated(reason: "Removed in V2. Use ApplicationUwResultV2 instead.")
+
+  """Total selected debts balance"""
+  totalDebt: Float
+
+  """Total eligible and selected debts balance"""
+  totalEligibleDebt: Float
+
+  """Additional metadata about UW application"""
+  tradelineMetadata: TradelineMetadata
+}
+
+type UwResult {
+  """Underwriting document ID"""
+  id: ID!
+
+  """
+  The organization underwriting rules used for this application.
+  
+  Values:
+  
+  - ALV
+  
+  - GLG
+  """
+  uwOrgId: String
+
+  """
+  Requesting organization ID. Based on the credentials of the system making the request.
+  """
+  reqOrgId: String
+
+  """
+  Document revision number. Each time the document is edited the revision number is incremented
+  """
+  revision: Int!
+
+  """Requesting organization contact ID"""
+  reqOrgContactId: String
+
+  """Applicant normalized credit report ID from the credit report service"""
+  creditReportId: String
+
+  """
+  Co-Applicant normalized credit report ID from the credit report service
+  """
+  coCreditReportId: String
+
+  """
+  Applicant leadId set by the integrating CRM to identify the lead in its system.
+  """
+  leadId: String
+
+  """Type of application can be SINGLE or JOINT"""
+  applicationType: String
+
+  """Applicant information."""
+  applicantInfo: ApplicantInfo!
+
+  """
+  Deprecating.
+  
+  Root level filters (All underwriting filters that are not specific to a debt)
+  """
+  rootFilters: ApplicantRootFilters! @deprecated(reason: "Removed in V2. Use UwResultV2 instead.")
+
+  """
+  List of debts. Each debt will have additional underwriting pass/fail information
+  """
+  debts: [UwResultDebt]!
+
+  """
+  Credit report source
+  
+  Values:
+  
+  - SPINWHEEL
+  
+  - CRS_TRANSUNION
+  
+  - CRS_EQUIFAX
+  """
+  creditReportSource: String!
+
+  """
+  Audit history of edits applied to the top level fields of this application
+  """
+  rootHistory: [UwResultHistory]
+
+  """Date and time this underwriting document revision was created"""
+  createdAt: Date
+}
+
+type UwEligibilityResult {
+  """Underwriting document ID"""
+  id: ID!
+
+  """
+  Revision number of this underwriting document.
+  
+  Each time the document is edited the revision number is incremented
+  """
+  revision: Int!
+
+  """Underwriting result for the application as a whole."""
+  applicationUwResult: ApplicationUwResult
+
+  """Applicant's debts (tradeline) specific underwriting results"""
+  applicantUwResult: UwResult
+
+  """
+  Co-applicant's debts (tradeline) specific underwriting results.
+  
+  Only applicable to JOINT application.
+  """
+  coApplicantUwResult: UwResult
+
+  """
+  Joint debts (tradeline) specific underwriting results.
+  
+  Only applicable to JOINT application.
+  """
+  jointUwResult: JointUwResult
+
+  """Additional metadata about UW application"""
+  tradelineMetadata: TradelineMetadata
+
+  """Maximum term (in months) calculated for this underwriting application"""
+  maxTerm: Int
+
+  """Date and time this underwriting document revision was created"""
+  createdAt: Date
+}
+
+type TradelineMetadata {
+  """
+  List of externalDebtsId's that belong to selected Upstart debts, if empty then none
+  """
+  enrolledUpstartDebtAccountNumbers: [String]
+
+  """
+  List of externalDebtsId's that belong to selected Catipal One debts, if empty then none
+  """
+  enrolledCapitalOneDebtAccountNumbers: [String]
+
+  """
+  List of externalDebtsId's that belong to selected Discover debts, if empty then none
+  """
+  enrolledDiscoverDebtAccountNumbers: [String]
+}
+
+"""Public Record"""
+type PublicRecord {
+  """Bankcrupty code"""
+  bankruptcyCode: String!
+
+  """Bankcrupty date filed"""
+  bankruptcyDateFiled: String
+
+  """Bankcrupty disposition type"""
+  bankruptcyDispositionType: String
+}
+
+"""Eligibility status for a debt"""
+enum EligibilityStatus {
+  """Debt meets all underwriting criteria and can be enrolled"""
+  ELIGIBLE
+
+  """Debt does not meet underwriting criteria and cannot be enrolled"""
+  INELIGIBLE
+
+  """Debt requires additional conditions to be met before enrollment"""
+  CONDITIONAL
+
+  """Debt requires additional information to determine eligibility"""
+  UPDATE_NEEDED
+
+  """Unable to process the debt eligibility check"""
+  UNABLE_TO_PROCESS
+}
+
+"""Debt information with underwriting check results"""
+type UwResultDebt {
+  """Unique identifier for the debt"""
+  id: ID!
+
+  """Primary applicant ID"""
+  applicantId: String
+
+  """Secondary applicant ID, if applicable (For JOINT application only)"""
+  coApplicantId: String
+
+  """
+  This is replaced by accountNumber
+  @deprecated Use accountNumber instead
+  """
+  externalDebtId: ID @deprecated(reason: "Use accountNumber instead")
+
+  """Debt account number"""
+  accountNumber: String
+
+  """Optional field to identify the debt in the requesting CRM"""
+  externalCrmId: String
+
+  """
+  True/False flag to identify if this debt is selected for program enrollment
+  """
+  isSelected: Boolean!
+
+  """
+  Only applicable to JOINT debt. True/False flag to identify if this debt is selected by the co-applicant
+  """
+  coApplicantIsSelected: Boolean
+
+  """Identify the eligibility status"""
+  eligibilityStatus: EligibilityStatus!
+
+  """
+  True/False flag to identify if the eligiblity status is being overriden
+  """
+  isOverridden: Boolean
+
+  """List of reasons the eligibility status is being overridden"""
+  exceptions: [String]
+
+  """History of all the updates made to this debt"""
+  history: [UwResultDebtHistory]
+
+  """JSON version of history with non-existent attributes excluded"""
+  historyJson: JSON
+
+  """Source of the debt entry can be MANUAL or CREDIT_REPORT"""
+  source: String!
+
+  """creditor name"""
+  creditorName: String
+
+  """Parent creditor name"""
+  parentCreditorName: String
+
+  """Parent creditor ID"""
+  parentCreditorId: String
+
+  """Original creditor name"""
+  originalCreditorName: String
+
+  """Creditor ID from Forth"""
+  creditorId: ID
+
+  """creditor type"""
+  creditorType: String
+
+  """ECOA Code"""
+  ecoaCode: String
+
+  """Account type"""
+  accountType: String
+
+  """Portfolio type"""
+  portfolioType: String
+
+  """Debt type"""
+  debtType: String
+
+  """Date debt was opened"""
+  openDate: String
+
+  """Date of the last payment"""
+  lastPaymentDate: String
+
+  """True/False flag to identify if last payment was amde"""
+  hasLastPayment: Boolean
+
+  """Narrative codes that might include bankcruptcy codes"""
+  narrativeCodes: [String]
+
+  """
+  Bankruptcy Record Date. This come from the credit report and does not need to be updated.
+  """
+  bankruptcyDateFiled: String
+
+  """Current debt balance"""
+  currentBalance: Float
+
+  """Original debt balance"""
+  originalBalance: Float
+
+  """
+  Only applicable to JOINT debt. The date when the non-applicant waiver has been signed.
+  """
+  nawSignedDate: Date
+
+  """
+  Only applicable to JOINT debt. The url to the non-applicant waiver document's file
+  """
+  nawUrl: String
+
+  """Has provided proof of liability"""
+  hasProofOfLiability: Boolean
+
+  """Forth Debt Type ID"""
+  forthDebtTypeId: String
+
+  """Remarks"""
+  remarks: [String]
+
+  """Flag to show if the debt is in collection"""
+  isCollection: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  approvedAccountTypeCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  unacceptableCreditorCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  creditUnionAndStateCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  debtOwnershipCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  minimumDebtValueCheck: Boolean
+
+  """
+  True/False flag to identify if this debt is selected and a duplicate debt
+  """
+  duplicateDebtsCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  multipleCreditUnionCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  paymentHistoryCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  unsecuredDebtCheck: Boolean
+
+  """True/False flag to identify if this underwriting check passed"""
+  bankruptcyCheck: Boolean
+
+  """True/False flag to identify if the creditor is the same as employer"""
+  employerIsCreditorCheck: Boolean
+
+  """True/False flag to identify if the creditor is a standalone debt"""
+  standaloneDebtsCheck: Boolean
+
+  """
+  Only applicable to JOINT debt. True/False flag to identify if this underwriting check passed
+  """
+  coApplicantCheck: Boolean
+
+  """Current and original balance check"""
+  currAndOgBalanceCheck: Boolean
+
+  """Proof of liability"""
+  proofOfLiabilityCheck: Boolean
+
+  """account rating /delinquency value"""
+  delinquency: String
+
+  """Monthly payment"""
+  monthlyPayment: Float
+
+  """Debt Notes"""
+  notes: [String]
+}
+
+"""Historical record of changes made to a debt"""
+type UwResultDebtHistory {
+  """Whether the debt was selected for enrollment at this revision"""
+  isSelected: Boolean
+
+  """Whether the co-applicant had selected this debt at this revision"""
+  coApplicantIsSelected: Boolean
+
+  """Exceptions applied to the debt at this revision"""
+  exceptions: [String]
+
+  """Source of the debt (MANUAL or CREDIT_REPORT)"""
+  source: String
+
+  """Creditor name at this revision"""
+  creditorName: String
+
+  """Original creditor name at this revision"""
+  originalCreditorName: String
+
+  """Creditor type at this revision"""
+  creditorType: String
+
+  """ECOA code at this revision"""
+  ecoaCode: String
+
+  """Account type at this revision"""
+  accountType: String
+
+  """Portfolio type at this revision"""
+  portfolioType: String
+
+  """Debt type at this revision"""
+  debtType: String
+
+  """Open date at this revision"""
+  openDate: String
+
+  """Last payment date at this revision"""
+  lastPaymentDate: String
+
+  """Whether last payment was made at this revision"""
+  hasLastPayment: Boolean
+
+  """Current balance at this revision"""
+  currentBalance: Float
+
+  """Original balance at this revision"""
+  originalBalance: Float
+
+  """Narrative codes at this revision"""
+  narrativeCodes: [String]
+
+  """Bankruptcy date filed at this revision"""
+  bankruptcyDateFiled: String
+
+  """Non-applicant waiver signed date at this revision"""
+  nawSignedDate: Date
+
+  """Non-applicant waiver URL at this revision"""
+  nawUrl: String
+
+  """Whether proof of liability was provided at this revision"""
+  hasProofOfLiability: Boolean
+
+  """Whether the debt was in collection at this revision"""
+  isCollection: Boolean
+
+  """Remarks at this revision"""
+  remarks: [String]
+
+  """Monthly payment at this revision"""
+  monthlyPayment: Float
+
+  """User ID who made this update"""
+  updatedBy: ID
+
+  """The revision number this history entry was created from"""
+  fromRevision: Int
+}
+
+"""Historical record of changes made to the underwriting result"""
+type UwResultHistory {
+  """Applicant information at this revision"""
+  applicantInfo: ApplicantInfo
+
+  """Lead ID at this revision"""
+  leadId: String
+
+  """User ID who made this update"""
+  updatedBy: ID
+
+  """The revision number this history entry was created from"""
+  fromRevision: Int
+}
+
+"""V2: Enrollment payment plan configuration."""
+input PlanInputV2 {
+  """
+  Payment frequency code. Accepted values: 'BW' (biWeekly), 'SM' (semiMonthly), 'M' (monthly).
+  """
+  frequency: String
+
+  """First payment amount. Ex: 100, 123.45,"""
+  firstPaymentAmount: Float
+
+  """Second payment amount. Ex: 100, 123.45,"""
+  secondPaymentAmount: Float
+
+  """First payment date."""
+  firstPaymentDate: String
+
+  """First draft exception. Ex: YES, NO"""
+  firstDraftException: String
+
+  """Program term."""
+  programTerm: Int
+
+  """Fee percentage. Ex: 27"""
+  feePercentage: Float
+
+  """EPF reduction. Ex: YES, NO"""
+  epfReduction: String
+
+  """Second payment date."""
+  secondPaymentDate: String
+
+  """Enrollment plan ID."""
+  planId: String
+
+  """
+  depositIntervals values can be
+  If frequency is BW (biWeekly) valid options are 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' - Default is 'Monday'. Example 'Monday'
+  If frequency is SM (semiMonthly) then 2 values need to be passed  where valid options are the 1-30. Example '1,15'
+  If frequency is M (monthly) valid options are the 1-30. Example '1'
+  """
+  depositIntervals: String
+
+  """sentry fee opt-out by setting to false"""
+  includeSentryFee: Boolean
+}
+
+"""
+V2: Input for checking applicant eligibility. Contains credit report IDs, contact information, and enrollment details..
+"""
+input UwResultCheckInputV2 {
+  """Applicant normalized credit report ID from the credit report service"""
+  primaryReportId: String!
+
+  """
+  Co-Applicant normalized credit report ID from the credit report service
+  """
+  secondaryReportId: String
+
+  """
+  Applicant leadId set by the integrating CRM to identify the lead in its system.
+  """
+  leadId: String
+
+  """Applicant contact information"""
+  applicantContactInfo: ApplicantContactInfoInput!
+
+  """Co-applicant contact information. Required for JOINT application."""
+  coApplicantContactInfo: ApplicantContactInfoInput
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment payment plan"""
+  plan: PlanInputV2
+
+  """Budget with itemized income and expense breakdown"""
+  budget: BudgetInputV2
+
+  """Additional underwriting configuration options"""
+  additionalInfo: AdditionalInfoInput
+}
+
+"""
+V2: Input for checking joint applicant eligibility. Contains credit report IDs for both applicants, contact information, and enrollment details.
+"""
+input UwResultCheckJointInputV2 {
+  """Applicant normalized credit report ID from the credit report service"""
+  primaryReportId: String!
+
+  """
+  Co-Applicant normalized credit report ID from the credit report service
+  """
+  secondaryReportId: String!
+
+  """
+  By default underwriting is based on the applicants state.
+  
+  Pass a value to override the default behavior and force ALV or GLG underwriting.
+  
+  Values:
+  
+  - ALV
+  
+  - GLG
+  """
+  uwOrgId: String
+
+  """
+  Applicant leadId set by the integrating CRM to identify the lead in its system.
+  """
+  leadId: String
+
+  """Applicant contact information"""
+  applicantContactInfo: ApplicantContactInfoInput!
+
+  """Co-applicant contact information. Required for JOINT application."""
+  coApplicantContactInfo: ApplicantContactInfoInput!
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment payment plan"""
+  plan: PlanInputV2
+
+  """Budget with itemized income and expense breakdown"""
+  budget: BudgetInputV2
+
+  """Additional underwriting configuration options"""
+  additionalInfo: AdditionalInfoInput
+}
+
+"""
+V2: Input for updating an existing underwriting result. Contains the UW result ID, revision, and fields to update.
+"""
+input UwResultUpdateInputV2 {
+  """Underwriting document ID that is being updated"""
+  id: ID!
+
+  """
+  Revision number that is being updated.
+  
+  Revision is used to track the changes made to the underwriting document.
+  
+  Can be used to start a new revision based any previous revision.
+  """
+  revision: Int!
+
+  """Lead ID set by the integrating CRM to identify the lead in its system."""
+  leadId: String
+
+  """
+  Applicant debts (tradelines).
+  
+  Used to add/remove manual debts for the applicant.
+  
+  Used to update credit report debts for the applicant.
+  """
+  applicantUwResult: UwResultUpdateFieldsInput
+
+  """
+  Co-applicant debts (tradelines).
+  
+  Used to add/remove manual debts for the co-applicant.
+  
+  Used to update credit report debts for the co-applicant.
+  """
+  coApplicantUwResult: UwResultUpdateFieldsInput
+
+  """
+  Joint debts (tradelines).
+  
+  Used to add/remove manual joint debts.
+  
+  Used to update credit report joint debts.
+  """
+  jointUwResult: JointUwResultUpdateFieldsInput
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  updatedBy: ID!
+
+  """Applicant contact information"""
+  applicantContactInfo: ApplicantContactInfoUpdateInput!
+
+  """Co-applicant contact information. Required for JOINT application."""
+  coApplicantContactInfo: ApplicantContactInfoUpdateInput
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment payment plan"""
+  plan: PlanInputV2
+
+  """Budget with itemized income and expense breakdown"""
+  budget: BudgetInputV2
+
+  """Additional info"""
+  additionalInfo: AdditionalInfoInput
+}
+
+"""V2: Applicant budget with itemized income and expense breakdown."""
+input BudgetInputV2 {
+  """Itemized income breakdown"""
+  income: IncomeInput
+
+  """Itemized expense breakdown"""
+  expenses: ExpensesInput
+}
+
+"""Itemized monthly income sources"""
+input IncomeInput {
+  """Gross employment income"""
+  gross: Float
+
+  """Business income"""
+  business: Float
+
+  """Pension income"""
+  pension: Float
+
+  """Other miscellaneous income"""
+  otherIncome: Float
+}
+
+"""Itemized monthly expenses"""
+input ExpensesInput {
+  """Housing costs (rent or mortgage)"""
+  housing: Float
+
+  """Transportation costs"""
+  transportation: Float
+
+  """Personal expenses"""
+  personal: Float
+
+  """Health-related expenses"""
+  health: Float
+
+  """Groceries"""
+  groceries: Float
+
+  """Miscellaneous expenses"""
+  misc: Float
+
+  """Dependent care expenses"""
+  dependents: Float
+
+  """Loan payments"""
+  loans: Float
+
+  """Tax payments"""
+  tax: Float
+
+  """Involuntary deductions"""
+  involuntary: Float
+
+  """Insurance premiums"""
+  insurance: Float
+
+  """Court-ordered payments"""
+  court: Float
+
+  """Charitable contributions"""
+  charitableContributions: Float
+}
+
+"""V2: Response from eligibility check or update operations."""
+type EligibilityResponseV2 {
+  """The underwriting eligibility result data"""
+  data: UwEligibilityResultV2
+
+  """
+  List of errors grouped by debtId. Application-level errors have no debtId.
+  """
+  errors: [EligibilityResponseErrorV2]
+}
+
+"""
+V2: Includes a list of reasons why the underwriting did not pass
+
+Possible reason are Ineligible, Condition, and Update Needed.
+
+If an error does not include a debtId then it is an application level error.
+"""
+type EligibilityResponseErrorV2 {
+  """
+  The debtId of the debt that caused the error. Absent for application-level errors.
+  """
+  debtId: String
+
+  """Human-readable descriptions of what caused the error."""
+  message: [String]
+}
+
+"""V2: Underwriting eligibility result."""
+type UwEligibilityResultV2 {
+  """Underwriting document ID"""
+  id: ID!
+
+  """
+  Revision number of this underwriting document.
+  
+  Each time the document is edited the revision number is incremented
+  """
+  revision: Int!
+
+  """Underwriting result for the application as a whole."""
+  applicationUwResult: ApplicationUwResultV2
+
+  """Applicant's debts (tradeline) specific underwriting results"""
+  applicantUwResult: UwResultV2
+
+  """
+  Co-applicant's debts (tradeline) specific underwriting results.
+  Only applicable to JOINT application.
+  """
+  coApplicantUwResult: UwResultV2
+
+  """
+  Joint debts (tradeline) specific underwriting results.
+  Only applicable to JOINT application.
+  """
+  jointUwResult: JointUwResultV2
+
+  """Additional metadata about UW application"""
+  tradelineMetadata: TradelineMetadata
+
+  """Maximum term (in months) calculated for this underwriting application"""
+  maxTerm: Int
+
+  """Date and time this underwriting document revision was created"""
+  createdAt: Date
+}
+
+"""V2: Application-level underwriting result."""
+type ApplicationUwResultV2 {
+  """
+  True/False flag to identify if this application passed all underwriting criteria
+  """
+  applicantPrequalified: Boolean!
+
+  """Type of application can be SINGLE or JOINT"""
+  applicationType: String
+
+  """Total selected debts balance"""
+  totalDebt: Float
+
+  """Total eligible and selected debts balance"""
+  totalEligibleDebt: Float
+
+  """Additional metadata about UW application"""
+  tradelineMetadata: TradelineMetadata
+}
+
+"""V2: Applicant-level underwriting result."""
+type UwResultV2 {
+  """Underwriting document ID"""
+  id: ID!
+
+  """
+  The organization underwriting rules used for this application.
+  
+  Values:
+  
+  - ALV
+  
+  - GLG
+  """
+  uwOrgId: String
+
+  """
+  Requesting organization ID. Based on the credentials of the system making the request.
+  """
+  reqOrgId: String
+
+  """
+  Document revision number. Each time the document is edited the revision number is incremented
+  """
+  revision: Int!
+
+  """Requesting organization contact ID"""
+  reqOrgContactId: String
+
+  """Applicant normalized credit report ID from the credit report service"""
+  creditReportId: String
+
+  """
+  Co-Applicant normalized credit report ID from the credit report service
+  """
+  coCreditReportId: String
+
+  """
+  Applicant leadId set by the integrating CRM to identify the lead in its system.
+  """
+  leadId: String
+
+  """Type of application can be SINGLE or JOINT"""
+  applicationType: String
+
+  """Applicant information including itemized budget breakdown."""
+  applicantInfo: ApplicantInfoV2!
+
+  """List of debts with eligibility results."""
+  debts: [UwResultDebtV2]!
+
+  """
+  Credit report source
+  
+  Values:
+  
+  - SPINWHEEL
+  
+  - CRS_TRANSUNION
+  
+  - CRS_EQUIFAX
+  """
+  creditReportSource: String!
+
+  """
+  Audit history of edits applied to the top level fields of this application
+  """
+  rootHistory: [UwResultHistoryV2]
+
+  """Date and time this underwriting document revision was created"""
+  createdAt: Date
+}
+
+"""
+V2: Joint underwriting result containing shared debts between applicants
+"""
+type JointUwResultV2 {
+  """Unique identifier for the joint underwriting result"""
+  id: ID!
+
+  """Primary applicant uw result id"""
+  primaryApplicantUwResult: ApplicantUwResultInfo
+
+  """Co-applicant uw result id"""
+  coApplicantUwResult: ApplicantUwResultInfo
+
+  """
+  The organization underwriting rules used for this application. For example alv or glg
+  """
+  uwOrgId: String
+
+  """Requesting organization ID"""
+  reqOrgId: String
+
+  """
+  Document revision number. Each time the document is edited the revision number is incremented
+  """
+  revision: Int!
+
+  """Sigma lead ID"""
+  leadId: String
+
+  """Primary applicant credit report ID"""
+  creditReportId: String
+
+  """
+  Secondary applicant credit report ID, if applicable (For JOINT application only)
+  """
+  coCreditReportId: String
+
+  """Applicant information needed for the root filters"""
+  applicantInfo: JointUwApplicantInfo!
+
+  """List of debts."""
+  debts: [UwResultDebtV2]!
+
+  """Source can be SPINWHEEL, CRS_TRANSUNION, or CRS_EQUIFAX"""
+  creditReportSource: String!
+
+  """History of edits applied to the top level fields of this application"""
+  rootHistory: [JointUwResultHistory]
+
+  """Date and time this joint underwriting result was created"""
+  createdAt: Date
+}
+
+"""
+V2: Debt information with underwriting results. All boolean filter check fields are removed.
+"""
+type UwResultDebtV2 {
+  """Unique identifier for the debt"""
+  id: ID!
+
+  """Primary applicant ID"""
+  applicantId: String
+
+  """Secondary applicant ID, if applicable (For JOINT application only)"""
+  coApplicantId: String
+
+  """
+  This is replaced by accountNumber
+  @deprecated Use accountNumber instead
+  """
+  externalDebtId: ID @deprecated(reason: "Use accountNumber instead")
+
+  """Debt account number"""
+  accountNumber: String
+
+  """Optional field to identify the debt in the requesting CRM"""
+  externalCrmId: String
+
+  """
+  True/False flag to identify if this debt is selected for program enrollment
+  """
+  isSelected: Boolean!
+
+  """
+  Only applicable to JOINT debt. True/False flag to identify if this debt is selected by the co-applicant
+  """
+  coApplicantIsSelected: Boolean
+
+  """Identify the eligibility status"""
+  eligibilityStatus: EligibilityStatus!
+
+  """
+  True/False flag to identify if the eligiblity status is being overriden
+  """
+  isOverridden: Boolean
+
+  """List of reasons the eligibility status is being overridden"""
+  exceptions: [String]
+
+  """History of all the updates made to this debt"""
+  history: [UwResultDebtHistory]
+
+  """JSON version of history with non-existent attributes excluded"""
+  historyJson: JSON
+
+  """Source of the debt entry can be MANUAL or CREDIT_REPORT"""
+  source: String!
+
+  """creditor name"""
+  creditorName: String
+
+  """Parent creditor name"""
+  parentCreditorName: String
+
+  """Parent creditor ID"""
+  parentCreditorId: String
+
+  """Original creditor name"""
+  originalCreditorName: String
+
+  """Creditor ID from Forth"""
+  creditorId: ID
+
+  """creditor type"""
+  creditorType: String
+
+  """ECOA Code"""
+  ecoaCode: String
+
+  """Account type"""
+  accountType: String
+
+  """Portfolio type"""
+  portfolioType: String
+
+  """Debt type"""
+  debtType: String
+
+  """Date debt was opened"""
+  openDate: String
+
+  """Date of the last payment"""
+  lastPaymentDate: String
+
+  """True/False flag to identify if last payment was made"""
+  hasLastPayment: Boolean
+
+  """Narrative codes that might include bankruptcy codes"""
+  narrativeCodes: [String]
+
+  """
+  Bankruptcy Record Date. This come from the credit report and does not need to be updated.
+  """
+  bankruptcyDateFiled: String
+
+  """Current debt balance"""
+  currentBalance: Float
+
+  """Original debt balance"""
+  originalBalance: Float
+
+  """
+  Only applicable to JOINT debt. The date when the non-applicant waiver has been signed.
+  """
+  nawSignedDate: Date
+
+  """
+  Only applicable to JOINT debt. The url to the non-applicant waiver document's file
+  """
+  nawUrl: String
+
+  """Has provided proof of liability"""
+  hasProofOfLiability: Boolean
+
+  """Forth Debt Type ID"""
+  forthDebtTypeId: String
+
+  """Remarks"""
+  remarks: [String]
+
+  """Flag to show if the debt is in collection"""
+  isCollection: Boolean
+
+  """account rating / delinquency value"""
+  delinquency: String
+
+  """Monthly payment"""
+  monthlyPayment: Float
+
+  """Debt Notes"""
+  notes: [String]
+}
+
+"""V2: Applicant information including itemized budget breakdown."""
+type ApplicantInfoV2 {
+  """Public records from the credit report."""
+  publicRecords: [PublicRecord]
+
+  """Applicant's contact information"""
+  applicantContactInfo: ApplicantContactInfo
+
+  """Co-applicant's contact information"""
+  coApplicantContactInfo: ApplicantContactInfo
+
+  """
+  Agent userId set by the integrating CRM to identify the agent in its system.
+  """
+  agentAssigned: String
+
+  """Enrollment plan."""
+  plan: Plan
+
+  """Itemized budget breakdown."""
+  budget: BudgetV2
+
+  """Additional info"""
+  additionalInfo: AdditionalInfo
+}
+
+"""V2: Budget with itemized income and expense breakdown."""
+type BudgetV2 {
+  """Itemized income breakdown"""
+  income: IncomeBreakdown
+
+  """Itemized expense breakdown"""
+  expenses: ExpensesBreakdown
+}
+
+"""Itemized monthly income breakdown"""
+type IncomeBreakdown {
+  """Gross employment income"""
+  gross: Float
+
+  """Business income"""
+  business: Float
+
+  """Pension income"""
+  pension: Float
+
+  """Other miscellaneous income"""
+  otherIncome: Float
+}
+
+"""Itemized monthly expense breakdown"""
+type ExpensesBreakdown {
+  """Housing costs (rent or mortgage)"""
+  housing: Float
+
+  """Transportation costs"""
+  transportation: Float
+
+  """Personal expenses"""
+  personal: Float
+
+  """Health-related expenses"""
+  health: Float
+
+  """Groceries"""
+  groceries: Float
+
+  """Miscellaneous expenses"""
+  misc: Float
+
+  """Dependent care expenses"""
+  dependents: Float
+
+  """Loan payments (excluding enrolled debts)"""
+  loans: Float
+
+  """Tax payments"""
+  tax: Float
+
+  """Involuntary deductions"""
+  involuntary: Float
+
+  """Insurance premiums"""
+  insurance: Float
+
+  """Court-ordered payments"""
+  court: Float
+
+  """Charitable contributions"""
+  charitableContributions: Float
+}
+
+"""V2: Historical record of changes made to the underwriting result."""
+type UwResultHistoryV2 {
+  """Applicant information at this revision"""
+  applicantInfo: ApplicantInfoV2
+
+  """Lead ID at this revision"""
+  leadId: String
+
+  """User ID who made this update"""
+  updatedBy: ID
+
+  """The revision number this history entry was created from"""
+  fromRevision: Int
+}
+
+"""UwResultsResponse"""
+type UwResultsResponse {
+  """Uw Result Connection."""
+  data: UwResultConnection
+
+  """Error(s) list"""
+  errors: [UwResultsResponseError]
+}
+
+"""Pagination connection for Uw Results."""
+type UwResultConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+
+  """List of result edges"""
+  edges: [UwResultEdge]!
+
+  """Total count of results matching the query"""
+  totalCount: Int!
+}
+
+"""Edge type for Uw Results."""
+type UwResultEdge {
+  """The underwriting eligibility result"""
+  node: UwEligibilityResult
+
+  """List of eligibility errors for this result"""
+  errors: [EligibilityResponseError]
+
+  """Cursor for pagination"""
+  cursor: String!
+}
+
+"""UwResultsResponse Error"""
+type UwResultsResponseError {
+  """Error message"""
+  message: String
+}
+
+"""Where conditions for filtering Uw Results."""
+input UwResultWhereInput {
+  """Filter by requesting organization ID"""
+  reqOrgId: String
+
+  """Filter by requesting organization contact ID"""
+  reqOrgContactId: String
+
+  """Filter by lead ID"""
+  leadId: String
+
+  """Filter by underwriting result ID"""
+  uwResultId: String
+
+  """Filter by specific revision number"""
+  revision: Int
+}
+
+"""Ordering options for UwResults."""
+input UwResultOrder {
+  """Field to order by"""
+  field: UwResultOrderField!
+
+  """Direction of ordering (ASC or DESC)"""
+  direction: OrderDirection!
+}
+
+"""Fields that can be ordered in Uw Results."""
+enum UwResultOrderField {
+  """Order by creation date"""
+  createdAt
+
+  """Order by requesting organization contact ID"""
+  reqOrgContactId
+}
+
+"""V2: UwResultsResponse with filter fields removed from result data."""
+type UwResultsResponseV2 {
+  """Uw Result Connection."""
+  data: UwResultConnectionV2
+
+  """Error(s) list"""
+  errors: [UwResultsResponseError]
+}
+
+"""V2: Pagination connection for Uw Results."""
+type UwResultConnectionV2 {
+  """Pagination information"""
+  pageInfo: PageInfo!
+
+  """List of result edges"""
+  edges: [UwResultEdgeV2]!
+
+  """Total count of results matching the query"""
+  totalCount: Int!
+}
+
+"""V2: Edge type for Uw Results."""
+type UwResultEdgeV2 {
+  """The underwriting eligibility result with filter fields removed"""
+  node: UwEligibilityResultV2
+
+  """List of eligibility errors grouped by debtId for this result"""
+  errors: [EligibilityResponseErrorV2]
+
+  """Cursor for pagination"""
+  cursor: String!
+}

@@ -246,6 +246,13 @@ export type GetOfferQueryVariables = Exact<{
 
 export type GetOfferQuery = { __typename?: 'Query', getOffer: { __typename?: 'GetOfferResponse', data?: { __typename?: 'Offer', id: string, uwResultId: string, frequency: string } | null, errors?: Array<{ __typename?: 'ResponseError', message?: string | null } | null> | null } };
 
+export type OffersMutationVariables = Exact<{
+  input: OffersInput;
+}>;
+
+
+export type OffersMutation = { __typename?: 'Mutation', offers: { __typename?: 'OffersResponse', data?: Array<{ __typename?: 'OfferResult', compTemplateId?: number | null, frequency: string, frequencyInterval: string, firstPaymentDate: string, paymentTerm: string, maxPaymentTerm: string, enrolledDebt: string, enrollmentPlanId: string, enrollmentPlanName: string, serviceFee?: number | null, estimatedSettlementFee: number, totals: { __typename?: 'OfferTotals', fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null, totalPayment?: string | null }, payments: Array<{ __typename?: 'OfferPayment', paymentNumber?: string | null, paymentDate?: string | null, totalPayment?: string | null, fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null } | null>, forthRequestParameters: { __typename?: 'ForthRequestParameters', epFee1Amount: boolean, epFee2Monthly: boolean, epFee3Amount: boolean, epFee3Monthly: boolean, epFee4Monthly: boolean, epFee4Amount: boolean, epFee5Monthly: boolean, epFee5Amount: boolean, firstPaymentDate: string, recurringStartDate: string, epFrequency: string, epFreqInterval: string, debt: string, enrollmentPlan: string, programMonths: string, maxPaymentTerm: string, estSettlement: string } } | null> | null, errors?: Array<{ __typename?: 'OffersResponseError', message?: Array<string | null> | null } | null> | null } };
+
 
 export const GetOfferDocument = gql`
     query GetOffer($ogId: String!) {
@@ -254,6 +261,71 @@ export const GetOfferDocument = gql`
       id
       uwResultId
       frequency
+    }
+    errors {
+      message
+    }
+  }
+}
+    `;
+export const OffersDocument = gql`
+    mutation Offers($input: OffersInput!) {
+  offers(input: $input) {
+    data {
+      compTemplateId
+      frequency
+      frequencyInterval
+      firstPaymentDate
+      paymentTerm
+      maxPaymentTerm
+      enrolledDebt
+      enrollmentPlanId
+      enrollmentPlanName
+      serviceFee
+      estimatedSettlementFee
+      totals {
+        fee1
+        fee2
+        fee3
+        fee4
+        fee5
+        fee6
+        fee7
+        savings
+        totalPayment
+      }
+      payments {
+        paymentNumber
+        paymentDate
+        totalPayment
+        fee1
+        fee2
+        fee3
+        fee4
+        fee5
+        fee6
+        fee7
+        savings
+      }
+      forthRequestParameters {
+        epFee1Amount
+        epFee2Monthly
+        epFee3Amount
+        epFee3Monthly
+        epFee4Monthly
+        epFee4Amount
+        epFee5Monthly
+        epFee5Amount
+        firstPaymentDate
+        recurringStartDate
+        epFrequency
+        epFreqInterval
+        debt
+        enrollmentPlan
+        programMonths
+        maxPaymentTerm
+        estSettlement
+      }
     }
     errors {
       message
@@ -271,6 +343,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     GetOffer(variables: GetOfferQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetOfferQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetOfferQuery>({ document: GetOfferDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetOffer', 'query', variables);
+    },
+    Offers(variables: OffersMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<OffersMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<OffersMutation>({ document: OffersDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'Offers', 'mutation', variables);
     }
   };
 }

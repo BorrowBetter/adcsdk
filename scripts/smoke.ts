@@ -4,6 +4,7 @@ import {
   AlleviateDebtCore,
   CreditService,
   UnderwritingService,
+  OfferService,
 } from "../src/index.js";
 import cloverCreditReport from "./clover_credit_report.json" with { type: "json" };
 
@@ -152,6 +153,63 @@ async function main() {
     "  totalEligibleDebt:",
     uwData?.applicationUwResult?.totalEligibleDebt,
   );
+
+  // ---------------------------------------------------------------------------
+  // Offer Service — Offers
+  // ---------------------------------------------------------------------------
+  const uwResultId = uwData?.id;
+  const uwRevision = uwData?.applicantUwResult?.revision;
+  if (!uwResultId || !uwRevision) {
+    console.error("  missing uwResultId or revision, skipping offer step");
+    process.exit(1);
+  }
+
+  console.log("→ offerService.Offers", { uwResultId, revision: uwRevision });
+
+  const offerResult = await client.offerService.Offers({
+    input: {
+      uwResultId,
+      revision: uwRevision,
+      firstPaymentDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10)
+        .replace(/-/g, "/"),
+    },
+  });
+
+  if (offerResult.offers.errors?.length) {
+    console.error("  errors:", offerResult.offers.errors);
+    process.exit(1);
+  }
+
+  const offers = offerResult.offers.data;
+  console.log("  offers:", offers?.length ?? 0);
+
+  const offer = offers?.[0];
+  if (!offer) {
+    console.error("  no offers returned");
+    process.exit(1);
+  }
+
+  const [firstPayment, secondPayment] = offer.payments ?? [];
+  if (!firstPayment || !secondPayment) {
+    console.error("  missing payment schedule");
+    process.exit(1);
+  }
+  console.log("  —", offer.enrollmentPlanName, {
+    frequency: offer.frequency,
+    firstPaymentAmount: firstPayment.totalPayment,
+    secondPaymentAmount: secondPayment.totalPayment,
+    firstPaymentDate: firstPayment.paymentDate,
+    secondPaymentDate: secondPayment.paymentDate,
+    firstDraftException: null,
+    programTerm: offer.paymentTerm,
+    feePercentage: offer.serviceFee,
+    epfReduction: null,
+    planId: offer.enrollmentPlanId,
+    depositIntervals: offer.frequencyInterval,
+    includeSentryFee: null,
+  });
 
   console.log("✓ smoke passed");
 }

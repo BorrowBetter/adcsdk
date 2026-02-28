@@ -229,8 +229,8 @@ async function main() {
         frequency: offer.frequency,
         firstPaymentAmount: firstPayment.totalPayment ? parseFloat(firstPayment.totalPayment) : undefined,
         secondPaymentAmount: secondPayment.totalPayment ? parseFloat(secondPayment.totalPayment) : undefined,
-        firstPaymentDate: firstPayment.paymentDate,
-        secondPaymentDate: secondPayment.paymentDate,
+        firstPaymentDate: firstPayment.paymentDate?.replace(/-/g, "/"),
+        secondPaymentDate: secondPayment.paymentDate?.replace(/-/g, "/"),
         programTerm: offer.paymentTerm ? parseInt(offer.paymentTerm) : undefined,
         feePercentage: offer.serviceFee,
         planId: offer.enrollmentPlanId,
@@ -252,6 +252,70 @@ async function main() {
   console.log("  uwResultId:", updateData?.id);
   console.log("  revision:", uwRevision);
   console.log("  applicantPrequalified:", updateData?.applicationUwResult?.applicantPrequalified);
+
+  // ---------------------------------------------------------------------------
+  // Offer Service — SaveOffer
+  // ---------------------------------------------------------------------------
+  console.log("→ offerService.SaveOffer", { uwResultId, revision: uwRevision });
+
+  const saveOfferResult = await client.offerService.SaveOffer({
+    input: {
+      uwResultId,
+      revision: uwRevision,
+    },
+  });
+
+  if (saveOfferResult.saveOffer.errors?.length) {
+    console.error("  errors:", saveOfferResult.saveOffer.errors);
+    process.exit(1);
+  }
+
+  const savedOffer = saveOfferResult.saveOffer.data;
+  if (!savedOffer) {
+    console.error("  no saved offer returned");
+    process.exit(1);
+  }
+
+  console.log("  savedOfferId:", savedOffer.id);
+  console.log("  enrollmentPlanName:", savedOffer.enrollmentPlanName);
+
+  // ---------------------------------------------------------------------------
+  // Underwriting Service — UpdateApplicantEligibilityV2 (contact info)
+  // ---------------------------------------------------------------------------
+  console.log("→ underwritingService.UpdateApplicantEligibilityV2 (contact info)", { uwResultId, revision: uwRevision });
+
+  const updateContactResult = await client.underwritingService.UpdateApplicantEligibilityV2({
+    applicationType: UnderwritingService.ApplicationTypeInput.Single,
+    updatedUWFields: {
+      id: uwResultId,
+      revision: uwRevision,
+      updatedBy: "smoke",
+      applicantContactInfo: {
+        applicantState: "GA",
+        employerName: "ACME CORPORATION",
+        jobTitle: "Analyst",
+        hardship: "Loss Of Employment",
+        routingNumber: "99999999",
+        bankName: "Bells Fargo",
+        bankAccountNumber: "1121214",
+        bankAccountHolderName: "Clover",
+        bankAccountType: "Checking",
+      },
+    },
+  });
+
+  if (updateContactResult.updateApplicantEligibilityV2.errors?.length) {
+    console.warn(
+      "  warnings:",
+      updateContactResult.updateApplicantEligibilityV2.errors.length,
+      "eligibility error(s)",
+    );
+  }
+
+  const updateContactData = updateContactResult.updateApplicantEligibilityV2.data;
+  uwRevision = updateContactData?.applicantUwResult?.revision ?? uwRevision;
+  console.log("  revision:", uwRevision);
+  console.log("  applicantPrequalified:", updateContactData?.applicationUwResult?.applicantPrequalified);
 
   console.log("✓ smoke passed");
 }

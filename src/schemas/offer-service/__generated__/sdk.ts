@@ -246,6 +246,12 @@ export type GetOfferQueryVariables = Exact<{
 
 export type GetOfferQuery = { __typename?: 'Query', getOffer: { __typename?: 'GetOfferResponse', data?: { __typename?: 'Offer', id: string, uwResultId: string, frequency: string } | null, errors?: Array<{ __typename?: 'ResponseError', message?: string | null } | null> | null } };
 
+export type OfferTotalsFieldsFragment = { __typename?: 'OfferTotals', fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null, totalPayment?: string | null };
+
+export type OfferPaymentFieldsFragment = { __typename?: 'OfferPayment', paymentNumber?: string | null, paymentDate?: string | null, totalPayment?: string | null, fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null };
+
+export type ForthRequestParametersFieldsFragment = { __typename?: 'ForthRequestParameters', epFee1Amount: boolean, epFee2Monthly: boolean, epFee3Amount: boolean, epFee3Monthly: boolean, epFee4Monthly: boolean, epFee4Amount: boolean, epFee5Monthly: boolean, epFee5Amount: boolean, firstPaymentDate: string, recurringStartDate: string, epFrequency: string, epFreqInterval: string, debt: string, enrollmentPlan: string, programMonths: string, maxPaymentTerm: string, estSettlement: string };
+
 export type OffersMutationVariables = Exact<{
   input: OffersInput;
 }>;
@@ -253,7 +259,62 @@ export type OffersMutationVariables = Exact<{
 
 export type OffersMutation = { __typename?: 'Mutation', offers: { __typename?: 'OffersResponse', data?: Array<{ __typename?: 'OfferResult', compTemplateId?: number | null, frequency: string, frequencyInterval: string, firstPaymentDate: string, paymentTerm: string, maxPaymentTerm: string, enrolledDebt: string, enrollmentPlanId: string, enrollmentPlanName: string, serviceFee?: number | null, estimatedSettlementFee: number, totals: { __typename?: 'OfferTotals', fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null, totalPayment?: string | null }, payments: Array<{ __typename?: 'OfferPayment', paymentNumber?: string | null, paymentDate?: string | null, totalPayment?: string | null, fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null } | null>, forthRequestParameters: { __typename?: 'ForthRequestParameters', epFee1Amount: boolean, epFee2Monthly: boolean, epFee3Amount: boolean, epFee3Monthly: boolean, epFee4Monthly: boolean, epFee4Amount: boolean, epFee5Monthly: boolean, epFee5Amount: boolean, firstPaymentDate: string, recurringStartDate: string, epFrequency: string, epFreqInterval: string, debt: string, enrollmentPlan: string, programMonths: string, maxPaymentTerm: string, estSettlement: string } } | null> | null, errors?: Array<{ __typename?: 'OffersResponseError', message?: Array<string | null> | null } | null> | null } };
 
+export type SaveOfferMutationVariables = Exact<{
+  input: CreateOfferInput;
+}>;
 
+
+export type SaveOfferMutation = { __typename?: 'Mutation', saveOffer: { __typename?: 'CreateOfferResponse', data?: { __typename?: 'Offer', id: string, uwResultId: string, uwResultRevision: number, compTemplateId?: number | null, frequency: string, frequencyInterval: string, firstPaymentDate: string, paymentTerm: string, maxPaymentTerm: string, enrolledDebt: string, enrollmentPlanId: string, enrollmentPlanName: string, serviceFee?: number | null, estimatedSettlementFee: number, totals: { __typename?: 'OfferTotals', fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null, totalPayment?: string | null }, payments: Array<{ __typename?: 'OfferPayment', paymentNumber?: string | null, paymentDate?: string | null, totalPayment?: string | null, fee1?: string | null, fee2?: string | null, fee3?: string | null, fee4?: string | null, fee5?: string | null, fee6?: string | null, fee7?: string | null, savings?: string | null } | null>, forthRequestParameters: { __typename?: 'ForthRequestParameters', epFee1Amount: boolean, epFee2Monthly: boolean, epFee3Amount: boolean, epFee3Monthly: boolean, epFee4Monthly: boolean, epFee4Amount: boolean, epFee5Monthly: boolean, epFee5Amount: boolean, firstPaymentDate: string, recurringStartDate: string, epFrequency: string, epFreqInterval: string, debt: string, enrollmentPlan: string, programMonths: string, maxPaymentTerm: string, estSettlement: string } } | null, errors?: Array<{ __typename?: 'OffersResponseError', message?: Array<string | null> | null } | null> | null } };
+
+export const OfferTotalsFieldsFragmentDoc = gql`
+    fragment OfferTotalsFields on OfferTotals {
+  fee1
+  fee2
+  fee3
+  fee4
+  fee5
+  fee6
+  fee7
+  savings
+  totalPayment
+}
+    `;
+export const OfferPaymentFieldsFragmentDoc = gql`
+    fragment OfferPaymentFields on OfferPayment {
+  paymentNumber
+  paymentDate
+  totalPayment
+  fee1
+  fee2
+  fee3
+  fee4
+  fee5
+  fee6
+  fee7
+  savings
+}
+    `;
+export const ForthRequestParametersFieldsFragmentDoc = gql`
+    fragment ForthRequestParametersFields on ForthRequestParameters {
+  epFee1Amount
+  epFee2Monthly
+  epFee3Amount
+  epFee3Monthly
+  epFee4Monthly
+  epFee4Amount
+  epFee5Monthly
+  epFee5Amount
+  firstPaymentDate
+  recurringStartDate
+  epFrequency
+  epFreqInterval
+  debt
+  enrollmentPlan
+  programMonths
+  maxPaymentTerm
+  estSettlement
+}
+    `;
 export const GetOfferDocument = gql`
     query GetOffer($ogId: String!) {
   getOffer(ogId: $ogId) {
@@ -284,47 +345,13 @@ export const OffersDocument = gql`
       serviceFee
       estimatedSettlementFee
       totals {
-        fee1
-        fee2
-        fee3
-        fee4
-        fee5
-        fee6
-        fee7
-        savings
-        totalPayment
+        ...OfferTotalsFields
       }
       payments {
-        paymentNumber
-        paymentDate
-        totalPayment
-        fee1
-        fee2
-        fee3
-        fee4
-        fee5
-        fee6
-        fee7
-        savings
+        ...OfferPaymentFields
       }
       forthRequestParameters {
-        epFee1Amount
-        epFee2Monthly
-        epFee3Amount
-        epFee3Monthly
-        epFee4Monthly
-        epFee4Amount
-        epFee5Monthly
-        epFee5Amount
-        firstPaymentDate
-        recurringStartDate
-        epFrequency
-        epFreqInterval
-        debt
-        enrollmentPlan
-        programMonths
-        maxPaymentTerm
-        estSettlement
+        ...ForthRequestParametersFields
       }
     }
     errors {
@@ -332,7 +359,45 @@ export const OffersDocument = gql`
     }
   }
 }
-    `;
+    ${OfferTotalsFieldsFragmentDoc}
+${OfferPaymentFieldsFragmentDoc}
+${ForthRequestParametersFieldsFragmentDoc}`;
+export const SaveOfferDocument = gql`
+    mutation SaveOffer($input: CreateOfferInput!) {
+  saveOffer(input: $input) {
+    data {
+      id
+      uwResultId
+      uwResultRevision
+      compTemplateId
+      frequency
+      frequencyInterval
+      firstPaymentDate
+      paymentTerm
+      maxPaymentTerm
+      enrolledDebt
+      enrollmentPlanId
+      enrollmentPlanName
+      serviceFee
+      estimatedSettlementFee
+      totals {
+        ...OfferTotalsFields
+      }
+      payments {
+        ...OfferPaymentFields
+      }
+      forthRequestParameters {
+        ...ForthRequestParametersFields
+      }
+    }
+    errors {
+      message
+    }
+  }
+}
+    ${OfferTotalsFieldsFragmentDoc}
+${OfferPaymentFieldsFragmentDoc}
+${ForthRequestParametersFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -346,6 +411,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     Offers(variables: OffersMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<OffersMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<OffersMutation>({ document: OffersDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'Offers', 'mutation', variables);
+    },
+    SaveOffer(variables: SaveOfferMutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<SaveOfferMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SaveOfferMutation>({ document: SaveOfferDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'SaveOffer', 'mutation', variables);
     }
   };
 }

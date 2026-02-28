@@ -1,6 +1,9 @@
-mutation Offers($input: OffersInput!) {
-  offers(input: $input) {
+mutation SaveOffer($input: CreateOfferInput!) {
+  saveOffer(input: $input) {
     data {
+      id
+      uwResultId
+      uwResultRevision
       compTemplateId
       frequency
       frequencyInterval

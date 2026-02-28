@@ -1,0 +1,45 @@
+fragment OfferTotalsFields on OfferTotals {
+  fee1
+  fee2
+  fee3
+  fee4
+  fee5
+  fee6
+  fee7
+  savings
+  totalPayment
+}
+
+fragment OfferPaymentFields on OfferPayment {
+  paymentNumber
+  paymentDate
+  totalPayment
+  fee1
+  fee2
+  fee3
+  fee4
+  fee5
+  fee6
+  fee7
+  savings
+}
+
+fragment ForthRequestParametersFields on ForthRequestParameters {
+  epFee1Amount
+  epFee2Monthly
+  epFee3Amount
+  epFee3Monthly
+  epFee4Monthly
+  epFee4Amount
+  epFee5Monthly
+  epFee5Amount
+  firstPaymentDate
+  recurringStartDate
+  epFrequency
+  epFreqInterval
+  debt
+  enrollmentPlan
+  programMonths
+  maxPaymentTerm
+  estSettlement
+}

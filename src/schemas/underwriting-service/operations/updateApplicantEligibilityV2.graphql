@@ -1,0 +1,5 @@
+mutation UpdateApplicantEligibilityV2($applicationType: ApplicationTypeInput!, $updatedUWFields: UwResultUpdateInputV2!) {
+  updateApplicantEligibilityV2(applicationType: $applicationType, updatedUWFields: $updatedUWFields) {
+    ...EligibilityResponseV2Fields
+  }
+}

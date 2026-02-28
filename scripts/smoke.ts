@@ -158,7 +158,7 @@ async function main() {
   // Offer Service — Offers
   // ---------------------------------------------------------------------------
   const uwResultId = uwData?.id;
-  const uwRevision = uwData?.applicantUwResult?.revision;
+  let uwRevision = uwData?.applicantUwResult?.revision;
   if (!uwResultId || !uwRevision) {
     console.error("  missing uwResultId or revision, skipping offer step");
     process.exit(1);
@@ -210,6 +210,48 @@ async function main() {
     depositIntervals: offer.frequencyInterval,
     includeSentryFee: null,
   });
+
+  // ---------------------------------------------------------------------------
+  // Underwriting Service — UpdateApplicantEligibilityV2
+  // ---------------------------------------------------------------------------
+  console.log("→ underwritingService.UpdateApplicantEligibilityV2", { uwResultId, revision: uwRevision });
+
+  const updateResult = await client.underwritingService.UpdateApplicantEligibilityV2({
+    applicationType: UnderwritingService.ApplicationTypeInput.Single,
+    updatedUWFields: {
+      id: uwResultId,
+      revision: uwRevision,
+      updatedBy: "smoke",
+      applicantContactInfo: {
+        applicantState: "GA",
+      },
+      plan: {
+        frequency: offer.frequency,
+        firstPaymentAmount: firstPayment.totalPayment ? parseFloat(firstPayment.totalPayment) : undefined,
+        secondPaymentAmount: secondPayment.totalPayment ? parseFloat(secondPayment.totalPayment) : undefined,
+        firstPaymentDate: firstPayment.paymentDate,
+        secondPaymentDate: secondPayment.paymentDate,
+        programTerm: offer.paymentTerm ? parseInt(offer.paymentTerm) : undefined,
+        feePercentage: offer.serviceFee,
+        planId: offer.enrollmentPlanId,
+        depositIntervals: offer.frequencyInterval,
+      },
+    },
+  });
+
+  if (updateResult.updateApplicantEligibilityV2.errors?.length) {
+    console.warn(
+      "  warnings:",
+      updateResult.updateApplicantEligibilityV2.errors.length,
+      "eligibility error(s)",
+    );
+  }
+
+  const updateData = updateResult.updateApplicantEligibilityV2.data;
+  uwRevision = updateData?.applicantUwResult?.revision ?? uwRevision;
+  console.log("  uwResultId:", updateData?.id);
+  console.log("  revision:", uwRevision);
+  console.log("  applicantPrequalified:", updateData?.applicationUwResult?.applicantPrequalified);
 
   console.log("✓ smoke passed");
 }

@@ -2587,187 +2587,167 @@ export type GetUwConfigQueryVariables = Exact<{
 
 export type GetUwConfigQuery = { __typename?: 'Query', uwConfig?: { __typename?: 'UwConfigResponse', data?: { __typename?: 'UwConfig', reqOrgId?: string | null } | null, errors?: Array<{ __typename?: 'UwConfigResponseError', message?: string | null } | null> | null } | null };
 
+export type EligibilityResponseV2FieldsFragment = { __typename?: 'EligibilityResponseV2', data?: { __typename?: 'UwEligibilityResultV2', id: string, revision: number, maxTerm?: number | null, createdAt?: any | null, applicationUwResult?: { __typename?: 'ApplicationUwResultV2', applicantPrequalified: boolean, applicationType?: string | null, totalDebt?: number | null, totalEligibleDebt?: number | null, tradelineMetadata?: { __typename?: 'TradelineMetadata', enrolledUpstartDebtAccountNumbers?: Array<string | null> | null, enrolledCapitalOneDebtAccountNumbers?: Array<string | null> | null, enrolledDiscoverDebtAccountNumbers?: Array<string | null> | null } | null } | null, applicantUwResult?: { __typename?: 'UwResultV2', id: string, uwOrgId?: string | null, reqOrgId?: string | null, revision: number, reqOrgContactId?: string | null, creditReportId?: string | null, coCreditReportId?: string | null, leadId?: string | null, applicationType?: string | null, creditReportSource: string, createdAt?: any | null, applicantInfo: { __typename?: 'ApplicantInfoV2', agentAssigned?: string | null, publicRecords?: Array<{ __typename?: 'PublicRecord', bankruptcyCode: string, bankruptcyDateFiled?: string | null, bankruptcyDispositionType?: string | null } | null> | null, applicantContactInfo?: { __typename?: 'ApplicantContactInfo', employerName?: string | null, isMarriedToCoApplicant?: boolean | null, homeAddress?: string | null, applicantState: string, ssn?: string | null, dob?: string | null, phone?: string | null, cellPhone?: string | null, firstName?: string | null, lastName?: string | null, jobTitle?: string | null, email?: string | null, hardship?: string | null, filedBankruptcy?: string | null, routingNumber?: string | null, bankName?: string | null, bankAccountNumber?: string | null, bankAccountHolderName?: string | null, bankAccountType?: string | null, eligibilityReqMilitary?: string | null, eligibilityReqCreditCounselling?: string | null, eligibilityReqBankruptcy?: string | null, eligibilityReqFederalGovDebt?: string | null, eligibilityReqSecuredDebt?: string | null, belongsToCompanyId?: string | null } | null, coApplicantContactInfo?: { __typename?: 'ApplicantContactInfo', employerName?: string | null, isMarriedToCoApplicant?: boolean | null, homeAddress?: string | null, applicantState: string, ssn?: string | null, dob?: string | null, phone?: string | null, cellPhone?: string | null, firstName?: string | null, lastName?: string | null, jobTitle?: string | null, email?: string | null, hardship?: string | null, filedBankruptcy?: string | null, routingNumber?: string | null, bankName?: string | null, bankAccountNumber?: string | null, bankAccountHolderName?: string | null, bankAccountType?: string | null, eligibilityReqMilitary?: string | null, eligibilityReqCreditCounselling?: string | null, eligibilityReqBankruptcy?: string | null, eligibilityReqFederalGovDebt?: string | null, eligibilityReqSecuredDebt?: string | null, belongsToCompanyId?: string | null } | null, plan?: { __typename?: 'Plan', frequency?: string | null, firstPaymentAmount?: number | null, secondPaymentAmount?: number | null, firstPaymentDate?: string | null, secondPaymentDate?: string | null, firstDraftException?: string | null, programTerm?: number | null, feePercentage?: number | null, epfReduction?: string | null, planId?: string | null, depositIntervals?: string | null, includeSentryFee?: boolean | null } | null, budget?: { __typename?: 'BudgetV2', income?: { __typename?: 'IncomeBreakdown', gross?: number | null, business?: number | null, pension?: number | null, otherIncome?: number | null } | null, expenses?: { __typename?: 'ExpensesBreakdown', housing?: number | null, transportation?: number | null, personal?: number | null, health?: number | null, groceries?: number | null, misc?: number | null, dependents?: number | null, loans?: number | null, tax?: number | null, involuntary?: number | null, insurance?: number | null, court?: number | null, charitableContributions?: number | null } | null } | null, additionalInfo?: { __typename?: 'AdditionalInfo', debtAmountException?: string | null, includeUnacceptableCreditor?: boolean | null, termExtensionException?: number | null, standaloneDebtsException?: boolean | null, eomFirstDraftDateException?: boolean | null } | null }, debts: Array<{ __typename?: 'UwResultDebtV2', id: string, applicantId?: string | null, coApplicantId?: string | null, externalDebtId?: string | null, accountNumber?: string | null, externalCrmId?: string | null, isSelected: boolean, coApplicantIsSelected?: boolean | null, eligibilityStatus: EligibilityStatus, isOverridden?: boolean | null, exceptions?: Array<string | null> | null, historyJson?: any | null, source: string, creditorName?: string | null, parentCreditorName?: string | null, parentCreditorId?: string | null, originalCreditorName?: string | null, creditorId?: string | null, creditorType?: string | null, ecoaCode?: string | null, accountType?: string | null, portfolioType?: string | null, debtType?: string | null, openDate?: string | null, lastPaymentDate?: string | null, hasLastPayment?: boolean | null, narrativeCodes?: Array<string | null> | null, bankruptcyDateFiled?: string | null, currentBalance?: number | null, originalBalance?: number | null, nawSignedDate?: any | null, nawUrl?: string | null, hasProofOfLiability?: boolean | null, forthDebtTypeId?: string | null, remarks?: Array<string | null> | null, isCollection?: boolean | null, delinquency?: string | null, monthlyPayment?: number | null, notes?: Array<string | null> | null, history?: Array<{ __typename?: 'UwResultDebtHistory', isSelected?: boolean | null, coApplicantIsSelected?: boolean | null, exceptions?: Array<string | null> | null, source?: string | null, creditorName?: string | null, originalCreditorName?: string | null, creditorType?: string | null, ecoaCode?: string | null, accountType?: string | null, portfolioType?: string | null, debtType?: string | null, openDate?: string | null, lastPaymentDate?: string | null, hasLastPayment?: boolean | null, currentBalance?: number | null, originalBalance?: number | null, narrativeCodes?: Array<string | null> | null, bankruptcyDateFiled?: string | null, nawSignedDate?: any | null, nawUrl?: string | null, hasProofOfLiability?: boolean | null, isCollection?: boolean | null, remarks?: Array<string | null> | null, monthlyPayment?: number | null, updatedBy?: string | null, fromRevision?: number | null } | null> | null } | null>, rootHistory?: Array<{ __typename?: 'UwResultHistoryV2', leadId?: string | null, updatedBy?: string | null, fromRevision?: number | null } | null> | null } | null, tradelineMetadata?: { __typename?: 'TradelineMetadata', enrolledUpstartDebtAccountNumbers?: Array<string | null> | null, enrolledCapitalOneDebtAccountNumbers?: Array<string | null> | null, enrolledDiscoverDebtAccountNumbers?: Array<string | null> | null } | null } | null, errors?: Array<{ __typename?: 'EligibilityResponseErrorV2', debtId?: string | null, message?: Array<string | null> | null } | null> | null };
 
-export const CheckApplicantEligibilityV2Document = gql`
-    mutation CheckApplicantEligibilityV2($applicationType: ApplicationTypeInput!, $input: UwResultCheckInputV2!) {
-  checkApplicantEligibilityV2(applicationType: $applicationType, input: $input) {
-    data {
+export type UpdateApplicantEligibilityV2MutationVariables = Exact<{
+  applicationType: ApplicationTypeInput;
+  updatedUWFields: UwResultUpdateInputV2;
+}>;
+
+
+export type UpdateApplicantEligibilityV2Mutation = { __typename?: 'Mutation', updateApplicantEligibilityV2: { __typename?: 'EligibilityResponseV2', data?: { __typename?: 'UwEligibilityResultV2', id: string, revision: number, maxTerm?: number | null, createdAt?: any | null, applicationUwResult?: { __typename?: 'ApplicationUwResultV2', applicantPrequalified: boolean, applicationType?: string | null, totalDebt?: number | null, totalEligibleDebt?: number | null, tradelineMetadata?: { __typename?: 'TradelineMetadata', enrolledUpstartDebtAccountNumbers?: Array<string | null> | null, enrolledCapitalOneDebtAccountNumbers?: Array<string | null> | null, enrolledDiscoverDebtAccountNumbers?: Array<string | null> | null } | null } | null, applicantUwResult?: { __typename?: 'UwResultV2', id: string, uwOrgId?: string | null, reqOrgId?: string | null, revision: number, reqOrgContactId?: string | null, creditReportId?: string | null, coCreditReportId?: string | null, leadId?: string | null, applicationType?: string | null, creditReportSource: string, createdAt?: any | null, applicantInfo: { __typename?: 'ApplicantInfoV2', agentAssigned?: string | null, publicRecords?: Array<{ __typename?: 'PublicRecord', bankruptcyCode: string, bankruptcyDateFiled?: string | null, bankruptcyDispositionType?: string | null } | null> | null, applicantContactInfo?: { __typename?: 'ApplicantContactInfo', employerName?: string | null, isMarriedToCoApplicant?: boolean | null, homeAddress?: string | null, applicantState: string, ssn?: string | null, dob?: string | null, phone?: string | null, cellPhone?: string | null, firstName?: string | null, lastName?: string | null, jobTitle?: string | null, email?: string | null, hardship?: string | null, filedBankruptcy?: string | null, routingNumber?: string | null, bankName?: string | null, bankAccountNumber?: string | null, bankAccountHolderName?: string | null, bankAccountType?: string | null, eligibilityReqMilitary?: string | null, eligibilityReqCreditCounselling?: string | null, eligibilityReqBankruptcy?: string | null, eligibilityReqFederalGovDebt?: string | null, eligibilityReqSecuredDebt?: string | null, belongsToCompanyId?: string | null } | null, coApplicantContactInfo?: { __typename?: 'ApplicantContactInfo', employerName?: string | null, isMarriedToCoApplicant?: boolean | null, homeAddress?: string | null, applicantState: string, ssn?: string | null, dob?: string | null, phone?: string | null, cellPhone?: string | null, firstName?: string | null, lastName?: string | null, jobTitle?: string | null, email?: string | null, hardship?: string | null, filedBankruptcy?: string | null, routingNumber?: string | null, bankName?: string | null, bankAccountNumber?: string | null, bankAccountHolderName?: string | null, bankAccountType?: string | null, eligibilityReqMilitary?: string | null, eligibilityReqCreditCounselling?: string | null, eligibilityReqBankruptcy?: string | null, eligibilityReqFederalGovDebt?: string | null, eligibilityReqSecuredDebt?: string | null, belongsToCompanyId?: string | null } | null, plan?: { __typename?: 'Plan', frequency?: string | null, firstPaymentAmount?: number | null, secondPaymentAmount?: number | null, firstPaymentDate?: string | null, secondPaymentDate?: string | null, firstDraftException?: string | null, programTerm?: number | null, feePercentage?: number | null, epfReduction?: string | null, planId?: string | null, depositIntervals?: string | null, includeSentryFee?: boolean | null } | null, budget?: { __typename?: 'BudgetV2', income?: { __typename?: 'IncomeBreakdown', gross?: number | null, business?: number | null, pension?: number | null, otherIncome?: number | null } | null, expenses?: { __typename?: 'ExpensesBreakdown', housing?: number | null, transportation?: number | null, personal?: number | null, health?: number | null, groceries?: number | null, misc?: number | null, dependents?: number | null, loans?: number | null, tax?: number | null, involuntary?: number | null, insurance?: number | null, court?: number | null, charitableContributions?: number | null } | null } | null, additionalInfo?: { __typename?: 'AdditionalInfo', debtAmountException?: string | null, includeUnacceptableCreditor?: boolean | null, termExtensionException?: number | null, standaloneDebtsException?: boolean | null, eomFirstDraftDateException?: boolean | null } | null }, debts: Array<{ __typename?: 'UwResultDebtV2', id: string, applicantId?: string | null, coApplicantId?: string | null, externalDebtId?: string | null, accountNumber?: string | null, externalCrmId?: string | null, isSelected: boolean, coApplicantIsSelected?: boolean | null, eligibilityStatus: EligibilityStatus, isOverridden?: boolean | null, exceptions?: Array<string | null> | null, historyJson?: any | null, source: string, creditorName?: string | null, parentCreditorName?: string | null, parentCreditorId?: string | null, originalCreditorName?: string | null, creditorId?: string | null, creditorType?: string | null, ecoaCode?: string | null, accountType?: string | null, portfolioType?: string | null, debtType?: string | null, openDate?: string | null, lastPaymentDate?: string | null, hasLastPayment?: boolean | null, narrativeCodes?: Array<string | null> | null, bankruptcyDateFiled?: string | null, currentBalance?: number | null, originalBalance?: number | null, nawSignedDate?: any | null, nawUrl?: string | null, hasProofOfLiability?: boolean | null, forthDebtTypeId?: string | null, remarks?: Array<string | null> | null, isCollection?: boolean | null, delinquency?: string | null, monthlyPayment?: number | null, notes?: Array<string | null> | null, history?: Array<{ __typename?: 'UwResultDebtHistory', isSelected?: boolean | null, coApplicantIsSelected?: boolean | null, exceptions?: Array<string | null> | null, source?: string | null, creditorName?: string | null, originalCreditorName?: string | null, creditorType?: string | null, ecoaCode?: string | null, accountType?: string | null, portfolioType?: string | null, debtType?: string | null, openDate?: string | null, lastPaymentDate?: string | null, hasLastPayment?: boolean | null, currentBalance?: number | null, originalBalance?: number | null, narrativeCodes?: Array<string | null> | null, bankruptcyDateFiled?: string | null, nawSignedDate?: any | null, nawUrl?: string | null, hasProofOfLiability?: boolean | null, isCollection?: boolean | null, remarks?: Array<string | null> | null, monthlyPayment?: number | null, updatedBy?: string | null, fromRevision?: number | null } | null> | null } | null>, rootHistory?: Array<{ __typename?: 'UwResultHistoryV2', leadId?: string | null, updatedBy?: string | null, fromRevision?: number | null } | null> | null } | null, tradelineMetadata?: { __typename?: 'TradelineMetadata', enrolledUpstartDebtAccountNumbers?: Array<string | null> | null, enrolledCapitalOneDebtAccountNumbers?: Array<string | null> | null, enrolledDiscoverDebtAccountNumbers?: Array<string | null> | null } | null } | null, errors?: Array<{ __typename?: 'EligibilityResponseErrorV2', debtId?: string | null, message?: Array<string | null> | null } | null> | null } };
+
+export const EligibilityResponseV2FieldsFragmentDoc = gql`
+    fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
+  data {
+    id
+    revision
+    applicationUwResult {
+      applicantPrequalified
+      applicationType
+      totalDebt
+      totalEligibleDebt
+      tradelineMetadata {
+        enrolledUpstartDebtAccountNumbers
+        enrolledCapitalOneDebtAccountNumbers
+        enrolledDiscoverDebtAccountNumbers
+      }
+    }
+    applicantUwResult {
       id
+      uwOrgId
+      reqOrgId
       revision
-      applicationUwResult {
-        applicantPrequalified
-        applicationType
-        totalDebt
-        totalEligibleDebt
-        tradelineMetadata {
-          enrolledUpstartDebtAccountNumbers
-          enrolledCapitalOneDebtAccountNumbers
-          enrolledDiscoverDebtAccountNumbers
+      reqOrgContactId
+      creditReportId
+      coCreditReportId
+      leadId
+      applicationType
+      applicantInfo {
+        publicRecords {
+          bankruptcyCode
+          bankruptcyDateFiled
+          bankruptcyDispositionType
+        }
+        applicantContactInfo {
+          employerName
+          isMarriedToCoApplicant
+          homeAddress
+          applicantState
+          ssn
+          dob
+          phone
+          cellPhone
+          firstName
+          lastName
+          jobTitle
+          email
+          hardship
+          filedBankruptcy
+          routingNumber
+          bankName
+          bankAccountNumber
+          bankAccountHolderName
+          bankAccountType
+          eligibilityReqMilitary
+          eligibilityReqCreditCounselling
+          eligibilityReqBankruptcy
+          eligibilityReqFederalGovDebt
+          eligibilityReqSecuredDebt
+          belongsToCompanyId
+        }
+        coApplicantContactInfo {
+          employerName
+          isMarriedToCoApplicant
+          homeAddress
+          applicantState
+          ssn
+          dob
+          phone
+          cellPhone
+          firstName
+          lastName
+          jobTitle
+          email
+          hardship
+          filedBankruptcy
+          routingNumber
+          bankName
+          bankAccountNumber
+          bankAccountHolderName
+          bankAccountType
+          eligibilityReqMilitary
+          eligibilityReqCreditCounselling
+          eligibilityReqBankruptcy
+          eligibilityReqFederalGovDebt
+          eligibilityReqSecuredDebt
+          belongsToCompanyId
+        }
+        agentAssigned
+        plan {
+          frequency
+          firstPaymentAmount
+          secondPaymentAmount
+          firstPaymentDate
+          secondPaymentDate
+          firstDraftException
+          programTerm
+          feePercentage
+          epfReduction
+          planId
+          depositIntervals
+          includeSentryFee
+        }
+        budget {
+          income {
+            gross
+            business
+            pension
+            otherIncome
+          }
+          expenses {
+            housing
+            transportation
+            personal
+            health
+            groceries
+            misc
+            dependents
+            loans
+            tax
+            involuntary
+            insurance
+            court
+            charitableContributions
+          }
+        }
+        additionalInfo {
+          debtAmountException
+          includeUnacceptableCreditor
+          termExtensionException
+          standaloneDebtsException
+          eomFirstDraftDateException
         }
       }
-      applicantUwResult {
+      debts {
         id
-        uwOrgId
-        reqOrgId
-        revision
-        reqOrgContactId
-        creditReportId
-        coCreditReportId
-        leadId
-        applicationType
-        applicantInfo {
-          publicRecords {
-            bankruptcyCode
-            bankruptcyDateFiled
-            bankruptcyDispositionType
-          }
-          applicantContactInfo {
-            employerName
-            isMarriedToCoApplicant
-            homeAddress
-            applicantState
-            ssn
-            dob
-            phone
-            cellPhone
-            firstName
-            lastName
-            jobTitle
-            email
-            hardship
-            filedBankruptcy
-            routingNumber
-            bankName
-            bankAccountNumber
-            bankAccountHolderName
-            bankAccountType
-            eligibilityReqMilitary
-            eligibilityReqCreditCounselling
-            eligibilityReqBankruptcy
-            eligibilityReqFederalGovDebt
-            eligibilityReqSecuredDebt
-            belongsToCompanyId
-          }
-          coApplicantContactInfo {
-            employerName
-            isMarriedToCoApplicant
-            homeAddress
-            applicantState
-            ssn
-            dob
-            phone
-            cellPhone
-            firstName
-            lastName
-            jobTitle
-            email
-            hardship
-            filedBankruptcy
-            routingNumber
-            bankName
-            bankAccountNumber
-            bankAccountHolderName
-            bankAccountType
-            eligibilityReqMilitary
-            eligibilityReqCreditCounselling
-            eligibilityReqBankruptcy
-            eligibilityReqFederalGovDebt
-            eligibilityReqSecuredDebt
-            belongsToCompanyId
-          }
-          agentAssigned
-          plan {
-            frequency
-            firstPaymentAmount
-            secondPaymentAmount
-            firstPaymentDate
-            secondPaymentDate
-            firstDraftException
-            programTerm
-            feePercentage
-            epfReduction
-            planId
-            depositIntervals
-            includeSentryFee
-          }
-          budget {
-            income {
-              gross
-              business
-              pension
-              otherIncome
-            }
-            expenses {
-              housing
-              transportation
-              personal
-              health
-              groceries
-              misc
-              dependents
-              loans
-              tax
-              involuntary
-              insurance
-              court
-              charitableContributions
-            }
-          }
-          additionalInfo {
-            debtAmountException
-            includeUnacceptableCreditor
-            termExtensionException
-            standaloneDebtsException
-            eomFirstDraftDateException
-          }
-        }
-        debts {
-          id
-          applicantId
-          coApplicantId
-          externalDebtId
-          accountNumber
-          externalCrmId
+        applicantId
+        coApplicantId
+        externalDebtId
+        accountNumber
+        externalCrmId
+        isSelected
+        coApplicantIsSelected
+        eligibilityStatus
+        isOverridden
+        exceptions
+        history {
           isSelected
           coApplicantIsSelected
-          eligibilityStatus
-          isOverridden
           exceptions
-          history {
-            isSelected
-            coApplicantIsSelected
-            exceptions
-            source
-            creditorName
-            originalCreditorName
-            creditorType
-            ecoaCode
-            accountType
-            portfolioType
-            debtType
-            openDate
-            lastPaymentDate
-            hasLastPayment
-            currentBalance
-            originalBalance
-            narrativeCodes
-            bankruptcyDateFiled
-            nawSignedDate
-            nawUrl
-            hasProofOfLiability
-            isCollection
-            remarks
-            monthlyPayment
-            updatedBy
-            fromRevision
-          }
-          historyJson
           source
           creditorName
-          parentCreditorName
-          parentCreditorId
           originalCreditorName
-          creditorId
           creditorType
           ecoaCode
           accountType
@@ -2776,43 +2756,77 @@ export const CheckApplicantEligibilityV2Document = gql`
           openDate
           lastPaymentDate
           hasLastPayment
-          narrativeCodes
-          bankruptcyDateFiled
           currentBalance
           originalBalance
+          narrativeCodes
+          bankruptcyDateFiled
           nawSignedDate
           nawUrl
           hasProofOfLiability
-          forthDebtTypeId
-          remarks
           isCollection
-          delinquency
+          remarks
           monthlyPayment
-          notes
-        }
-        creditReportSource
-        rootHistory {
-          leadId
           updatedBy
           fromRevision
         }
-        createdAt
+        historyJson
+        source
+        creditorName
+        parentCreditorName
+        parentCreditorId
+        originalCreditorName
+        creditorId
+        creditorType
+        ecoaCode
+        accountType
+        portfolioType
+        debtType
+        openDate
+        lastPaymentDate
+        hasLastPayment
+        narrativeCodes
+        bankruptcyDateFiled
+        currentBalance
+        originalBalance
+        nawSignedDate
+        nawUrl
+        hasProofOfLiability
+        forthDebtTypeId
+        remarks
+        isCollection
+        delinquency
+        monthlyPayment
+        notes
       }
-      tradelineMetadata {
-        enrolledUpstartDebtAccountNumbers
-        enrolledCapitalOneDebtAccountNumbers
-        enrolledDiscoverDebtAccountNumbers
+      creditReportSource
+      rootHistory {
+        leadId
+        updatedBy
+        fromRevision
       }
-      maxTerm
       createdAt
     }
-    errors {
-      debtId
-      message
+    tradelineMetadata {
+      enrolledUpstartDebtAccountNumbers
+      enrolledCapitalOneDebtAccountNumbers
+      enrolledDiscoverDebtAccountNumbers
     }
+    maxTerm
+    createdAt
+  }
+  errors {
+    debtId
+    message
   }
 }
     `;
+export const CheckApplicantEligibilityV2Document = gql`
+    mutation CheckApplicantEligibilityV2($applicationType: ApplicationTypeInput!, $input: UwResultCheckInputV2!) {
+  checkApplicantEligibilityV2(applicationType: $applicationType, input: $input) {
+    ...EligibilityResponseV2Fields
+  }
+}
+    ${EligibilityResponseV2FieldsFragmentDoc}`;
 export const GetUwConfigDocument = gql`
     query GetUwConfig($reqOrgId: String!) {
   uwConfig(reqOrgId: $reqOrgId) {
@@ -2825,6 +2839,16 @@ export const GetUwConfigDocument = gql`
   }
 }
     `;
+export const UpdateApplicantEligibilityV2Document = gql`
+    mutation UpdateApplicantEligibilityV2($applicationType: ApplicationTypeInput!, $updatedUWFields: UwResultUpdateInputV2!) {
+  updateApplicantEligibilityV2(
+    applicationType: $applicationType
+    updatedUWFields: $updatedUWFields
+  ) {
+    ...EligibilityResponseV2Fields
+  }
+}
+    ${EligibilityResponseV2FieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -2838,6 +2862,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetUwConfig(variables: GetUwConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetUwConfigQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetUwConfigQuery>({ document: GetUwConfigDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetUwConfig', 'query', variables);
+    },
+    UpdateApplicantEligibilityV2(variables: UpdateApplicantEligibilityV2MutationVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<UpdateApplicantEligibilityV2Mutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateApplicantEligibilityV2Mutation>({ document: UpdateApplicantEligibilityV2Document, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'UpdateApplicantEligibilityV2', 'mutation', variables);
     }
   };
 }

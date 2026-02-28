@@ -1,6 +1,10 @@
 import "dotenv-flow/config";
 import { randomUUID } from "crypto";
-import { AlleviateDebtCore, CreditService, UnderwritingService } from "../src/index.js";
+import {
+  AlleviateDebtCore,
+  CreditService,
+  UnderwritingService,
+} from "../src/index.js";
 import cloverCreditReport from "./clover_credit_report.json" with { type: "json" };
 
 async function main() {
@@ -21,7 +25,8 @@ async function main() {
   const creditResult = await client.creditService.NormalizeRawReport({
     input: {
       reqOrgContactId: contactId,
-      reportType: CreditService.Supported_Report_Products.CrsStandardPrequalVantage4,
+      reportType:
+        CreditService.Supported_Report_Products.CrsStandardPrequalVantage4,
       reportJson: cloverCreditReport,
     },
   });
@@ -44,95 +49,109 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("→ underwritingService.CheckApplicantEligibilityV2", { creditReportId });
-
-  const uwResult = await client.underwritingService.CheckApplicantEligibilityV2({
-    applicationType: UnderwritingService.ApplicationTypeInput.Single,
-    input: {
-      primaryReportId: creditReportId,
-      leadId: null,
-      applicantContactInfo: {
-        employerName: "ACME CORPORATION",
-        homeAddress: "22603 CHRISTINE STATION",
-        applicantState: "GA",
-        ssn: "999887766",
-        dob: "1985-06-15",
-        phone: "+16575553358",
-        cellPhone: "+16575552268",
-        firstName: "Clover",
-        lastName: "Fandango",
-        jobTitle: "Analyst",
-        email: "clover@test.com",
-        hardship: "Loss Of Employment",
-        filedBankruptcy: "NO",
-        routingNumber: "99999999",
-        bankName: "Bells Fargo",
-        bankAccountNumber: "1121214",
-        bankAccountHolderName: "Clover",
-        bankAccountType: "Checking",
-        eligibilityReqMilitary: "NO",
-        eligibilityReqCreditCounselling: "NO",
-        eligibilityReqBankruptcy: "NO",
-        eligibilityReqFederalGovDebt: "NO",
-        eligibilityReqSecuredDebt: "NO",
-      },
-      agentAssigned: "agent",
-      plan: {
-        frequency: "M",
-        firstPaymentAmount: 400,
-        secondPaymentAmount: 400,
-        firstPaymentDate: "2026-03-03",
-        firstDraftException: null,
-        programTerm: 40,
-        feePercentage: 27,
-        epfReduction: null,
-        secondPaymentDate: "2026-03-24",
-        planId: "42445",
-        depositIntervals: "23",
-        includeSentryFee: true,
-      },
-      budget: {
-        income: {
-          gross: 5000,
-          business: 0,
-          pension: 0,
-          otherIncome: 0,
-        },
-        expenses: {
-          housing: 4000,
-          transportation: 0,
-          personal: 0,
-          health: 0,
-          groceries: 0,
-          misc: 0,
-          dependents: 0,
-          loans: 0,
-          tax: 0,
-          involuntary: 0,
-          insurance: 0,
-          court: 0,
-          charitableContributions: 0,
-        },
-      },
-      additionalInfo: {
-        debtAmountException: null,
-        includeUnacceptableCreditor: null,
-        termExtensionException: null,
-        standaloneDebtsException: null,
-        eomFirstDraftDateException: null,
-      },
-    },
+  console.log("→ underwritingService.CheckApplicantEligibilityV2", {
+    creditReportId,
   });
 
+  const uwResult = await client.underwritingService.CheckApplicantEligibilityV2(
+    {
+      applicationType: UnderwritingService.ApplicationTypeInput.Single,
+      input: {
+        primaryReportId: creditReportId,
+        leadId: null,
+        applicantContactInfo: {
+          // employerName: "ACME CORPORATION",
+          homeAddress: "22603 CHRISTINE STATION",
+          applicantState: "GA",
+          ssn: "999887766",
+          dob: "1985-06-15",
+          phone: "+16575553358",
+          cellPhone: "+16575552268",
+          firstName: "Clover",
+          lastName: "Fandango",
+          // jobTitle: "Analyst",
+          email: "clover@test.com",
+          // hardship: "Loss Of Employment",
+          filedBankruptcy: "NO",
+          // routingNumber: "99999999",
+          // bankName: "Bells Fargo",
+          // bankAccountNumber: "1121214",
+          // bankAccountHolderName: "Clover",
+          // bankAccountType: "Checking",
+          eligibilityReqMilitary: "NO",
+          eligibilityReqCreditCounselling: "NO",
+          eligibilityReqBankruptcy: "NO",
+          eligibilityReqFederalGovDebt: "NO",
+          eligibilityReqSecuredDebt: "NO",
+        },
+        agentAssigned: "agent",
+        // plan: {
+        //   frequency: "M",
+        //   firstPaymentAmount: 400,
+        //   secondPaymentAmount: 400,
+        //   firstPaymentDate: "2026-03-03",
+        //   firstDraftException: null,
+        //   programTerm: 40,
+        //   feePercentage: 27,
+        //   epfReduction: null,
+        //   secondPaymentDate: "2026-03-24",
+        //   planId: "42445",
+        //   depositIntervals: "23",
+        //   includeSentryFee: true,
+        // },
+        budget: {
+          income: {
+            gross: 5000,
+            business: 0,
+            pension: 0,
+            otherIncome: 0,
+          },
+          expenses: {
+            housing: 4000,
+            transportation: 0,
+            personal: 0,
+            health: 0,
+            groceries: 0,
+            misc: 0,
+            dependents: 0,
+            loans: 0,
+            tax: 0,
+            involuntary: 0,
+            insurance: 0,
+            court: 0,
+            charitableContributions: 0,
+          },
+        },
+        additionalInfo: {
+          debtAmountException: null,
+          includeUnacceptableCreditor: null,
+          termExtensionException: null,
+          standaloneDebtsException: null,
+          eomFirstDraftDateException: null,
+        },
+      },
+    },
+  );
+
   if (uwResult.checkApplicantEligibilityV2.errors?.length) {
-    console.warn("  warnings:", uwResult.checkApplicantEligibilityV2.errors.length, "eligibility error(s)");
+    console.warn(
+      "  warnings:",
+      uwResult.checkApplicantEligibilityV2.errors.length,
+      "eligibility error(s)",
+    );
   }
 
   const uwData = uwResult.checkApplicantEligibilityV2.data;
   console.log("  uwResultId:", uwData?.id);
-  console.log("  applicantPrequalified:", uwData?.applicationUwResult?.applicantPrequalified);
+  console.log(
+    "  applicantPrequalified:",
+    uwData?.applicationUwResult?.applicantPrequalified,
+  );
   console.log("  totalDebt:", uwData?.applicationUwResult?.totalDebt);
-  console.log("  totalEligibleDebt:", uwData?.applicationUwResult?.totalEligibleDebt);
+  console.log(
+    "  totalEligibleDebt:",
+    uwData?.applicationUwResult?.totalEligibleDebt,
+  );
 
   console.log("✓ smoke passed");
 }

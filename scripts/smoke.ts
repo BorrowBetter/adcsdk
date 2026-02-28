@@ -254,32 +254,6 @@ async function main() {
   console.log("  applicantPrequalified:", updateData?.applicationUwResult?.applicantPrequalified);
 
   // ---------------------------------------------------------------------------
-  // Offer Service — SaveOffer
-  // ---------------------------------------------------------------------------
-  console.log("→ offerService.SaveOffer", { uwResultId, revision: uwRevision });
-
-  const saveOfferResult = await client.offerService.SaveOffer({
-    input: {
-      uwResultId,
-      revision: uwRevision,
-    },
-  });
-
-  if (saveOfferResult.saveOffer.errors?.length) {
-    console.error("  errors:", saveOfferResult.saveOffer.errors);
-    process.exit(1);
-  }
-
-  const savedOffer = saveOfferResult.saveOffer.data;
-  if (!savedOffer) {
-    console.error("  no saved offer returned");
-    process.exit(1);
-  }
-
-  console.log("  savedOfferId:", savedOffer.id);
-  console.log("  enrollmentPlanName:", savedOffer.enrollmentPlanName);
-
-  // ---------------------------------------------------------------------------
   // Underwriting Service — UpdateApplicantEligibilityV2 (contact info)
   // ---------------------------------------------------------------------------
   console.log("→ underwritingService.UpdateApplicantEligibilityV2 (contact info)", { uwResultId, revision: uwRevision });
@@ -316,6 +290,32 @@ async function main() {
   uwRevision = updateContactData?.applicantUwResult?.revision ?? uwRevision;
   console.log("  revision:", uwRevision);
   console.log("  applicantPrequalified:", updateContactData?.applicationUwResult?.applicantPrequalified);
+
+  // ---------------------------------------------------------------------------
+  // Offer Service — SaveOffer
+  // ---------------------------------------------------------------------------
+  console.log("→ offerService.SaveOffer", { uwResultId, revision: uwRevision });
+
+  const saveOfferResult = await client.offerService.SaveOffer({
+    input: {
+      uwResultId,
+      revision: uwRevision,
+    },
+  });
+
+  if (saveOfferResult.saveOffer.errors?.length) {
+    console.error("  errors:", saveOfferResult.saveOffer.errors);
+    process.exit(1);
+  }
+
+  const savedOffer = saveOfferResult.saveOffer.data;
+  if (!savedOffer) {
+    console.error("  no saved offer returned");
+    process.exit(1);
+  }
+
+  console.log("  savedOfferId:", savedOffer.id);
+  console.log("  enrollmentPlanName:", savedOffer.enrollmentPlanName);
 
   console.log("✓ smoke passed");
 }

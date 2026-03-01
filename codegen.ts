@@ -32,7 +32,7 @@ const generates = Object.fromEntries(
       schema: `src/schemas/${name}/schema.graphql`,
       documents: `src/schemas/${name}/operations/**/*.graphql`,
       plugins: ["typescript", "typescript-operations", "typescript-graphql-request"],
-      config: { rawRequest: false, useTypeImports: true },
+      config: { rawRequest: false, useTypeImports: true, scalars: { JSON: "unknown", Date: "number" } },
     },
   ])
 );

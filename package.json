@@ -1,47 +1,52 @@
 {
-  "name": "@borrowbetter/adcsdk",
-  "version": "0.1.0",
-  "description": "Alleviate DebtCore SDK",
-  "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "npm run codegen && tsup",
-    "build:dist": "tsup",
-    "dev": "tsup --watch",
-    "codegen": "graphql-codegen --config codegen.ts",
-    "codegen:watch": "graphql-codegen --config codegen.ts --watch",
-    "typecheck": "tsc --noEmit",
-    "smoke": "tsx scripts/smoke.ts",
-    "prepublishOnly": "npm run build"
-  },
-  "dependencies": {
-    "graphql": "^16.9.0",
-    "graphql-request": "^7.1.0",
-    "graphql-tag": "^2.12.6"
-  },
-  "devDependencies": {
-    "@graphql-codegen/cli": "^5.0.0",
-    "@graphql-codegen/typescript": "^4.0.0",
-    "@graphql-codegen/typescript-graphql-request": "^6.2.0",
-    "@graphql-codegen/typescript-operations": "^4.0.0",
-    "dotenv-flow": "^4.1.0",
-    "tsup": "^8.0.0",
-    "tsx": "^4.21.0",
-    "typescript": "^5.4.0"
-  },
-  "engines": {
-    "node": ">=18"
-  }
+	"name": "@borrowbetter/adcsdk",
+	"version": "0.1.0",
+	"description": "Alleviate DebtCore SDK",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "npm run codegen && tsup",
+		"build:dist": "tsup",
+		"dev": "npm run codegen && concurrently \"tsup --watch\" \"npm run codegen:watch\"",
+		"codegen": "graphql-codegen --config codegen.ts",
+		"codegen:watch": "graphql-codegen --config codegen.ts --watch",
+		"typecheck": "tsc --noEmit",
+		"smoke": "tsx scripts/smoke.ts",
+		"prepublishOnly": "npm run build",
+		"lint": "biome check",
+		"format": "biome check --write",
+		"format:check": "biome ci"
+	},
+	"dependencies": {
+		"graphql": "^16.9.0",
+		"graphql-request": "^7.1.0",
+		"graphql-tag": "^2.12.6"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.4",
+		"@graphql-codegen/cli": "^5.0.0",
+		"@graphql-codegen/typescript": "^4.0.0",
+		"@graphql-codegen/typescript-graphql-request": "^6.2.0",
+		"@graphql-codegen/typescript-operations": "^4.0.0",
+		"concurrently": "^9.2.1",
+		"dotenv-flow": "^4.1.0",
+		"tsup": "^8.0.0",
+		"tsx": "^4.21.0",
+		"typescript": "^5.4.0"
+	},
+	"engines": {
+		"node": ">=18"
+	}
 }

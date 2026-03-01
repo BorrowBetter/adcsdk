@@ -1,12 +1,12 @@
 query GetEnrollmentStatus($enrollmentId: String!) {
-  enrollmentStatus(enrollmentId: $enrollmentId) {
-    data {
-      contactId
-      qaCall
-      createContact
-    }
-    errors {
-      message
-    }
-  }
+	enrollmentStatus(enrollmentId: $enrollmentId) {
+		data {
+			contactId
+			qaCall
+			createContact
+		}
+		errors {
+			message
+		}
+	}
 }

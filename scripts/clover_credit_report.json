@@ -1,1672 +1,1672 @@
 {
-  "scores": [
-    {
-      "modelName": "TransUnionVantageScore4.0",
-      "scoreValue": "527",
-      "sourceType": "TransUnion",
-      "scoreFactors": [
-        {
-          "scoreFactorCode": "67",
-          "scoreFactorText": "No open real estate secured loans in your credit file"
-        },
-        {
-          "scoreFactorCode": "43",
-          "scoreFactorText": "Too many revolving accounts with high balance compared to credit limit"
-        },
-        {
-          "scoreFactorCode": "66",
-          "scoreFactorText": "Delinquent or derogatory status on real estate loans is too recent"
-        },
-        {
-          "scoreFactorCode": "7",
-          "scoreFactorText": "Too many delinquent or derogatory accounts"
-        }
-      ],
-      "modelNameType": "001NN",
-      "scoreMaximumValue": "850",
-      "scoreMinimumValue": "300",
-      "borrowerSourceType": "Borrower",
-      "factaInquiriesIndicator": false,
-      "scoreRankPercentileValue": "5"
-    }
-  ],
-  "creditors": [
-    {
-      "city": "SAN FRANCISCO",
-      "name": "LENDCLUB BNK",
-      "state": "CA",
-      "postalCode": "94105",
-      "sourceType": "TransUnion",
-      "streetAddress": "595 MARKET ST SUITE 200",
-      "subscriberCode": "M 70LU3273",
-      "contactTelephone": "2025550143"
-    },
-    {
-      "city": "GREENVILLE",
-      "name": "NR/SMS/CAL",
-      "state": "SC",
-      "postalCode": "29601",
-      "sourceType": "TransUnion",
-      "streetAddress": "55 BEATTIE PLACE STE 600",
-      "subscriberCode": "X 30RNN709",
-      "contactTelephone": "2025550152"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71723",
-      "subscriberCode": "V 55425301",
-      "contactTelephone": "2025550159"
-    },
-    {
-      "city": "SALT LAKE CITY",
-      "name": "CAPITAL ONE",
-      "state": "UT",
-      "postalCode": "84131",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 31293",
-      "subscriberCode": "Z 59IMZ844",
-      "contactTelephone": "2025550114"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/BELK",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71748",
-      "subscriberCode": "V 72087492",
-      "contactTelephone": "2025550168"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/AMAZON",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71737",
-      "subscriberCode": "U 1719262A",
-      "contactTelephone": "2025550192"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/JCP DC",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71729",
-      "subscriberCode": "S 6859345Z",
-      "contactTelephone": "2025550178"
-    },
-    {
-      "city": "COLUMBUS",
-      "name": "CCB/GDSAMCC",
-      "state": "OH",
-      "postalCode": "43218",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 182120",
-      "subscriberCode": "R 31IK5619"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/JCP",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71729",
-      "subscriberCode": "W 9778680J",
-      "contactTelephone": "2025550183"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/BELK",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71750",
-      "subscriberCode": "T 5390796F",
-      "contactTelephone": "2025550185"
-    },
-    {
-      "city": "SALT LAKE CITY",
-      "name": "CAPITAL ONE",
-      "state": "UT",
-      "postalCode": "84131",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 31293",
-      "subscriberCode": "R 00BXP051",
-      "contactTelephone": "2025550176"
-    },
-    {
-      "city": "COLUMBUS",
-      "name": "CCB/CARTERS",
-      "state": "OH",
-      "postalCode": "43218",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 182120",
-      "subscriberCode": "D 79DW0205"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/BELKDC",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71750",
-      "subscriberCode": "K 8829106K",
-      "contactTelephone": "2025550167"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/LOW",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71727",
-      "subscriberCode": "E 7837368H",
-      "contactTelephone": "2025550112"
-    },
-    {
-      "city": "COLUMBUS",
-      "name": "CCB/ULTA",
-      "state": "OH",
-      "postalCode": "43218",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 182120",
-      "subscriberCode": "Q 24JI1401"
-    },
-    {
-      "city": "EL PASO",
-      "name": "AMEX",
-      "state": "TX",
-      "postalCode": "79998",
-      "sourceType": "TransUnion",
-      "streetAddress": "P.O. BOX 981537",
-      "subscriberCode": "M 146QF434",
-      "contactTelephone": "2025550155"
-    },
-    {
-      "city": "WILMINGTON",
-      "name": "JPMCB CARD",
-      "state": "DE",
-      "postalCode": "19850",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 15369",
-      "subscriberCode": "K 850HP152",
-      "contactTelephone": "2025550165"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "GS BANK USA",
-      "state": "PA",
-      "postalCode": "19170",
-      "sourceType": "TransUnion",
-      "streetAddress": "LOCKBOX 6112 P.O. BOX 7247",
-      "subscriberCode": "M 42JNE081",
-      "contactTelephone": "2025550171"
-    },
-    {
-      "city": "PHILADELPHIA",
-      "name": "SYNCB/TJXDC",
-      "state": "PA",
-      "postalCode": "19176",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 71737",
-      "subscriberCode": "Z 3209039Z",
-      "contactTelephone": "2025550138"
-    },
-    {
-      "city": "SIOUX FALLS",
-      "name": "THD/CBNA",
-      "state": "SD",
-      "postalCode": "57117",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 6497",
-      "subscriberCode": "S 657R1833",
-      "contactTelephone": "2025550110"
-    },
-    {
-      "city": "SIOUX FALLS",
-      "name": "CBNA",
-      "state": "SD",
-      "postalCode": "57117",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 6497",
-      "subscriberCode": "T 2684R680",
-      "contactTelephone": "2025550186"
-    },
-    {
-      "city": "SIOUX FALLS",
-      "name": "CITI-SHELL",
-      "state": "SD",
-      "postalCode": "57117",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 6497",
-      "subscriberCode": "T 5663M192",
-      "contactTelephone": "2025550154"
-    },
-    {
-      "city": "COLUMBUS",
-      "name": "CB/GOODYS",
-      "state": "OH",
-      "postalCode": "43218",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 182789",
-      "subscriberCode": "J 32PJ9876",
-      "contactTelephone": "2025550180"
-    },
-    {
-      "city": "MOSCOW",
-      "name": "BK FYTTE CTY",
-      "state": "TN",
-      "postalCode": "38057",
-      "sourceType": "TransUnion",
-      "streetAddress": "47 CHARLESTON PO BOX 277",
-      "subscriberCode": "K 985ML193",
-      "contactTelephone": "2025550130"
-    },
-    {
-      "city": "COLUMBUS",
-      "name": "CB/BRKSOLT",
-      "state": "OH",
-      "postalCode": "43218",
-      "sourceType": "TransUnion",
-      "streetAddress": "PO BOX 182789",
-      "subscriberCode": "V 94ZU1687",
-      "contactTelephone": "2025550116"
-    }
-  ],
-  "inquiries": [
-    {
-      "sourceType": "TransUnion",
-      "inquiryDate": "2025-04-24",
-      "businessType": "Miscellaneous",
-      "creditorName": "SYNCB/BELK",
-      "subscriberCode": "V 72087492",
-      "borrowerSourceType": "Borrower",
-      "accountOwnershipType": "Individual"
-    },
-    {
-      "sourceType": "TransUnion",
-      "inquiryDate": "2024-12-23",
-      "businessType": "Banking",
-      "creditorName": "SYNCB",
-      "subscriberCode": "V 55425301",
-      "borrowerSourceType": "Borrower",
-      "accountOwnershipType": "Individual"
-    }
-  ],
-  "summaries": {
-    "tradeSummary": {
-      "tradesCount": "28",
-      "balanceTotal": "94216",
-      "pastDueTotal": "33085",
-      "paymentsTotal": "1141",
-      "autoTradesCount": "1",
-      "highCreditTotal": "152941",
-      "openTradesCount": "0",
-      "autoBalanceTotal": "0",
-      "autoPastDueTotal": "0",
-      "openBalanceTotal": "0",
-      "openPastDueTotal": "0",
-      "autoPaymentsTotal": "0",
-      "openPaymentsTotal": "0",
-      "unknownTradesCount": "0",
-      "autoHighCreditTotal": "9462",
-      "mortgageTradesCount": "1",
-      "oldestTradelineDate": "2006-04-04",
-      "openHighCreditTotal": "0",
-      "unknownBalanceTotal": "0",
-      "unknownPastDueTotal": "0",
-      "educationTradesCount": "0",
-      "mortgageBalanceTotal": "51528",
-      "mortgagePastDueTotal": "4219",
-      "revolvingTradesCount": "23",
-      "unknownPaymentsTotal": "0",
-      "educationBalanceTotal": "0",
-      "educationPastDueTotal": "0",
-      "mortgagePaymentsTotal": "792",
-      "revolvingBalanceTotal": "28404",
-      "revolvingPastDueTotal": "14582",
-      "educationPaymentsTotal": "0",
-      "revolvingPaymentsTotal": "349",
-      "unknownHighCreditTotal": "0",
-      "applicablePaymentsTotal": "1141",
-      "mortgageHighCreditTotal": "75000",
-      "securedDebtBalanceTotal": "51528",
-      "educationHighCreditTotal": "0",
-      "revolvingHighCreditTotal": "33810",
-      "totalDebtHighCreditRatio": "112",
-      "applicableHighCreditTotal": "84420",
-      "unsecuredDebtBalanceTotal": "42688",
-      "revolvingCreditUtilization": "302",
-      "applicableAutoPaymentsTotal": "0",
-      "applicableOpenPaymentsTotal": "0",
-      "installmentOtherTradesCount": "3",
-      "oldestTradelineCreditorName": "NR/SMS/CAL",
-      "installmentOtherBalanceTotal": "14284",
-      "installmentOtherPastDueTotal": "14284",
-      "applicableAutoHighCreditTotal": "0",
-      "applicableOpenHighCreditTotal": "0",
-      "installmentOtherPaymentsTotal": "0",
-      "applicableUnknownPaymentsTotal": "0",
-      "applicableMortgagePaymentsTotal": "792",
-      "installmentOtherHighCreditTotal": "34669",
-      "applicableEducationPaymentsTotal": "0",
-      "applicableRevolvingPaymentsTotal": "349",
-      "applicableUnknownHighCreditTotal": "0",
-      "applicableMortgageHighCreditTotal": "75000",
-      "applicableEducationHighCreditTotal": "0",
-      "applicableInstallmentPaymentsTotal": "0",
-      "applicableRevolvingHighCreditTotal": "9420",
-      "applicableInstallmentHighCreditTotal": "0",
-      "applicableInstallmentOtherPaymentsTotal": "0",
-      "applicableInstallmentOtherHighCreditTotal": "0"
-    },
-    "derogatorySummary": {
-      "otherCount": "0",
-      "_30DayLates": "7",
-      "_60DayLates": "3",
-      "_90DayLates": "4",
-      "disputesCount": "0",
-      "inquiriesCount": "2",
-      "chargeOffsCount": "6",
-      "collectionsCount": "0",
-      "bankruptciesCount": "0",
-      "mostRecentLateDate": "2026-02-20",
-      "publicRecordsCount": "0",
-      "securedDebtBalanceTotal": "51528",
-      "unsecuredDebtBalanceTotal": "42688",
-      "priorAdverseTradelineCount": "1",
-      "satisfactoryTradelineCount": "19",
-      "currentAdverseTradelineCount": "2"
-    }
-  },
-  "tradelines": [
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "AMEX",
-      "pastDueAmount": "1505",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "9",
-            "priorAdverseRatingDate": "2026-02-18",
-            "priorAdverseRatingType": "ChargeOff"
-          }
-        ],
-        "highestAdverseRatingCode": "9",
-        "highestAdverseRatingDate": "2026-02-18",
-        "highestAdverseRatingType": "ChargeOff",
-        "mostRecentAdverseRatingCode": "9",
-        "mostRecentAdverseRatingDate": "2026-02-18",
-        "mostRecentAdverseRatingType": "ChargeOff"
-      },
-      "subscriberCode": "M 146QF434",
-      "accountClosedDate": "2025-10-07",
-      "accountIdentifier": "6924480991022073",
-      "accountOpenedDate": "2021-10-31",
-      "accountStatusType": "Closed",
-      "creditLimitAmount": "6800",
-      "currentRatingCode": "9",
-      "currentRatingType": "ChargeOff",
-      "highBalanceAmount": "7795",
-      "borrowerSourceType": "Borrower",
-      "accountReportedDate": "2026-02-18",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "7212",
-      "derogatoryDataIndicator": true
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "CAPITAL ONE",
-      "pastDueAmount": "2936",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "9",
-            "priorAdverseRatingDate": "2026-02-17",
-            "priorAdverseRatingType": "ChargeOff"
-          }
-        ],
-        "highestAdverseRatingCode": "9",
-        "highestAdverseRatingDate": "2026-02-17",
-        "highestAdverseRatingType": "ChargeOff",
-        "mostRecentAdverseRatingCode": "9",
-        "mostRecentAdverseRatingDate": "2026-02-17",
-        "mostRecentAdverseRatingType": "ChargeOff"
-      },
-      "subscriberCode": "R 00BXP051",
-      "lastActivityDate": "2025-05-03",
-      "accountClosedDate": "2025-10-10",
-      "accountIdentifier": "768405293738",
-      "accountOpenedDate": "2019-06-13",
-      "accountStatusType": "Closed",
-      "creditLimitAmount": "2500",
-      "currentRatingCode": "9",
-      "currentRatingType": "ChargeOff",
-      "highBalanceAmount": "2936",
-      "borrowerSourceType": "Borrower",
-      "accountReportedDate": "2026-02-17",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "2936",
-      "derogatoryDataIndicator": true
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "CAPITAL ONE",
-      "pastDueAmount": "1123",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "9",
-            "priorAdverseRatingDate": "2026-02-17",
-            "priorAdverseRatingType": "ChargeOff"
-          }
-        ],
-        "highestAdverseRatingCode": "9",
-        "highestAdverseRatingDate": "2026-02-17",
-        "highestAdverseRatingType": "ChargeOff",
-        "mostRecentAdverseRatingCode": "9",
-        "mostRecentAdverseRatingDate": "2026-02-17",
-        "mostRecentAdverseRatingType": "ChargeOff"
-      },
-      "subscriberCode": "R 00BXP051",
-      "lastActivityDate": "2025-05-03",
-      "accountClosedDate": "2025-10-10",
-      "accountIdentifier": "902759429313",
-      "accountOpenedDate": "2020-08-08",
-      "accountStatusType": "Closed",
-      "creditLimitAmount": "1050",
-      "currentRatingCode": "9",
-      "currentRatingType": "ChargeOff",
-      "highBalanceAmount": "1123",
-      "borrowerSourceType": "Borrower",
-      "accountReportedDate": "2026-02-17",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "1123",
-      "derogatoryDataIndicator": true
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "CAPITAL ONE",
-      "pastDueAmount": "4324",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "9",
-            "priorAdverseRatingDate": "2026-02-17",
-            "priorAdverseRatingType": "ChargeOff"
-          }
-        ],
-        "highestAdverseRatingCode": "9",
-        "highestAdverseRatingDate": "2026-02-17",
-        "highestAdverseRatingType": "ChargeOff",
-        "mostRecentAdverseRatingCode": "9",
-        "mostRecentAdverseRatingDate": "2026-02-17",
-        "mostRecentAdverseRatingType": "ChargeOff"
-      },
-      "subscriberCode": "R 00BXP051",
-      "lastActivityDate": "2025-05-12",
-      "accountClosedDate": "2025-11-17",
-      "accountIdentifier": "578993479092",
-      "accountOpenedDate": "2015-06-19",
-      "accountStatusType": "Closed",
-      "creditLimitAmount": "3500",
-      "currentRatingCode": "9",
-      "currentRatingType": "ChargeOff",
-      "highBalanceAmount": "4324",
-      "borrowerSourceType": "Borrower",
-      "accountReportedDate": "2026-02-17",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "4324",
-      "derogatoryDataIndicator": true
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "JPMCB CARD",
-      "pastDueAmount": "4545",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "9",
-            "priorAdverseRatingDate": "2026-02-11",
-            "priorAdverseRatingType": "ChargeOff"
-          }
-        ],
-        "highestAdverseRatingCode": "9",
-        "highestAdverseRatingDate": "2026-02-11",
-        "highestAdverseRatingType": "ChargeOff",
-        "mostRecentAdverseRatingCode": "9",
-        "mostRecentAdverseRatingDate": "2026-02-11",
-        "mostRecentAdverseRatingType": "ChargeOff"
-      },
-      "subscriberCode": "K 850HP152",
-      "lastActivityDate": "2025-08-18",
-      "accountClosedDate": "2025-03-12",
-      "accountIdentifier": "337406162951",
-      "accountOpenedDate": "2021-12-12",
-      "accountStatusType": "Closed",
-      "creditLimitAmount": "3500",
-      "currentRatingCode": "9",
-      "currentRatingType": "ChargeOff",
-      "highBalanceAmount": "4575",
-      "borrowerSourceType": "Borrower",
-      "accountReportedDate": "2026-02-11",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "4545",
-      "derogatoryDataIndicator": true
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "PRL",
-          "commentText": "PROFIT AND LOSS WRITE-OFF",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        },
-        {
-          "commentText": "Unsecured",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        }
-      ],
-      "loanType": "Unsecured",
-      "sourceType": "TransUnion",
-      "accountType": "Installment",
-      "businessType": "Banking",
-      "creditorName": "LENDCLUB BNK",
-      "pastDueAmount": "14284",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "9",
-            "priorAdverseRatingDate": "2026-01-31",
-            "priorAdverseRatingType": "ChargeOff"
-          }
-        ],
-        "highestAdverseRatingCode": "9",
-        "highestAdverseRatingDate": "2026-01-31",
-        "highestAdverseRatingType": "ChargeOff",
-        "mostRecentAdverseRatingCode": "9",
-        "mostRecentAdverseRatingDate": "2026-01-31",
-        "mostRecentAdverseRatingType": "ChargeOff"
-      },
-      "subscriberCode": "M 70LU3273",
-      "lastActivityDate": "2025-04-30",
-      "termsMonthsCount": "36",
-      "accountClosedDate": "2023-08-31",
-      "accountIdentifier": "620443283",
-      "accountOpenedDate": "2022-05-02",
-      "accountStatusType": "Closed",
-      "currentRatingCode": "9",
-      "currentRatingType": "ChargeOff",
-      "highBalanceAmount": "28000",
-      "borrowerSourceType": "Borrower",
-      "accountReportedDate": "2026-01-31",
-      "accountOwnershipType": "JointContractualLiability",
-      "currentBalanceAmount": "14284",
-      "derogatoryDataIndicator": true
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "FPI",
-          "commentText": "FORECLOSURE INITIATED",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        },
-        {
-          "commentText": "Conventional Real Estate Mortgage",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        },
-        {
-          "commentText": "Late Dates: 12/25-120, 11/25-120, 10/25-90, 09/25-60, 08/25-30, 07/25-30",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        }
-      ],
-      "loanType": "ConventionalRealEstateMortgage",
-      "sourceType": "TransUnion",
-      "_30DayLates": "2",
-      "_60DayLates": "1",
-      "_90DayLates": "2",
-      "accountType": "Mortgage",
-      "_120DayLates": "1",
-      "businessType": "Finance",
-      "creditorName": "NR/SMS/CAL",
-      "pastDueAmount": "4219",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "4",
-            "priorAdverseRatingDate": "2025-12-31",
-            "priorAdverseRatingType": "LateOver120Days"
-          },
-          {
-            "priorAdverseRatingCode": "4",
-            "priorAdverseRatingDate": "2025-11-30",
-            "priorAdverseRatingType": "LateOver120Days"
-          },
-          {
-            "priorAdverseRatingCode": "3",
-            "priorAdverseRatingDate": "2025-10-30",
-            "priorAdverseRatingType": "Late90Days"
-          },
-          {
-            "priorAdverseRatingCode": "2",
-            "priorAdverseRatingDate": "2025-09-30",
-            "priorAdverseRatingType": "Late60Days"
-          },
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2025-08-30",
-            "priorAdverseRatingType": "Late30Days"
-          },
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2025-07-30",
-            "priorAdverseRatingType": "Late30Days"
-          }
-        ],
-        "highestAdverseRatingCode": "4",
-        "highestAdverseRatingDate": "2025-12-31",
-        "highestAdverseRatingType": "LateOver120Days",
-        "mostRecentAdverseRatingCode": "4",
-        "mostRecentAdverseRatingDate": "2025-12-31",
-        "mostRecentAdverseRatingType": "LateOver120Days"
-      },
-      "subscriberCode": "X 30RNN709",
-      "lastActivityDate": "2025-08-27",
-      "termsDescription": "360 months at $792 per month",
-      "termsMonthsCount": "360",
-      "accountIdentifier": "9522823817",
-      "accountOpenedDate": "2006-04-04",
-      "accountStatusType": "Open",
-      "currentRatingCode": "4",
-      "currentRatingType": "LateOver120Days",
-      "highBalanceAmount": "75000",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "443211CCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2025-12-31",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "JointContractualLiability",
-      "currentBalanceAmount": "51528",
-      "monthlyPaymentAmount": "792",
-      "derogatoryDataIndicator": true,
-      "paymentPatternStartDate": "2025-12-31"
-    },
-    {
-      "comments": [
-        {
-          "commentText": "Business Credit Card",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        },
-        {
-          "commentText": "Late Dates: 02/26-30, 09/25-120, 08/25-90, 07/25-60, 06/25-30, 04/25-60, 03/25-30, 04/24-30",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        }
-      ],
-      "loanType": "BusinessCreditCard",
-      "sourceType": "TransUnion",
-      "_30DayLates": "4",
-      "_60DayLates": "2",
-      "_90DayLates": "2",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "CAPITAL ONE",
-      "pastDueAmount": "149",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2026-02-20",
-            "priorAdverseRatingType": "Late30Days"
-          },
-          {
-            "priorAdverseRatingCode": "4",
-            "priorAdverseRatingDate": "2025-09-20",
-            "priorAdverseRatingType": "LateOver120Days"
-          },
-          {
-            "priorAdverseRatingCode": "3",
-            "priorAdverseRatingDate": "2025-08-20",
-            "priorAdverseRatingType": "Late90Days"
-          },
-          {
-            "priorAdverseRatingCode": "2",
-            "priorAdverseRatingDate": "2025-07-20",
-            "priorAdverseRatingType": "Late60Days"
-          },
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2025-06-20",
-            "priorAdverseRatingType": "Late30Days"
-          },
-          {
-            "priorAdverseRatingCode": "2",
-            "priorAdverseRatingDate": "2025-04-20",
-            "priorAdverseRatingType": "Late60Days"
-          },
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2025-03-20",
-            "priorAdverseRatingType": "Late30Days"
-          },
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2024-04-20",
-            "priorAdverseRatingType": "Late30Days"
-          }
-        ],
-        "highestAdverseRatingCode": "4",
-        "highestAdverseRatingDate": "2025-09-20",
-        "highestAdverseRatingType": "LateOver120Days",
-        "mostRecentAdverseRatingCode": "1",
-        "mostRecentAdverseRatingDate": "2026-02-20",
-        "mostRecentAdverseRatingType": "Late30Days"
-      },
-      "subscriberCode": "R 00BXP051",
-      "lastActivityDate": "2025-12-17",
-      "accountIdentifier": "931282617673",
-      "accountOpenedDate": "2022-05-27",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "5000",
-      "currentRatingCode": "1",
-      "currentRatingType": "Late30Days",
-      "highBalanceAmount": "5421",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "1CCCC4321C21CCCCCCCCCC1CCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-20",
-      "monthsReviewedCount": "44",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "4700",
-      "monthlyPaymentAmount": "182",
-      "derogatoryDataIndicator": true,
-      "paymentPatternStartDate": "2026-02-20"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "LumberAndHardware",
-      "creditorName": "SYNCB/LOW",
-      "pastDueAmount": "0",
-      "subscriberCode": "E 7837368H",
-      "lastActivityDate": "2026-02-12",
-      "accountClosedDate": "2025-06-19",
-      "accountIdentifier": "400087195467",
-      "accountOpenedDate": "2018-03-15",
-      "accountStatusType": "Closed",
-      "creditLimitAmount": "1756",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "1676",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-17",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "1311",
-      "monthlyPaymentAmount": "47",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-17"
-    },
-    {
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "DepartmentAndMailOrder",
-      "creditorName": "SYNCB/AMAZON",
-      "pastDueAmount": "0",
-      "subscriberCode": "U 1719262A",
-      "lastActivityDate": "2026-01-21",
-      "accountIdentifier": "606579803595",
-      "accountOpenedDate": "2024-12-23",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "120",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "394",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-13",
-      "monthsReviewedCount": "14",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "119",
-      "monthlyPaymentAmount": "29",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-13"
-    },
-    {
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "RealEstateAndPublicAccommodation",
-      "creditorName": "CCB/CARTERS",
-      "pastDueAmount": "0",
-      "subscriberCode": "D 79DW0205",
-      "accountPaidDate": "2025-01-03",
-      "lastActivityDate": "2025-01-03",
-      "accountIdentifier": "863462580035",
-      "accountOpenedDate": "2023-03-01",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "700",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "240",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-13",
-      "monthsReviewedCount": "35",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-13"
-    },
-    {
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Clothing",
-      "creditorName": "CB/BRKSOLT",
-      "pastDueAmount": "0",
-      "subscriberCode": "V 94ZU1687",
-      "accountPaidDate": "2025-11-06",
-      "lastActivityDate": "2025-11-06",
-      "accountIdentifier": "339707158413",
-      "accountOpenedDate": "2013-01-03",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "100",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "290",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-09",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-09"
-    },
-    {
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "DepartmentAndMailOrder",
-      "creditorName": "CBNA",
-      "pastDueAmount": "0",
-      "subscriberCode": "T 2684R680",
-      "accountPaidDate": "2023-04-02",
-      "lastActivityDate": "2023-04-02",
-      "accountIdentifier": "640619070759",
-      "accountOpenedDate": "2021-10-17",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "700",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "293",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-05",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-05"
-    },
-    {
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "THD/CBNA",
-      "pastDueAmount": "0",
-      "subscriberCode": "S 657R1833",
-      "lastActivityDate": "2026-02-02",
-      "accountIdentifier": "841072380071",
-      "accountOpenedDate": "2017-11-03",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "600",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "1432",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-03",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "366",
-      "monthlyPaymentAmount": "29",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-03"
-    },
-    {
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "CITI-SHELL",
-      "pastDueAmount": "0",
-      "subscriberCode": "T 5663M192",
-      "accountPaidDate": "2026-01-30",
-      "lastActivityDate": "2026-01-30",
-      "accountIdentifier": "3011",
-      "accountOpenedDate": "2022-08-01",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "200",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "381",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-02-02",
-      "monthsReviewedCount": "41",
-      "accountOwnershipType": "AuthorizedUser",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-02-02"
-    },
-    {
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "GS BANK USA",
-      "pastDueAmount": "0",
-      "subscriberCode": "M 42JNE081",
-      "lastActivityDate": "2026-01-31",
-      "accountIdentifier": "4318",
-      "accountOpenedDate": "2021-11-07",
-      "accountStatusType": "Open",
-      "creditLimitAmount": "2000",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "3504",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2026-01-31",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "1768",
-      "monthlyPaymentAmount": "62",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2026-01-31"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "DepartmentAndMailOrder",
-      "creditorName": "CCB/ULTA",
-      "pastDueAmount": "0",
-      "subscriberCode": "Q 24JI1401",
-      "accountPaidDate": "2023-07-31",
-      "lastActivityDate": "2023-07-31",
-      "accountClosedDate": "2025-07-23",
-      "accountIdentifier": "707222666680",
-      "accountOpenedDate": "2023-06-09",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "500",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "57",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2025-07-23",
-      "monthsReviewedCount": "25",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2025-07-23"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "DepartmentAndMailOrder",
-      "creditorName": "SYNCB/BELK",
-      "pastDueAmount": "0",
-      "subscriberCode": "T 5390796F",
-      "accountPaidDate": "2024-11-05",
-      "lastActivityDate": "2024-11-05",
-      "accountClosedDate": "2025-04-07",
-      "accountIdentifier": "220579632797",
-      "accountOpenedDate": "2019-11-17",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "100",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "480",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2025-07-13",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2025-07-13"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        },
-        {
-          "commentText": "Late Dates: 03/23-30",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "1",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "SportingGoods",
-      "creditorName": "CCB/GDSAMCC",
-      "pastDueAmount": "0",
-      "adverseRatings": {
-        "priorAdverseRatings": [
-          {
-            "priorAdverseRatingCode": "1",
-            "priorAdverseRatingDate": "2023-03-13",
-            "priorAdverseRatingType": "Late30Days"
-          }
-        ],
-        "highestAdverseRatingCode": "1",
-        "highestAdverseRatingDate": "2023-03-13",
-        "highestAdverseRatingType": "Late30Days",
-        "mostRecentAdverseRatingCode": "1",
-        "mostRecentAdverseRatingDate": "2023-03-13",
-        "mostRecentAdverseRatingType": "Late30Days"
-      },
-      "subscriberCode": "R 31IK5619",
-      "accountPaidDate": "2022-12-10",
-      "lastActivityDate": "2022-12-10",
-      "accountClosedDate": "2025-01-22",
-      "accountIdentifier": "445577499570",
-      "accountOpenedDate": "2022-08-29",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "400",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "187",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCC1CCCCC",
-      "accountReportedDate": "2025-02-13",
-      "monthsReviewedCount": "28",
-      "accountOwnershipType": "AuthorizedUser",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": true,
-      "paymentPatternStartDate": "2025-02-13"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "SYNCB/TJXDC",
-      "pastDueAmount": "0",
-      "subscriberCode": "Z 3209039Z",
-      "accountPaidDate": "2024-01-12",
-      "lastActivityDate": "2024-01-12",
-      "accountClosedDate": "2024-05-21",
-      "accountIdentifier": "460869544551",
-      "accountOpenedDate": "2019-02-17",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "100",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "194",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2024-12-20",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2024-12-20"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "SYNCB/BELKDC",
-      "pastDueAmount": "0",
-      "subscriberCode": "K 8829106K",
-      "accountPaidDate": "2023-02-10",
-      "lastActivityDate": "2023-02-10",
-      "accountClosedDate": "2023-08-04",
-      "accountIdentifier": "322035486504",
-      "accountOpenedDate": "2021-12-05",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "1024",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "173",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2023-11-03",
-      "monthsReviewedCount": "23",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2023-11-03"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CLO",
-          "commentText": "CLOSED",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        },
-        {
-          "commentText": "Unsecured",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        }
-      ],
-      "loanType": "Unsecured",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Installment",
-      "businessType": "Banking",
-      "creditorName": "BK FYTTE CTY",
-      "pastDueAmount": "0",
-      "subscriberCode": "K 985ML193",
-      "accountPaidDate": "2022-02-23",
-      "lastActivityDate": "2022-02-23",
-      "termsMonthsCount": "45",
-      "accountClosedDate": "2022-02-23",
-      "accountIdentifier": "97282859",
-      "accountOpenedDate": "2020-09-16",
-      "accountStatusType": "Paid",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "5239",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2022-02-23",
-      "monthsReviewedCount": "16",
-      "accountOwnershipType": "JointContractualLiability",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2022-02-23"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "DepartmentAndMailOrder",
-      "creditorName": "CB/GOODYS",
-      "pastDueAmount": "0",
-      "subscriberCode": "J 32PJ9876",
-      "accountPaidDate": "2019-10-06",
-      "lastActivityDate": "2019-10-06",
-      "accountClosedDate": "2020-12-04",
-      "accountIdentifier": "435051739376",
-      "accountOpenedDate": "2012-09-25",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "1410",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "779",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2020-12-13",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2020-12-13"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CLO",
-          "commentText": "CLOSED",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        },
-        {
-          "commentText": "Unsecured",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "CreditBureau"
-        }
-      ],
-      "loanType": "Unsecured",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Installment",
-      "businessType": "Banking",
-      "creditorName": "BK FYTTE CTY",
-      "pastDueAmount": "0",
-      "subscriberCode": "K 985ML193",
-      "accountPaidDate": "2019-12-27",
-      "lastActivityDate": "2019-12-27",
-      "termsMonthsCount": "12",
-      "accountClosedDate": "2019-12-27",
-      "accountIdentifier": "60113075",
-      "accountOpenedDate": "2019-05-30",
-      "accountStatusType": "Paid",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "1430",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCC",
-      "accountReportedDate": "2019-12-27",
-      "monthsReviewedCount": "6",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2019-12-27"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "CAPITAL ONE",
-      "pastDueAmount": "0",
-      "subscriberCode": "Z 59IMZ844",
-      "accountPaidDate": "2017-01-08",
-      "lastActivityDate": "2017-01-08",
-      "accountClosedDate": "2019-10-31",
-      "accountIdentifier": "283319621709",
-      "accountOpenedDate": "2011-11-17",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "750",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "63",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2019-11-10",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2019-11-10"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CBG",
-          "commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "CreditCard",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "Banking",
-      "creditorName": "SYNCB/JCP DC",
-      "pastDueAmount": "0",
-      "subscriberCode": "S 6859345Z",
-      "accountClosedDate": "2018-03-20",
-      "accountIdentifier": "283284139305",
-      "accountOpenedDate": "2017-08-02",
-      "accountStatusType": "Paid",
-      "creditLimitAmount": "500",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "0",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCC",
-      "accountReportedDate": "2018-07-20",
-      "monthsReviewedCount": "10",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2018-07-20"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "ACT",
-          "commentText": "ACCOUNT CLOSED DUE TO TRANSFER",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "ChargeAccount",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Revolving",
-      "businessType": "DepartmentAndMailOrder",
-      "creditorName": "SYNCB/JCP",
-      "pastDueAmount": "0",
-      "subscriberCode": "W 9778680J",
-      "accountPaidDate": "2017-02-12",
-      "lastActivityDate": "2017-02-12",
-      "accountClosedDate": "2017-09-01",
-      "accountIdentifier": "561772466592",
-      "accountOpenedDate": "2015-11-09",
-      "accountStatusType": "Transferred",
-      "creditLimitAmount": "500",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "188",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCC",
-      "accountReportedDate": "2017-09-01",
-      "monthsReviewedCount": "22",
-      "accountOwnershipType": "Individual",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2017-09-01"
-    },
-    {
-      "comments": [
-        {
-          "commentCode": "CLO",
-          "commentText": "CLOSED",
-          "commentType": "BureauRemarks",
-          "commentSourceType": "TransUnion"
-        }
-      ],
-      "loanType": "Automobile",
-      "sourceType": "TransUnion",
-      "_30DayLates": "0",
-      "_60DayLates": "0",
-      "_90DayLates": "0",
-      "accountType": "Installment",
-      "businessType": "Banking",
-      "creditorName": "BK FYTTE CTY",
-      "pastDueAmount": "0",
-      "subscriberCode": "K 985ML193",
-      "accountPaidDate": "2016-08-12",
-      "lastActivityDate": "2016-08-12",
-      "termsMonthsCount": "50",
-      "accountClosedDate": "2016-08-12",
-      "accountIdentifier": "9717827",
-      "accountOpenedDate": "2011-10-17",
-      "accountStatusType": "Paid",
-      "currentRatingCode": "C",
-      "currentRatingType": "AsAgreed",
-      "highBalanceAmount": "9462",
-      "borrowerSourceType": "Borrower",
-      "paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCXCCCCCCCCC",
-      "accountReportedDate": "2016-08-12",
-      "monthsReviewedCount": "48",
-      "accountOwnershipType": "JointContractualLiability",
-      "currentBalanceAmount": "0",
-      "derogatoryDataIndicator": false,
-      "paymentPatternStartDate": "2016-08-12"
-    }
-  ],
-  "creditFiles": [
-    {
-      "dobs": [
-        {
-          "dob": "1985-06-15"
-        }
-      ],
-      "ssns": [
-        {
-          "ssn": "999887766"
-        }
-      ],
-      "aliases": [
-        {
-          "lastName": "FANDANGO",
-          "firstName": "CLOVER",
-          "middleName": "D"
-        }
-      ],
-      "addresses": [
-        {
-          "city": "WEST MEAGAN",
-          "state": "GA",
-          "postalCode": "16831",
-          "addressLine1": "22603 CHRISTINE STATION",
-          "dateReported": "1999-05-01",
-          "borrowerResidencyType": "Current"
-        },
-        {
-          "city": "WEST MEAGAN",
-          "state": "GA",
-          "postalCode": "16831",
-          "addressLine1": "9924 PATTERSON PRAIRIE",
-          "borrowerResidencyType": "Prior"
-        }
-      ],
-      "employments": [
-        {
-          "employerName": "JENKINS LTD",
-          "employmentStartDate": "2001-11-01",
-          "employmentReportedDate": "2011-12-31",
-          "employmentPositionDescription": "ARCHITECTURAL TECHNOLOGIST"
-        },
-        {
-          "employerName": "TANNER, PARKER AND GRAVES",
-          "employmentStartDate": "2011-10-01",
-          "employmentReportedDate": "2011-12-02",
-          "employmentPositionDescription": "SURVEYOR, PLANNING AND DEVELOPMENT"
-        }
-      ],
-      "creditFileDetail": {
-        "sourceType": "TransUnion",
-        "borrowerSourceType": "Borrower",
-        "creditFileInfileDate": "1986-09-01",
-        "creditFileResultStatusType": "FileReturned"
-      }
-    }
-  ],
-  "requestData": {
-    "ssn": "999887766",
-    "suffix": "",
-    "lastName": "Fandango",
-    "addresses": [
-      {
-        "city": "West Meagan",
-        "state": "GA",
-        "postalCode": "16831",
-        "addressLine1": "22603 Christine Station",
-        "addressLine2": "",
-        "borrowerResidencyType": "Current"
-      }
-    ],
-    "birthDate": "1985-06-15",
-    "firstName": "Clover"
-  },
-  "publicRecords": [],
-  "responseDetail": {
-    "dateRequested": "2026-02-25T02:16:01.55144Z",
-    "requestingParty": {
-      "name": "RANGE VIEW MANAGEMENT LLC"
-    },
-    "creditBureauContact": {
-      "name": "CREDIT REPORTING SERVICES, INC",
-      "address": {
-        "city": "FOLSOM",
-        "state": "CA",
-        "postalCode": "95630",
-        "addressLine1": "1024 IRON POINT ROAD"
-      }
-    }
-  },
-  "repositoryIncluded": {
-    "equifax": false,
-    "experian": false,
-    "transunion": true
-  },
-  "responseAlertMessages": []
+	"scores": [
+		{
+			"modelName": "TransUnionVantageScore4.0",
+			"scoreValue": "527",
+			"sourceType": "TransUnion",
+			"scoreFactors": [
+				{
+					"scoreFactorCode": "67",
+					"scoreFactorText": "No open real estate secured loans in your credit file"
+				},
+				{
+					"scoreFactorCode": "43",
+					"scoreFactorText": "Too many revolving accounts with high balance compared to credit limit"
+				},
+				{
+					"scoreFactorCode": "66",
+					"scoreFactorText": "Delinquent or derogatory status on real estate loans is too recent"
+				},
+				{
+					"scoreFactorCode": "7",
+					"scoreFactorText": "Too many delinquent or derogatory accounts"
+				}
+			],
+			"modelNameType": "001NN",
+			"scoreMaximumValue": "850",
+			"scoreMinimumValue": "300",
+			"borrowerSourceType": "Borrower",
+			"factaInquiriesIndicator": false,
+			"scoreRankPercentileValue": "5"
+		}
+	],
+	"creditors": [
+		{
+			"city": "SAN FRANCISCO",
+			"name": "LENDCLUB BNK",
+			"state": "CA",
+			"postalCode": "94105",
+			"sourceType": "TransUnion",
+			"streetAddress": "595 MARKET ST SUITE 200",
+			"subscriberCode": "M 70LU3273",
+			"contactTelephone": "2025550143"
+		},
+		{
+			"city": "GREENVILLE",
+			"name": "NR/SMS/CAL",
+			"state": "SC",
+			"postalCode": "29601",
+			"sourceType": "TransUnion",
+			"streetAddress": "55 BEATTIE PLACE STE 600",
+			"subscriberCode": "X 30RNN709",
+			"contactTelephone": "2025550152"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71723",
+			"subscriberCode": "V 55425301",
+			"contactTelephone": "2025550159"
+		},
+		{
+			"city": "SALT LAKE CITY",
+			"name": "CAPITAL ONE",
+			"state": "UT",
+			"postalCode": "84131",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 31293",
+			"subscriberCode": "Z 59IMZ844",
+			"contactTelephone": "2025550114"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/BELK",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71748",
+			"subscriberCode": "V 72087492",
+			"contactTelephone": "2025550168"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/AMAZON",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71737",
+			"subscriberCode": "U 1719262A",
+			"contactTelephone": "2025550192"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/JCP DC",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71729",
+			"subscriberCode": "S 6859345Z",
+			"contactTelephone": "2025550178"
+		},
+		{
+			"city": "COLUMBUS",
+			"name": "CCB/GDSAMCC",
+			"state": "OH",
+			"postalCode": "43218",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 182120",
+			"subscriberCode": "R 31IK5619"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/JCP",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71729",
+			"subscriberCode": "W 9778680J",
+			"contactTelephone": "2025550183"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/BELK",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71750",
+			"subscriberCode": "T 5390796F",
+			"contactTelephone": "2025550185"
+		},
+		{
+			"city": "SALT LAKE CITY",
+			"name": "CAPITAL ONE",
+			"state": "UT",
+			"postalCode": "84131",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 31293",
+			"subscriberCode": "R 00BXP051",
+			"contactTelephone": "2025550176"
+		},
+		{
+			"city": "COLUMBUS",
+			"name": "CCB/CARTERS",
+			"state": "OH",
+			"postalCode": "43218",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 182120",
+			"subscriberCode": "D 79DW0205"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/BELKDC",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71750",
+			"subscriberCode": "K 8829106K",
+			"contactTelephone": "2025550167"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/LOW",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71727",
+			"subscriberCode": "E 7837368H",
+			"contactTelephone": "2025550112"
+		},
+		{
+			"city": "COLUMBUS",
+			"name": "CCB/ULTA",
+			"state": "OH",
+			"postalCode": "43218",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 182120",
+			"subscriberCode": "Q 24JI1401"
+		},
+		{
+			"city": "EL PASO",
+			"name": "AMEX",
+			"state": "TX",
+			"postalCode": "79998",
+			"sourceType": "TransUnion",
+			"streetAddress": "P.O. BOX 981537",
+			"subscriberCode": "M 146QF434",
+			"contactTelephone": "2025550155"
+		},
+		{
+			"city": "WILMINGTON",
+			"name": "JPMCB CARD",
+			"state": "DE",
+			"postalCode": "19850",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 15369",
+			"subscriberCode": "K 850HP152",
+			"contactTelephone": "2025550165"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "GS BANK USA",
+			"state": "PA",
+			"postalCode": "19170",
+			"sourceType": "TransUnion",
+			"streetAddress": "LOCKBOX 6112 P.O. BOX 7247",
+			"subscriberCode": "M 42JNE081",
+			"contactTelephone": "2025550171"
+		},
+		{
+			"city": "PHILADELPHIA",
+			"name": "SYNCB/TJXDC",
+			"state": "PA",
+			"postalCode": "19176",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 71737",
+			"subscriberCode": "Z 3209039Z",
+			"contactTelephone": "2025550138"
+		},
+		{
+			"city": "SIOUX FALLS",
+			"name": "THD/CBNA",
+			"state": "SD",
+			"postalCode": "57117",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 6497",
+			"subscriberCode": "S 657R1833",
+			"contactTelephone": "2025550110"
+		},
+		{
+			"city": "SIOUX FALLS",
+			"name": "CBNA",
+			"state": "SD",
+			"postalCode": "57117",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 6497",
+			"subscriberCode": "T 2684R680",
+			"contactTelephone": "2025550186"
+		},
+		{
+			"city": "SIOUX FALLS",
+			"name": "CITI-SHELL",
+			"state": "SD",
+			"postalCode": "57117",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 6497",
+			"subscriberCode": "T 5663M192",
+			"contactTelephone": "2025550154"
+		},
+		{
+			"city": "COLUMBUS",
+			"name": "CB/GOODYS",
+			"state": "OH",
+			"postalCode": "43218",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 182789",
+			"subscriberCode": "J 32PJ9876",
+			"contactTelephone": "2025550180"
+		},
+		{
+			"city": "MOSCOW",
+			"name": "BK FYTTE CTY",
+			"state": "TN",
+			"postalCode": "38057",
+			"sourceType": "TransUnion",
+			"streetAddress": "47 CHARLESTON PO BOX 277",
+			"subscriberCode": "K 985ML193",
+			"contactTelephone": "2025550130"
+		},
+		{
+			"city": "COLUMBUS",
+			"name": "CB/BRKSOLT",
+			"state": "OH",
+			"postalCode": "43218",
+			"sourceType": "TransUnion",
+			"streetAddress": "PO BOX 182789",
+			"subscriberCode": "V 94ZU1687",
+			"contactTelephone": "2025550116"
+		}
+	],
+	"inquiries": [
+		{
+			"sourceType": "TransUnion",
+			"inquiryDate": "2025-04-24",
+			"businessType": "Miscellaneous",
+			"creditorName": "SYNCB/BELK",
+			"subscriberCode": "V 72087492",
+			"borrowerSourceType": "Borrower",
+			"accountOwnershipType": "Individual"
+		},
+		{
+			"sourceType": "TransUnion",
+			"inquiryDate": "2024-12-23",
+			"businessType": "Banking",
+			"creditorName": "SYNCB",
+			"subscriberCode": "V 55425301",
+			"borrowerSourceType": "Borrower",
+			"accountOwnershipType": "Individual"
+		}
+	],
+	"summaries": {
+		"tradeSummary": {
+			"tradesCount": "28",
+			"balanceTotal": "94216",
+			"pastDueTotal": "33085",
+			"paymentsTotal": "1141",
+			"autoTradesCount": "1",
+			"highCreditTotal": "152941",
+			"openTradesCount": "0",
+			"autoBalanceTotal": "0",
+			"autoPastDueTotal": "0",
+			"openBalanceTotal": "0",
+			"openPastDueTotal": "0",
+			"autoPaymentsTotal": "0",
+			"openPaymentsTotal": "0",
+			"unknownTradesCount": "0",
+			"autoHighCreditTotal": "9462",
+			"mortgageTradesCount": "1",
+			"oldestTradelineDate": "2006-04-04",
+			"openHighCreditTotal": "0",
+			"unknownBalanceTotal": "0",
+			"unknownPastDueTotal": "0",
+			"educationTradesCount": "0",
+			"mortgageBalanceTotal": "51528",
+			"mortgagePastDueTotal": "4219",
+			"revolvingTradesCount": "23",
+			"unknownPaymentsTotal": "0",
+			"educationBalanceTotal": "0",
+			"educationPastDueTotal": "0",
+			"mortgagePaymentsTotal": "792",
+			"revolvingBalanceTotal": "28404",
+			"revolvingPastDueTotal": "14582",
+			"educationPaymentsTotal": "0",
+			"revolvingPaymentsTotal": "349",
+			"unknownHighCreditTotal": "0",
+			"applicablePaymentsTotal": "1141",
+			"mortgageHighCreditTotal": "75000",
+			"securedDebtBalanceTotal": "51528",
+			"educationHighCreditTotal": "0",
+			"revolvingHighCreditTotal": "33810",
+			"totalDebtHighCreditRatio": "112",
+			"applicableHighCreditTotal": "84420",
+			"unsecuredDebtBalanceTotal": "42688",
+			"revolvingCreditUtilization": "302",
+			"applicableAutoPaymentsTotal": "0",
+			"applicableOpenPaymentsTotal": "0",
+			"installmentOtherTradesCount": "3",
+			"oldestTradelineCreditorName": "NR/SMS/CAL",
+			"installmentOtherBalanceTotal": "14284",
+			"installmentOtherPastDueTotal": "14284",
+			"applicableAutoHighCreditTotal": "0",
+			"applicableOpenHighCreditTotal": "0",
+			"installmentOtherPaymentsTotal": "0",
+			"applicableUnknownPaymentsTotal": "0",
+			"applicableMortgagePaymentsTotal": "792",
+			"installmentOtherHighCreditTotal": "34669",
+			"applicableEducationPaymentsTotal": "0",
+			"applicableRevolvingPaymentsTotal": "349",
+			"applicableUnknownHighCreditTotal": "0",
+			"applicableMortgageHighCreditTotal": "75000",
+			"applicableEducationHighCreditTotal": "0",
+			"applicableInstallmentPaymentsTotal": "0",
+			"applicableRevolvingHighCreditTotal": "9420",
+			"applicableInstallmentHighCreditTotal": "0",
+			"applicableInstallmentOtherPaymentsTotal": "0",
+			"applicableInstallmentOtherHighCreditTotal": "0"
+		},
+		"derogatorySummary": {
+			"otherCount": "0",
+			"_30DayLates": "7",
+			"_60DayLates": "3",
+			"_90DayLates": "4",
+			"disputesCount": "0",
+			"inquiriesCount": "2",
+			"chargeOffsCount": "6",
+			"collectionsCount": "0",
+			"bankruptciesCount": "0",
+			"mostRecentLateDate": "2026-02-20",
+			"publicRecordsCount": "0",
+			"securedDebtBalanceTotal": "51528",
+			"unsecuredDebtBalanceTotal": "42688",
+			"priorAdverseTradelineCount": "1",
+			"satisfactoryTradelineCount": "19",
+			"currentAdverseTradelineCount": "2"
+		}
+	},
+	"tradelines": [
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "AMEX",
+			"pastDueAmount": "1505",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "9",
+						"priorAdverseRatingDate": "2026-02-18",
+						"priorAdverseRatingType": "ChargeOff"
+					}
+				],
+				"highestAdverseRatingCode": "9",
+				"highestAdverseRatingDate": "2026-02-18",
+				"highestAdverseRatingType": "ChargeOff",
+				"mostRecentAdverseRatingCode": "9",
+				"mostRecentAdverseRatingDate": "2026-02-18",
+				"mostRecentAdverseRatingType": "ChargeOff"
+			},
+			"subscriberCode": "M 146QF434",
+			"accountClosedDate": "2025-10-07",
+			"accountIdentifier": "6924480991022073",
+			"accountOpenedDate": "2021-10-31",
+			"accountStatusType": "Closed",
+			"creditLimitAmount": "6800",
+			"currentRatingCode": "9",
+			"currentRatingType": "ChargeOff",
+			"highBalanceAmount": "7795",
+			"borrowerSourceType": "Borrower",
+			"accountReportedDate": "2026-02-18",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "7212",
+			"derogatoryDataIndicator": true
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "CAPITAL ONE",
+			"pastDueAmount": "2936",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "9",
+						"priorAdverseRatingDate": "2026-02-17",
+						"priorAdverseRatingType": "ChargeOff"
+					}
+				],
+				"highestAdverseRatingCode": "9",
+				"highestAdverseRatingDate": "2026-02-17",
+				"highestAdverseRatingType": "ChargeOff",
+				"mostRecentAdverseRatingCode": "9",
+				"mostRecentAdverseRatingDate": "2026-02-17",
+				"mostRecentAdverseRatingType": "ChargeOff"
+			},
+			"subscriberCode": "R 00BXP051",
+			"lastActivityDate": "2025-05-03",
+			"accountClosedDate": "2025-10-10",
+			"accountIdentifier": "768405293738",
+			"accountOpenedDate": "2019-06-13",
+			"accountStatusType": "Closed",
+			"creditLimitAmount": "2500",
+			"currentRatingCode": "9",
+			"currentRatingType": "ChargeOff",
+			"highBalanceAmount": "2936",
+			"borrowerSourceType": "Borrower",
+			"accountReportedDate": "2026-02-17",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "2936",
+			"derogatoryDataIndicator": true
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "CAPITAL ONE",
+			"pastDueAmount": "1123",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "9",
+						"priorAdverseRatingDate": "2026-02-17",
+						"priorAdverseRatingType": "ChargeOff"
+					}
+				],
+				"highestAdverseRatingCode": "9",
+				"highestAdverseRatingDate": "2026-02-17",
+				"highestAdverseRatingType": "ChargeOff",
+				"mostRecentAdverseRatingCode": "9",
+				"mostRecentAdverseRatingDate": "2026-02-17",
+				"mostRecentAdverseRatingType": "ChargeOff"
+			},
+			"subscriberCode": "R 00BXP051",
+			"lastActivityDate": "2025-05-03",
+			"accountClosedDate": "2025-10-10",
+			"accountIdentifier": "902759429313",
+			"accountOpenedDate": "2020-08-08",
+			"accountStatusType": "Closed",
+			"creditLimitAmount": "1050",
+			"currentRatingCode": "9",
+			"currentRatingType": "ChargeOff",
+			"highBalanceAmount": "1123",
+			"borrowerSourceType": "Borrower",
+			"accountReportedDate": "2026-02-17",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "1123",
+			"derogatoryDataIndicator": true
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "CAPITAL ONE",
+			"pastDueAmount": "4324",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "9",
+						"priorAdverseRatingDate": "2026-02-17",
+						"priorAdverseRatingType": "ChargeOff"
+					}
+				],
+				"highestAdverseRatingCode": "9",
+				"highestAdverseRatingDate": "2026-02-17",
+				"highestAdverseRatingType": "ChargeOff",
+				"mostRecentAdverseRatingCode": "9",
+				"mostRecentAdverseRatingDate": "2026-02-17",
+				"mostRecentAdverseRatingType": "ChargeOff"
+			},
+			"subscriberCode": "R 00BXP051",
+			"lastActivityDate": "2025-05-12",
+			"accountClosedDate": "2025-11-17",
+			"accountIdentifier": "578993479092",
+			"accountOpenedDate": "2015-06-19",
+			"accountStatusType": "Closed",
+			"creditLimitAmount": "3500",
+			"currentRatingCode": "9",
+			"currentRatingType": "ChargeOff",
+			"highBalanceAmount": "4324",
+			"borrowerSourceType": "Borrower",
+			"accountReportedDate": "2026-02-17",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "4324",
+			"derogatoryDataIndicator": true
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "JPMCB CARD",
+			"pastDueAmount": "4545",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "9",
+						"priorAdverseRatingDate": "2026-02-11",
+						"priorAdverseRatingType": "ChargeOff"
+					}
+				],
+				"highestAdverseRatingCode": "9",
+				"highestAdverseRatingDate": "2026-02-11",
+				"highestAdverseRatingType": "ChargeOff",
+				"mostRecentAdverseRatingCode": "9",
+				"mostRecentAdverseRatingDate": "2026-02-11",
+				"mostRecentAdverseRatingType": "ChargeOff"
+			},
+			"subscriberCode": "K 850HP152",
+			"lastActivityDate": "2025-08-18",
+			"accountClosedDate": "2025-03-12",
+			"accountIdentifier": "337406162951",
+			"accountOpenedDate": "2021-12-12",
+			"accountStatusType": "Closed",
+			"creditLimitAmount": "3500",
+			"currentRatingCode": "9",
+			"currentRatingType": "ChargeOff",
+			"highBalanceAmount": "4575",
+			"borrowerSourceType": "Borrower",
+			"accountReportedDate": "2026-02-11",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "4545",
+			"derogatoryDataIndicator": true
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "PRL",
+					"commentText": "PROFIT AND LOSS WRITE-OFF",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				},
+				{
+					"commentText": "Unsecured",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				}
+			],
+			"loanType": "Unsecured",
+			"sourceType": "TransUnion",
+			"accountType": "Installment",
+			"businessType": "Banking",
+			"creditorName": "LENDCLUB BNK",
+			"pastDueAmount": "14284",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "9",
+						"priorAdverseRatingDate": "2026-01-31",
+						"priorAdverseRatingType": "ChargeOff"
+					}
+				],
+				"highestAdverseRatingCode": "9",
+				"highestAdverseRatingDate": "2026-01-31",
+				"highestAdverseRatingType": "ChargeOff",
+				"mostRecentAdverseRatingCode": "9",
+				"mostRecentAdverseRatingDate": "2026-01-31",
+				"mostRecentAdverseRatingType": "ChargeOff"
+			},
+			"subscriberCode": "M 70LU3273",
+			"lastActivityDate": "2025-04-30",
+			"termsMonthsCount": "36",
+			"accountClosedDate": "2023-08-31",
+			"accountIdentifier": "620443283",
+			"accountOpenedDate": "2022-05-02",
+			"accountStatusType": "Closed",
+			"currentRatingCode": "9",
+			"currentRatingType": "ChargeOff",
+			"highBalanceAmount": "28000",
+			"borrowerSourceType": "Borrower",
+			"accountReportedDate": "2026-01-31",
+			"accountOwnershipType": "JointContractualLiability",
+			"currentBalanceAmount": "14284",
+			"derogatoryDataIndicator": true
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "FPI",
+					"commentText": "FORECLOSURE INITIATED",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				},
+				{
+					"commentText": "Conventional Real Estate Mortgage",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				},
+				{
+					"commentText": "Late Dates: 12/25-120, 11/25-120, 10/25-90, 09/25-60, 08/25-30, 07/25-30",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				}
+			],
+			"loanType": "ConventionalRealEstateMortgage",
+			"sourceType": "TransUnion",
+			"_30DayLates": "2",
+			"_60DayLates": "1",
+			"_90DayLates": "2",
+			"accountType": "Mortgage",
+			"_120DayLates": "1",
+			"businessType": "Finance",
+			"creditorName": "NR/SMS/CAL",
+			"pastDueAmount": "4219",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "4",
+						"priorAdverseRatingDate": "2025-12-31",
+						"priorAdverseRatingType": "LateOver120Days"
+					},
+					{
+						"priorAdverseRatingCode": "4",
+						"priorAdverseRatingDate": "2025-11-30",
+						"priorAdverseRatingType": "LateOver120Days"
+					},
+					{
+						"priorAdverseRatingCode": "3",
+						"priorAdverseRatingDate": "2025-10-30",
+						"priorAdverseRatingType": "Late90Days"
+					},
+					{
+						"priorAdverseRatingCode": "2",
+						"priorAdverseRatingDate": "2025-09-30",
+						"priorAdverseRatingType": "Late60Days"
+					},
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2025-08-30",
+						"priorAdverseRatingType": "Late30Days"
+					},
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2025-07-30",
+						"priorAdverseRatingType": "Late30Days"
+					}
+				],
+				"highestAdverseRatingCode": "4",
+				"highestAdverseRatingDate": "2025-12-31",
+				"highestAdverseRatingType": "LateOver120Days",
+				"mostRecentAdverseRatingCode": "4",
+				"mostRecentAdverseRatingDate": "2025-12-31",
+				"mostRecentAdverseRatingType": "LateOver120Days"
+			},
+			"subscriberCode": "X 30RNN709",
+			"lastActivityDate": "2025-08-27",
+			"termsDescription": "360 months at $792 per month",
+			"termsMonthsCount": "360",
+			"accountIdentifier": "9522823817",
+			"accountOpenedDate": "2006-04-04",
+			"accountStatusType": "Open",
+			"currentRatingCode": "4",
+			"currentRatingType": "LateOver120Days",
+			"highBalanceAmount": "75000",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "443211CCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2025-12-31",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "JointContractualLiability",
+			"currentBalanceAmount": "51528",
+			"monthlyPaymentAmount": "792",
+			"derogatoryDataIndicator": true,
+			"paymentPatternStartDate": "2025-12-31"
+		},
+		{
+			"comments": [
+				{
+					"commentText": "Business Credit Card",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				},
+				{
+					"commentText": "Late Dates: 02/26-30, 09/25-120, 08/25-90, 07/25-60, 06/25-30, 04/25-60, 03/25-30, 04/24-30",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				}
+			],
+			"loanType": "BusinessCreditCard",
+			"sourceType": "TransUnion",
+			"_30DayLates": "4",
+			"_60DayLates": "2",
+			"_90DayLates": "2",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "CAPITAL ONE",
+			"pastDueAmount": "149",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2026-02-20",
+						"priorAdverseRatingType": "Late30Days"
+					},
+					{
+						"priorAdverseRatingCode": "4",
+						"priorAdverseRatingDate": "2025-09-20",
+						"priorAdverseRatingType": "LateOver120Days"
+					},
+					{
+						"priorAdverseRatingCode": "3",
+						"priorAdverseRatingDate": "2025-08-20",
+						"priorAdverseRatingType": "Late90Days"
+					},
+					{
+						"priorAdverseRatingCode": "2",
+						"priorAdverseRatingDate": "2025-07-20",
+						"priorAdverseRatingType": "Late60Days"
+					},
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2025-06-20",
+						"priorAdverseRatingType": "Late30Days"
+					},
+					{
+						"priorAdverseRatingCode": "2",
+						"priorAdverseRatingDate": "2025-04-20",
+						"priorAdverseRatingType": "Late60Days"
+					},
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2025-03-20",
+						"priorAdverseRatingType": "Late30Days"
+					},
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2024-04-20",
+						"priorAdverseRatingType": "Late30Days"
+					}
+				],
+				"highestAdverseRatingCode": "4",
+				"highestAdverseRatingDate": "2025-09-20",
+				"highestAdverseRatingType": "LateOver120Days",
+				"mostRecentAdverseRatingCode": "1",
+				"mostRecentAdverseRatingDate": "2026-02-20",
+				"mostRecentAdverseRatingType": "Late30Days"
+			},
+			"subscriberCode": "R 00BXP051",
+			"lastActivityDate": "2025-12-17",
+			"accountIdentifier": "931282617673",
+			"accountOpenedDate": "2022-05-27",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "5000",
+			"currentRatingCode": "1",
+			"currentRatingType": "Late30Days",
+			"highBalanceAmount": "5421",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "1CCCC4321C21CCCCCCCCCC1CCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-20",
+			"monthsReviewedCount": "44",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "4700",
+			"monthlyPaymentAmount": "182",
+			"derogatoryDataIndicator": true,
+			"paymentPatternStartDate": "2026-02-20"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "LumberAndHardware",
+			"creditorName": "SYNCB/LOW",
+			"pastDueAmount": "0",
+			"subscriberCode": "E 7837368H",
+			"lastActivityDate": "2026-02-12",
+			"accountClosedDate": "2025-06-19",
+			"accountIdentifier": "400087195467",
+			"accountOpenedDate": "2018-03-15",
+			"accountStatusType": "Closed",
+			"creditLimitAmount": "1756",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "1676",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-17",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "1311",
+			"monthlyPaymentAmount": "47",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-17"
+		},
+		{
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "DepartmentAndMailOrder",
+			"creditorName": "SYNCB/AMAZON",
+			"pastDueAmount": "0",
+			"subscriberCode": "U 1719262A",
+			"lastActivityDate": "2026-01-21",
+			"accountIdentifier": "606579803595",
+			"accountOpenedDate": "2024-12-23",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "120",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "394",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-13",
+			"monthsReviewedCount": "14",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "119",
+			"monthlyPaymentAmount": "29",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-13"
+		},
+		{
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "RealEstateAndPublicAccommodation",
+			"creditorName": "CCB/CARTERS",
+			"pastDueAmount": "0",
+			"subscriberCode": "D 79DW0205",
+			"accountPaidDate": "2025-01-03",
+			"lastActivityDate": "2025-01-03",
+			"accountIdentifier": "863462580035",
+			"accountOpenedDate": "2023-03-01",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "700",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "240",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-13",
+			"monthsReviewedCount": "35",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-13"
+		},
+		{
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Clothing",
+			"creditorName": "CB/BRKSOLT",
+			"pastDueAmount": "0",
+			"subscriberCode": "V 94ZU1687",
+			"accountPaidDate": "2025-11-06",
+			"lastActivityDate": "2025-11-06",
+			"accountIdentifier": "339707158413",
+			"accountOpenedDate": "2013-01-03",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "100",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "290",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-09",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-09"
+		},
+		{
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "DepartmentAndMailOrder",
+			"creditorName": "CBNA",
+			"pastDueAmount": "0",
+			"subscriberCode": "T 2684R680",
+			"accountPaidDate": "2023-04-02",
+			"lastActivityDate": "2023-04-02",
+			"accountIdentifier": "640619070759",
+			"accountOpenedDate": "2021-10-17",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "700",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "293",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-05",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-05"
+		},
+		{
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "THD/CBNA",
+			"pastDueAmount": "0",
+			"subscriberCode": "S 657R1833",
+			"lastActivityDate": "2026-02-02",
+			"accountIdentifier": "841072380071",
+			"accountOpenedDate": "2017-11-03",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "600",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "1432",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-03",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "366",
+			"monthlyPaymentAmount": "29",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-03"
+		},
+		{
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "CITI-SHELL",
+			"pastDueAmount": "0",
+			"subscriberCode": "T 5663M192",
+			"accountPaidDate": "2026-01-30",
+			"lastActivityDate": "2026-01-30",
+			"accountIdentifier": "3011",
+			"accountOpenedDate": "2022-08-01",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "200",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "381",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-02-02",
+			"monthsReviewedCount": "41",
+			"accountOwnershipType": "AuthorizedUser",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-02-02"
+		},
+		{
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "GS BANK USA",
+			"pastDueAmount": "0",
+			"subscriberCode": "M 42JNE081",
+			"lastActivityDate": "2026-01-31",
+			"accountIdentifier": "4318",
+			"accountOpenedDate": "2021-11-07",
+			"accountStatusType": "Open",
+			"creditLimitAmount": "2000",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "3504",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2026-01-31",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "1768",
+			"monthlyPaymentAmount": "62",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2026-01-31"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "DepartmentAndMailOrder",
+			"creditorName": "CCB/ULTA",
+			"pastDueAmount": "0",
+			"subscriberCode": "Q 24JI1401",
+			"accountPaidDate": "2023-07-31",
+			"lastActivityDate": "2023-07-31",
+			"accountClosedDate": "2025-07-23",
+			"accountIdentifier": "707222666680",
+			"accountOpenedDate": "2023-06-09",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "500",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "57",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2025-07-23",
+			"monthsReviewedCount": "25",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2025-07-23"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "DepartmentAndMailOrder",
+			"creditorName": "SYNCB/BELK",
+			"pastDueAmount": "0",
+			"subscriberCode": "T 5390796F",
+			"accountPaidDate": "2024-11-05",
+			"lastActivityDate": "2024-11-05",
+			"accountClosedDate": "2025-04-07",
+			"accountIdentifier": "220579632797",
+			"accountOpenedDate": "2019-11-17",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "100",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "480",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2025-07-13",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2025-07-13"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				},
+				{
+					"commentText": "Late Dates: 03/23-30",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "1",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "SportingGoods",
+			"creditorName": "CCB/GDSAMCC",
+			"pastDueAmount": "0",
+			"adverseRatings": {
+				"priorAdverseRatings": [
+					{
+						"priorAdverseRatingCode": "1",
+						"priorAdverseRatingDate": "2023-03-13",
+						"priorAdverseRatingType": "Late30Days"
+					}
+				],
+				"highestAdverseRatingCode": "1",
+				"highestAdverseRatingDate": "2023-03-13",
+				"highestAdverseRatingType": "Late30Days",
+				"mostRecentAdverseRatingCode": "1",
+				"mostRecentAdverseRatingDate": "2023-03-13",
+				"mostRecentAdverseRatingType": "Late30Days"
+			},
+			"subscriberCode": "R 31IK5619",
+			"accountPaidDate": "2022-12-10",
+			"lastActivityDate": "2022-12-10",
+			"accountClosedDate": "2025-01-22",
+			"accountIdentifier": "445577499570",
+			"accountOpenedDate": "2022-08-29",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "400",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "187",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCC1CCCCC",
+			"accountReportedDate": "2025-02-13",
+			"monthsReviewedCount": "28",
+			"accountOwnershipType": "AuthorizedUser",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": true,
+			"paymentPatternStartDate": "2025-02-13"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "SYNCB/TJXDC",
+			"pastDueAmount": "0",
+			"subscriberCode": "Z 3209039Z",
+			"accountPaidDate": "2024-01-12",
+			"lastActivityDate": "2024-01-12",
+			"accountClosedDate": "2024-05-21",
+			"accountIdentifier": "460869544551",
+			"accountOpenedDate": "2019-02-17",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "100",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "194",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2024-12-20",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2024-12-20"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "SYNCB/BELKDC",
+			"pastDueAmount": "0",
+			"subscriberCode": "K 8829106K",
+			"accountPaidDate": "2023-02-10",
+			"lastActivityDate": "2023-02-10",
+			"accountClosedDate": "2023-08-04",
+			"accountIdentifier": "322035486504",
+			"accountOpenedDate": "2021-12-05",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "1024",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "173",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2023-11-03",
+			"monthsReviewedCount": "23",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2023-11-03"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CLO",
+					"commentText": "CLOSED",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				},
+				{
+					"commentText": "Unsecured",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				}
+			],
+			"loanType": "Unsecured",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Installment",
+			"businessType": "Banking",
+			"creditorName": "BK FYTTE CTY",
+			"pastDueAmount": "0",
+			"subscriberCode": "K 985ML193",
+			"accountPaidDate": "2022-02-23",
+			"lastActivityDate": "2022-02-23",
+			"termsMonthsCount": "45",
+			"accountClosedDate": "2022-02-23",
+			"accountIdentifier": "97282859",
+			"accountOpenedDate": "2020-09-16",
+			"accountStatusType": "Paid",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "5239",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2022-02-23",
+			"monthsReviewedCount": "16",
+			"accountOwnershipType": "JointContractualLiability",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2022-02-23"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "DepartmentAndMailOrder",
+			"creditorName": "CB/GOODYS",
+			"pastDueAmount": "0",
+			"subscriberCode": "J 32PJ9876",
+			"accountPaidDate": "2019-10-06",
+			"lastActivityDate": "2019-10-06",
+			"accountClosedDate": "2020-12-04",
+			"accountIdentifier": "435051739376",
+			"accountOpenedDate": "2012-09-25",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "1410",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "779",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2020-12-13",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2020-12-13"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CLO",
+					"commentText": "CLOSED",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				},
+				{
+					"commentText": "Unsecured",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "CreditBureau"
+				}
+			],
+			"loanType": "Unsecured",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Installment",
+			"businessType": "Banking",
+			"creditorName": "BK FYTTE CTY",
+			"pastDueAmount": "0",
+			"subscriberCode": "K 985ML193",
+			"accountPaidDate": "2019-12-27",
+			"lastActivityDate": "2019-12-27",
+			"termsMonthsCount": "12",
+			"accountClosedDate": "2019-12-27",
+			"accountIdentifier": "60113075",
+			"accountOpenedDate": "2019-05-30",
+			"accountStatusType": "Paid",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "1430",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCC",
+			"accountReportedDate": "2019-12-27",
+			"monthsReviewedCount": "6",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2019-12-27"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "CAPITAL ONE",
+			"pastDueAmount": "0",
+			"subscriberCode": "Z 59IMZ844",
+			"accountPaidDate": "2017-01-08",
+			"lastActivityDate": "2017-01-08",
+			"accountClosedDate": "2019-10-31",
+			"accountIdentifier": "283319621709",
+			"accountOpenedDate": "2011-11-17",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "750",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "63",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2019-11-10",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2019-11-10"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CBG",
+					"commentText": "ACCOUNT CLOSED BY CREDIT GRANTOR",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "CreditCard",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "Banking",
+			"creditorName": "SYNCB/JCP DC",
+			"pastDueAmount": "0",
+			"subscriberCode": "S 6859345Z",
+			"accountClosedDate": "2018-03-20",
+			"accountIdentifier": "283284139305",
+			"accountOpenedDate": "2017-08-02",
+			"accountStatusType": "Paid",
+			"creditLimitAmount": "500",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "0",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCC",
+			"accountReportedDate": "2018-07-20",
+			"monthsReviewedCount": "10",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2018-07-20"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "ACT",
+					"commentText": "ACCOUNT CLOSED DUE TO TRANSFER",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "ChargeAccount",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Revolving",
+			"businessType": "DepartmentAndMailOrder",
+			"creditorName": "SYNCB/JCP",
+			"pastDueAmount": "0",
+			"subscriberCode": "W 9778680J",
+			"accountPaidDate": "2017-02-12",
+			"lastActivityDate": "2017-02-12",
+			"accountClosedDate": "2017-09-01",
+			"accountIdentifier": "561772466592",
+			"accountOpenedDate": "2015-11-09",
+			"accountStatusType": "Transferred",
+			"creditLimitAmount": "500",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "188",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCC",
+			"accountReportedDate": "2017-09-01",
+			"monthsReviewedCount": "22",
+			"accountOwnershipType": "Individual",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2017-09-01"
+		},
+		{
+			"comments": [
+				{
+					"commentCode": "CLO",
+					"commentText": "CLOSED",
+					"commentType": "BureauRemarks",
+					"commentSourceType": "TransUnion"
+				}
+			],
+			"loanType": "Automobile",
+			"sourceType": "TransUnion",
+			"_30DayLates": "0",
+			"_60DayLates": "0",
+			"_90DayLates": "0",
+			"accountType": "Installment",
+			"businessType": "Banking",
+			"creditorName": "BK FYTTE CTY",
+			"pastDueAmount": "0",
+			"subscriberCode": "K 985ML193",
+			"accountPaidDate": "2016-08-12",
+			"lastActivityDate": "2016-08-12",
+			"termsMonthsCount": "50",
+			"accountClosedDate": "2016-08-12",
+			"accountIdentifier": "9717827",
+			"accountOpenedDate": "2011-10-17",
+			"accountStatusType": "Paid",
+			"currentRatingCode": "C",
+			"currentRatingType": "AsAgreed",
+			"highBalanceAmount": "9462",
+			"borrowerSourceType": "Borrower",
+			"paymentPatternData": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCXCCCCCCCCC",
+			"accountReportedDate": "2016-08-12",
+			"monthsReviewedCount": "48",
+			"accountOwnershipType": "JointContractualLiability",
+			"currentBalanceAmount": "0",
+			"derogatoryDataIndicator": false,
+			"paymentPatternStartDate": "2016-08-12"
+		}
+	],
+	"creditFiles": [
+		{
+			"dobs": [
+				{
+					"dob": "1985-06-15"
+				}
+			],
+			"ssns": [
+				{
+					"ssn": "999887766"
+				}
+			],
+			"aliases": [
+				{
+					"lastName": "FANDANGO",
+					"firstName": "CLOVER",
+					"middleName": "D"
+				}
+			],
+			"addresses": [
+				{
+					"city": "WEST MEAGAN",
+					"state": "GA",
+					"postalCode": "16831",
+					"addressLine1": "22603 CHRISTINE STATION",
+					"dateReported": "1999-05-01",
+					"borrowerResidencyType": "Current"
+				},
+				{
+					"city": "WEST MEAGAN",
+					"state": "GA",
+					"postalCode": "16831",
+					"addressLine1": "9924 PATTERSON PRAIRIE",
+					"borrowerResidencyType": "Prior"
+				}
+			],
+			"employments": [
+				{
+					"employerName": "JENKINS LTD",
+					"employmentStartDate": "2001-11-01",
+					"employmentReportedDate": "2011-12-31",
+					"employmentPositionDescription": "ARCHITECTURAL TECHNOLOGIST"
+				},
+				{
+					"employerName": "TANNER, PARKER AND GRAVES",
+					"employmentStartDate": "2011-10-01",
+					"employmentReportedDate": "2011-12-02",
+					"employmentPositionDescription": "SURVEYOR, PLANNING AND DEVELOPMENT"
+				}
+			],
+			"creditFileDetail": {
+				"sourceType": "TransUnion",
+				"borrowerSourceType": "Borrower",
+				"creditFileInfileDate": "1986-09-01",
+				"creditFileResultStatusType": "FileReturned"
+			}
+		}
+	],
+	"requestData": {
+		"ssn": "999887766",
+		"suffix": "",
+		"lastName": "Fandango",
+		"addresses": [
+			{
+				"city": "West Meagan",
+				"state": "GA",
+				"postalCode": "16831",
+				"addressLine1": "22603 Christine Station",
+				"addressLine2": "",
+				"borrowerResidencyType": "Current"
+			}
+		],
+		"birthDate": "1985-06-15",
+		"firstName": "Clover"
+	},
+	"publicRecords": [],
+	"responseDetail": {
+		"dateRequested": "2026-02-25T02:16:01.55144Z",
+		"requestingParty": {
+			"name": "RANGE VIEW MANAGEMENT LLC"
+		},
+		"creditBureauContact": {
+			"name": "CREDIT REPORTING SERVICES, INC",
+			"address": {
+				"city": "FOLSOM",
+				"state": "CA",
+				"postalCode": "95630",
+				"addressLine1": "1024 IRON POINT ROAD"
+			}
+		}
+	},
+	"repositoryIncluded": {
+		"equifax": false,
+		"experian": false,
+		"transunion": true
+	},
+	"responseAlertMessages": []
 }

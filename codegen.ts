@@ -19,27 +19,35 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
  */
 
 const SERVICES = [
-  "credit-service",
-  "underwriting-service",
-  "offer-service",
-  "enrollment-service",
+	"credit-service",
+	"underwriting-service",
+	"offer-service",
+	"enrollment-service",
 ] as const;
 
 const generates = Object.fromEntries(
-  SERVICES.map((name) => [
-    `src/schemas/${name}/__generated__/sdk.ts`,
-    {
-      schema: `src/schemas/${name}/schema.graphql`,
-      documents: `src/schemas/${name}/operations/**/*.graphql`,
-      plugins: ["typescript", "typescript-operations", "typescript-graphql-request"],
-      config: { rawRequest: false, useTypeImports: true, scalars: { JSON: "unknown", Date: "number" } },
-    },
-  ])
+	SERVICES.map((name) => [
+		`src/schemas/${name}/__generated__/sdk.ts`,
+		{
+			schema: `src/schemas/${name}/schema.graphql`,
+			documents: `src/schemas/${name}/operations/**/*.graphql`,
+			plugins: [
+				"typescript",
+				"typescript-operations",
+				"typescript-graphql-request",
+			],
+			config: {
+				rawRequest: false,
+				useTypeImports: true,
+				scalars: { JSON: "unknown", Date: "number" },
+			},
+		},
+	]),
 );
 
 const config: CodegenConfig = {
-  ignoreNoDocuments: true,
-  generates,
+	ignoreNoDocuments: true,
+	generates,
 };
 
 export default config;

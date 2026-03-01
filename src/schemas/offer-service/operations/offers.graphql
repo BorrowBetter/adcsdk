@@ -1,29 +1,29 @@
 mutation Offers($input: OffersInput!) {
-  offers(input: $input) {
-    data {
-      compTemplateId
-      frequency
-      frequencyInterval
-      firstPaymentDate
-      paymentTerm
-      maxPaymentTerm
-      enrolledDebt
-      enrollmentPlanId
-      enrollmentPlanName
-      serviceFee
-      estimatedSettlementFee
-      totals {
-        ...OfferTotalsFields
-      }
-      payments {
-        ...OfferPaymentFields
-      }
-      forthRequestParameters {
-        ...ForthRequestParametersFields
-      }
-    }
-    errors {
-      message
-    }
-  }
+	offers(input: $input) {
+		data {
+			compTemplateId
+			frequency
+			frequencyInterval
+			firstPaymentDate
+			paymentTerm
+			maxPaymentTerm
+			enrolledDebt
+			enrollmentPlanId
+			enrollmentPlanName
+			serviceFee
+			estimatedSettlementFee
+			totals {
+				...OfferTotalsFields
+			}
+			payments {
+				...OfferPaymentFields
+			}
+			forthRequestParameters {
+				...ForthRequestParametersFields
+			}
+		}
+		errors {
+			message
+		}
+	}
 }

@@ -1,5 +1,11 @@
-mutation CheckApplicantEligibilityV2($applicationType: ApplicationTypeInput!, $input: UwResultCheckInputV2!) {
-  checkApplicantEligibilityV2(applicationType: $applicationType, input: $input) {
-    ...EligibilityResponseV2Fields
-  }
+mutation CheckApplicantEligibilityV2(
+	$applicationType: ApplicationTypeInput!
+	$input: UwResultCheckInputV2!
+) {
+	checkApplicantEligibilityV2(
+		applicationType: $applicationType
+		input: $input
+	) {
+		...EligibilityResponseV2Fields
+	}
 }

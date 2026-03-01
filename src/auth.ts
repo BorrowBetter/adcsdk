@@ -38,6 +38,10 @@ interface AzureTokenResponse {
 	token_type: string;
 }
 
+function isAzureTokenResponse(data: unknown): data is AzureTokenResponse {
+	return typeof data === "object" && data !== null && "access_token" in data;
+}
+
 export interface AzureAuthProviderConfig {
 	clientId: string;
 	clientSecret: string;
@@ -84,7 +88,10 @@ export class AzureAuthProvider {
 			);
 		}
 
-		const data = (await response.json()) as AzureTokenResponse;
+		const data = await response.json();
+		if (!isAzureTokenResponse(data)) {
+			throw new Error("Unexpected token response from Azure AD");
+		}
 
 		// Subtract 60s from expiry as a safety buffer
 		const expiresAt = new Date(Date.now() + (data.expires_in - 60) * 1_000);

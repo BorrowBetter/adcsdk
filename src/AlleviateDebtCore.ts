@@ -106,7 +106,7 @@ export class AlleviateDebtCore {
 				const token = await this.authProvider.getToken();
 				const controller = new AbortController();
 				const timer = setTimeout(() => controller.abort(), timeout);
-				return fetch(url as string, {
+				return fetch(url, {
 					...options,
 					headers: {
 						...Object.fromEntries(new Headers(options?.headers)),

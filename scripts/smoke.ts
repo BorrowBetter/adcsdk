@@ -10,11 +10,17 @@ import cloverCreditReport from "./clover_credit_report.json" with {
 };
 
 async function main() {
+	const { AZURE_CLIENT_ID, AZURE_CLIENT_SECRET } = process.env;
+
+	if (!AZURE_CLIENT_ID || !AZURE_CLIENT_SECRET) {
+		throw new Error("AZURE_CLIENT_ID and AZURE_CLIENT_SECRET must be set");
+	}
+
 	const client = new AlleviateDebtCore({
 		environment: "sandbox",
 		auth: {
-			clientId: process.env.AZURE_CLIENT_ID ?? "",
-			clientSecret: process.env.AZURE_CLIENT_SECRET ?? "",
+			clientId: AZURE_CLIENT_ID,
+			clientSecret: AZURE_CLIENT_SECRET,
 		},
 	});
 

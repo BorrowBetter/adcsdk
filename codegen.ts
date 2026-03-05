@@ -20,7 +20,7 @@ import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const SERVICES = [
 	"credit-service",
-	"underwriting-service",
+	"eligibility-review-service",
 	"offer-service",
 	"enrollment-service",
 ] as const;

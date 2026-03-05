@@ -2,7 +2,7 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 	data {
 		id
 		revision
-		applicationUwResult {
+		applicationEligibilityReview {
 			applicantPrequalified
 			applicationType
 			totalDebt
@@ -13,7 +13,7 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 				enrolledDiscoverDebtAccountNumbers
 			}
 		}
-		applicantUwResult {
+		applicantEligibilityReview {
 			id
 			uwOrgId
 			reqOrgId
@@ -54,7 +54,6 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 					eligibilityReqBankruptcy
 					eligibilityReqFederalGovDebt
 					eligibilityReqSecuredDebt
-					belongsToCompanyId
 				}
 				coApplicantContactInfo {
 					employerName
@@ -81,7 +80,6 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 					eligibilityReqBankruptcy
 					eligibilityReqFederalGovDebt
 					eligibilityReqSecuredDebt
-					belongsToCompanyId
 				}
 				agentAssigned
 				plan {

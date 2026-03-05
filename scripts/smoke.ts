@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import {
 	AlleviateDebtCore,
 	CreditService,
-	UnderwritingService,
+	EligibilityReviewService,
 } from "../src/index.js";
 import cloverCreditReport from "./clover_credit_report.json" with {
 	type: "json",
@@ -49,21 +49,21 @@ async function main() {
 	console.log("  debts:", creditData?.debts?.length ?? 0);
 
 	// ---------------------------------------------------------------------------
-	// Underwriting Service — CheckApplicantEligibilityV2
+	// Eligibility Review Service — CheckApplicantEligibilityV2
 	// ---------------------------------------------------------------------------
 	const creditReportId = creditData?.creditReportId;
 	if (!creditReportId) {
-		console.error("  no creditReportId returned, skipping UW step");
+		console.error("  no creditReportId returned, skipping eligibility step");
 		process.exit(1);
 	}
 
-	console.log("→ underwritingService.CheckApplicantEligibilityV2", {
+	console.log("→ eligibilityReviewService.CheckApplicantEligibilityV2", {
 		creditReportId,
 	});
 
-	const uwResult = await client.underwritingService.CheckApplicantEligibilityV2(
-		{
-			applicationType: UnderwritingService.ApplicationTypeInput.Single,
+	const uwResult =
+		await client.eligibilityReviewService.CheckApplicantEligibilityV2({
+			applicationType: EligibilityReviewService.ApplicationTypeInput.Single,
 			input: {
 				primaryReportId: creditReportId,
 				leadId: null,
@@ -153,19 +153,19 @@ async function main() {
 	console.log("  uwResultId:", uwData?.id);
 	console.log(
 		"  applicantPrequalified:",
-		uwData?.applicationUwResult?.applicantPrequalified,
+		uwData?.applicationEligibilityReview?.applicantPrequalified,
 	);
-	console.log("  totalDebt:", uwData?.applicationUwResult?.totalDebt);
+	console.log("  totalDebt:", uwData?.applicationEligibilityReview?.totalDebt);
 	console.log(
 		"  totalEligibleDebt:",
-		uwData?.applicationUwResult?.totalEligibleDebt,
+		uwData?.applicationEligibilityReview?.totalEligibleDebt,
 	);
 
 	// ---------------------------------------------------------------------------
 	// Offer Service — Offers
 	// ---------------------------------------------------------------------------
 	const uwResultId = uwData?.id;
-	let uwRevision = uwData?.applicantUwResult?.revision;
+	let uwRevision = uwData?.applicantEligibilityReview?.revision;
 	if (!uwResultId || !uwRevision) {
 		console.error("  missing uwResultId or revision, skipping offer step");
 		process.exit(1);
@@ -219,16 +219,16 @@ async function main() {
 	});
 
 	// ---------------------------------------------------------------------------
-	// Underwriting Service — UpdateApplicantEligibilityV2
+	// Eligibility Review Service — UpdateApplicantEligibilityV2
 	// ---------------------------------------------------------------------------
-	console.log("→ underwritingService.UpdateApplicantEligibilityV2", {
+	console.log("→ eligibilityReviewService.UpdateApplicantEligibilityV2", {
 		uwResultId,
 		revision: uwRevision,
 	});
 
 	const updateResult =
-		await client.underwritingService.UpdateApplicantEligibilityV2({
-			applicationType: UnderwritingService.ApplicationTypeInput.Single,
+		await client.eligibilityReviewService.UpdateApplicantEligibilityV2({
+			applicationType: EligibilityReviewService.ApplicationTypeInput.Single,
 			updatedUWFields: {
 				id: uwResultId,
 				revision: uwRevision,
@@ -265,25 +265,25 @@ async function main() {
 	}
 
 	const updateData = updateResult.updateApplicantEligibilityV2.data;
-	uwRevision = updateData?.applicantUwResult?.revision ?? uwRevision;
+	uwRevision = updateData?.applicantEligibilityReview?.revision ?? uwRevision;
 	console.log("  uwResultId:", updateData?.id);
 	console.log("  revision:", uwRevision);
 	console.log(
 		"  applicantPrequalified:",
-		updateData?.applicationUwResult?.applicantPrequalified,
+		updateData?.applicationEligibilityReview?.applicantPrequalified,
 	);
 
 	// ---------------------------------------------------------------------------
-	// Underwriting Service — UpdateApplicantEligibilityV2 (contact info)
+	// Eligibility Review Service — UpdateApplicantEligibilityV2 (contact info)
 	// ---------------------------------------------------------------------------
 	console.log(
-		"→ underwritingService.UpdateApplicantEligibilityV2 (contact info)",
+		"→ eligibilityReviewService.UpdateApplicantEligibilityV2 (contact info)",
 		{ uwResultId, revision: uwRevision },
 	);
 
 	const updateContactResult =
-		await client.underwritingService.UpdateApplicantEligibilityV2({
-			applicationType: UnderwritingService.ApplicationTypeInput.Single,
+		await client.eligibilityReviewService.UpdateApplicantEligibilityV2({
+			applicationType: EligibilityReviewService.ApplicationTypeInput.Single,
 			updatedUWFields: {
 				id: uwResultId,
 				revision: uwRevision,
@@ -312,11 +312,12 @@ async function main() {
 
 	const updateContactData =
 		updateContactResult.updateApplicantEligibilityV2.data;
-	uwRevision = updateContactData?.applicantUwResult?.revision ?? uwRevision;
+	uwRevision =
+		updateContactData?.applicantEligibilityReview?.revision ?? uwRevision;
 	console.log("  revision:", uwRevision);
 	console.log(
 		"  applicantPrequalified:",
-		updateContactData?.applicationUwResult?.applicantPrequalified,
+		updateContactData?.applicationEligibilityReview?.applicantPrequalified,
 	);
 
 	// ---------------------------------------------------------------------------

@@ -4,7 +4,7 @@ import { CONFIG } from "./config.js";
 import { getSdk as getCreditServiceSdk } from "./schemas/credit-service/__generated__/sdk.js";
 import { getSdk as getEnrollmentServiceSdk } from "./schemas/enrollment-service/__generated__/sdk.js";
 import { getSdk as getOfferServiceSdk } from "./schemas/offer-service/__generated__/sdk.js";
-import { getSdk as getUnderwritingServiceSdk } from "./schemas/underwriting-service/__generated__/sdk.js";
+import { getSdk as getEligibilityReviewServiceSdk } from "./schemas/eligibility-review-service/__generated__/sdk.js";
 import type { DebtCoreConfig } from "./types.js";
 
 /**
@@ -31,13 +31,13 @@ export class AlleviateDebtCore {
 	private readonly timeout: number;
 
 	private readonly creditServiceClient: GraphQLClient;
-	private readonly underwritingServiceClient: GraphQLClient;
+	private readonly eligibilityReviewServiceClient: GraphQLClient;
 	private readonly offerServiceClient: GraphQLClient;
 	private readonly enrollmentServiceClient: GraphQLClient;
 
 	public readonly creditService: ReturnType<typeof getCreditServiceSdk>;
-	public readonly underwritingService: ReturnType<
-		typeof getUnderwritingServiceSdk
+	public readonly eligibilityReviewService: ReturnType<
+		typeof getEligibilityReviewServiceSdk
 	>;
 	public readonly offerService: ReturnType<typeof getOfferServiceSdk>;
 	public readonly enrollmentService: ReturnType<typeof getEnrollmentServiceSdk>;
@@ -57,8 +57,8 @@ export class AlleviateDebtCore {
 		});
 
 		this.creditServiceClient = this.buildClient(endpoints.creditService);
-		this.underwritingServiceClient = this.buildClient(
-			endpoints.underwritingService,
+		this.eligibilityReviewServiceClient = this.buildClient(
+			endpoints.eligibilityReviewService,
 		);
 		this.offerServiceClient = this.buildClient(endpoints.offerService);
 		this.enrollmentServiceClient = this.buildClient(
@@ -66,8 +66,8 @@ export class AlleviateDebtCore {
 		);
 
 		this.creditService = getCreditServiceSdk(this.creditServiceClient);
-		this.underwritingService = getUnderwritingServiceSdk(
-			this.underwritingServiceClient,
+		this.eligibilityReviewService = getEligibilityReviewServiceSdk(
+			this.eligibilityReviewServiceClient,
 		);
 		this.offerService = getOfferServiceSdk(this.offerServiceClient);
 		this.enrollmentService = getEnrollmentServiceSdk(
@@ -83,8 +83,8 @@ export class AlleviateDebtCore {
 		return this.creditServiceClient;
 	}
 
-	get rawUnderwritingServiceClient(): GraphQLClient {
-		return this.underwritingServiceClient;
+	get rawEligibilityReviewServiceClient(): GraphQLClient {
+		return this.eligibilityReviewServiceClient;
 	}
 
 	get rawOfferServiceClient(): GraphQLClient {

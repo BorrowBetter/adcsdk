@@ -7,8 +7,8 @@ export const CONFIG = {
 		endpoints: {
 			creditService:
 				"https://debt-core-api-sandbox.alleviate.com/credit-service/graphql",
-			underwritingService:
-				"https://debt-core-api-sandbox.alleviate.com/underwriting-service/graphql",
+			eligibilityReviewService:
+				"https://debt-core-api-sandbox.alleviate.com/eligibility-review-service/graphql",
 			offerService:
 				"https://debt-core-api-sandbox.alleviate.com/og-service/graphql",
 			enrollmentService:
@@ -21,8 +21,8 @@ export const CONFIG = {
 		endpoints: {
 			creditService:
 				"https://debt-core-api.alleviate.com/credit-service/graphql",
-			underwritingService:
-				"https://debt-core-api.alleviate.com/underwriting-service/graphql",
+			eligibilityReviewService:
+				"https://debt-core-api.alleviate.com/eligibility-review-service/graphql",
 			offerService: "https://debt-core-api.alleviate.com/og-service/graphql",
 			enrollmentService:
 				"https://debt-core-api.alleviate.com/enrollment-service/graphql",

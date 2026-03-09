@@ -1,6 +1,6 @@
 {
 	"name": "@borrowbetter/adcsdk",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Alleviate DebtCore SDK",
 	"license": "MIT",
 	"main": "./dist/index.js",

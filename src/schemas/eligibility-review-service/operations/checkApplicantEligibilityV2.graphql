@@ -1,10 +1,12 @@
 mutation CheckApplicantEligibilityV2(
 	$applicationType: ApplicationTypeInput!
 	$input: UwResultCheckInputV2!
+	$flowType: FlowType
 ) {
 	checkApplicantEligibilityV2(
 		applicationType: $applicationType
 		input: $input
+		flowType: $flowType
 	) {
 		...EligibilityResponseV2Fields
 	}

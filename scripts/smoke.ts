@@ -64,6 +64,7 @@ async function main() {
 	const uwResult =
 		await client.eligibilityReviewService.CheckApplicantEligibilityV2({
 			applicationType: EligibilityReviewService.ApplicationTypeInput.Single,
+			flowType: EligibilityReviewService.FlowType.Opener,
 			input: {
 				primaryReportId: creditReportId,
 				leadId: null,
@@ -155,6 +156,10 @@ async function main() {
 		"  applicantPrequalified:",
 		uwData?.applicationEligibilityReview?.applicantPrequalified,
 	);
+	console.log(
+		"  applicationPassable:",
+		uwData?.applicationEligibilityReview?.applicationPassable,
+	);
 	console.log("  totalDebt:", uwData?.applicationEligibilityReview?.totalDebt);
 	console.log(
 		"  totalEligibleDebt:",
@@ -229,6 +234,7 @@ async function main() {
 	const updateResult =
 		await client.eligibilityReviewService.UpdateApplicantEligibilityV2({
 			applicationType: EligibilityReviewService.ApplicationTypeInput.Single,
+			flowType: EligibilityReviewService.FlowType.Opener,
 			updatedUWFields: {
 				id: uwResultId,
 				revision: uwRevision,
@@ -272,6 +278,10 @@ async function main() {
 		"  applicantPrequalified:",
 		updateData?.applicationEligibilityReview?.applicantPrequalified,
 	);
+	console.log(
+		"  applicationPassable:",
+		updateData?.applicationEligibilityReview?.applicationPassable,
+	);
 
 	// ---------------------------------------------------------------------------
 	// Eligibility Review Service — UpdateApplicantEligibilityV2 (contact info)
@@ -284,6 +294,7 @@ async function main() {
 	const updateContactResult =
 		await client.eligibilityReviewService.UpdateApplicantEligibilityV2({
 			applicationType: EligibilityReviewService.ApplicationTypeInput.Single,
+			flowType: EligibilityReviewService.FlowType.Opener,
 			updatedUWFields: {
 				id: uwResultId,
 				revision: uwRevision,
@@ -318,6 +329,10 @@ async function main() {
 	console.log(
 		"  applicantPrequalified:",
 		updateContactData?.applicationEligibilityReview?.applicantPrequalified,
+	);
+	console.log(
+		"  applicationPassable:",
+		updateContactData?.applicationEligibilityReview?.applicationPassable,
 	);
 
 	// ---------------------------------------------------------------------------

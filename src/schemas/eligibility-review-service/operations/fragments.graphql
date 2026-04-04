@@ -4,6 +4,7 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 		revision
 		applicationEligibilityReview {
 			applicantPrequalified
+			applicationPassable
 			applicationType
 			totalDebt
 			totalEligibleDebt

@@ -1,8 +1,3 @@
-"""
-Indicates exactly one field must be supplied and this field must not be `null`.
-"""
-directive @oneOf on INPUT_OBJECT
-
 """Direction of ordering."""
 enum OrderDirection {
   """Ascending order (A-Z, 0-9, oldest to newest)"""
@@ -233,6 +228,12 @@ type Mutation {
 
     """Input data for checking applicant eligibility"""
     input: UwResultCheckInputV2!
+
+    """
+    Optional flow type to select which underwriting configuration to use.
+    When omitted, uses the legacy config lookup (flow_type IS NULL) for backward compatibility.
+    """
+    flowType: FlowType
   ): EligibilityResponseV2!
 
   """
@@ -247,6 +248,12 @@ type Mutation {
 
     """Fields to update on the underwriting result"""
     updatedUWFields: UwResultUpdateInputV2!
+
+    """
+    Optional flow type to select which underwriting configuration to use.
+    When omitted, uses the legacy config lookup (flow_type IS NULL) for backward compatibility.
+    """
+    flowType: FlowType
   ): EligibilityResponseV2!
 }
 
@@ -543,8 +550,8 @@ input UwDebtsResultDebtInput {
   """Narrative codes that might include bankcruptcy codes"""
   narrativeCodes: [String]
 
-  """Bankruptcy Record Date"""
-  bankruptcyDateFiled: String
+  """@deprecated Bankruptcy date is tracked on PublicRecord instead."""
+  bankruptcyDateFiled: String @deprecated(reason: "Bankruptcy date is tracked on PublicRecord instead.")
 
   """
   True/False flag to identify if proof of liability has been provided for the debt
@@ -1591,8 +1598,8 @@ input UwResultDebtUpdateInput {
   """
   narrativeCodes: [String]
 
-  """Bankruptcy Record Date in YYYY-MM-DD format"""
-  bankruptcyDateFiled: String
+  """@deprecated Bankruptcy date is tracked on PublicRecord instead."""
+  bankruptcyDateFiled: String @deprecated(reason: "Bankruptcy date is tracked on PublicRecord instead.")
 
   """
   Remarks
@@ -2320,10 +2327,8 @@ type UwResultDebt {
   """Narrative codes that might include bankcruptcy codes"""
   narrativeCodes: [String]
 
-  """
-  Bankruptcy Record Date. This come from the credit report and does not need to be updated.
-  """
-  bankruptcyDateFiled: String
+  """@deprecated Bankruptcy date is tracked on PublicRecord instead."""
+  bankruptcyDateFiled: String @deprecated(reason: "Bankruptcy date is tracked on PublicRecord instead.")
 
   """Current debt balance"""
   currentBalance: Float
@@ -2465,8 +2470,8 @@ type UwResultDebtHistory {
   """Narrative codes at this revision"""
   narrativeCodes: [String]
 
-  """Bankruptcy date filed at this revision"""
-  bankruptcyDateFiled: String
+  """@deprecated Bankruptcy date is tracked on PublicRecord instead."""
+  bankruptcyDateFiled: String @deprecated(reason: "Bankruptcy date is tracked on PublicRecord instead.")
 
   """Non-applicant waiver signed date at this revision"""
   nawSignedDate: Date
@@ -2506,6 +2511,19 @@ type UwResultHistory {
 
   """The revision number this history entry was created from"""
   fromRevision: Int
+}
+
+"""
+Flow type for underwriting configuration. Controls which set of filters to apply.
+"""
+enum FlowType {
+  """
+  Opener flow — typically uses a relaxed set of checks for initial qualification
+  """
+  OPENER
+
+  """Full review flow — uses the complete set of checks"""
+  FULL_REVIEW
 }
 
 """V2: Enrollment payment plan configuration."""
@@ -3196,6 +3214,12 @@ type ApplicationUwResultV2 {
   """
   applicantPrequalified: Boolean!
 
+  """
+  True/False flag to identify if this application has no hard failures and can be passed down.
+  Determined by applicationPassableConfig in uw_settings. Null when no config is defined.
+  """
+  applicationPassable: Boolean
+
   """Type of application can be SINGLE or JOINT"""
   applicationType: String
 
@@ -3432,10 +3456,8 @@ type UwResultDebtV2 {
   """Narrative codes that might include bankruptcy codes"""
   narrativeCodes: [String]
 
-  """
-  Bankruptcy Record Date. This come from the credit report and does not need to be updated.
-  """
-  bankruptcyDateFiled: String
+  """@deprecated Bankruptcy date is tracked on PublicRecord instead."""
+  bankruptcyDateFiled: String @deprecated(reason: "Bankruptcy date is tracked on PublicRecord instead.")
 
   """Current debt balance"""
   currentBalance: Float

@@ -1,0 +1,13 @@
+mutation CreateMinimalLiveTransfer($input: CreateMinimalLiveTransferInput!) {
+	createMinimalLiveTransfer(input: $input) {
+		data {
+			sigmaLeadId
+			dialerStatus
+			dialerProvider
+			marketingLeadId
+		}
+		errors {
+			message
+		}
+	}
+}

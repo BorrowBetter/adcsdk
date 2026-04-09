@@ -1,1861 +1,1248 @@
-"""
-Indicates exactly one field must be supplied and this field must not be `null`.
-"""
-directive @oneOf on INPUT_OBJECT
-
-"""
-Direction of ordering.
-"""
+"""Direction of ordering."""
 enum OrderDirection {
-	"""
-	Ascending order (A-Z, 0-9, oldest first)
-	"""
-	ASC
+  """Ascending order (A-Z, 0-9, oldest first)"""
+  ASC
 
-	"""
-	Descending order (Z-A, 9-0, newest first)
-	"""
-	DESC
+  """Descending order (Z-A, 9-0, newest first)"""
+  DESC
 }
 
-"""
-Page information for navigating collections.
-"""
+"""Page information for navigating collections."""
 type PageInfo {
-	"""
-	Whether there are more results after the current page
-	"""
-	hasNextPage: Boolean!
+  """Whether there are more results after the current page"""
+  hasNextPage: Boolean!
 
-	"""
-	Cursor pointing to the first item in the current page
-	"""
-	startCursor: String
+  """Cursor pointing to the first item in the current page"""
+  startCursor: String
 
-	"""
-	Cursor pointing to the last item in the current page
-	"""
-	endCursor: String
+  """Cursor pointing to the last item in the current page"""
+  endCursor: String
 }
 
-"""
-Input for Getting Credit Report by creditReportId
-"""
+"""Input for Getting Credit Report by creditReportId"""
 input GetCreditReportInput {
-	"""
-	Credit report ID
-	"""
-	creditReportId: String!
+  """Credit report ID"""
+  creditReportId: String!
 }
 
 type Query {
-	"""
-	Get a previously pulled credit report
-	"""
-	creditReport(
-		"""
-		Input containing the credit report ID to retrieve
-		"""
-		input: GetCreditReportInput!
-	): GetCreditReportResponse!
+  """Get a previously pulled credit report"""
+  creditReport(
+    """Input containing the credit report ID to retrieve"""
+    input: GetCreditReportInput!
+  ): GetCreditReportResponse!
 
-	"""
-	Get the Base64-encoded PDF of a credit report using the creditReportId. This is the report provided by the original credit report source.
-	"""
-	downloadCreditReport(
-		"""
-		Input containing the credit report ID to download
-		"""
-		input: DownloadCreditReportInput!
-	): DownloadCreditReportResponse
+  """
+  Get the Base64-encoded PDF of a credit report using the creditReportId. This is the report provided by the original credit report source.
+  """
+  downloadCreditReport(
+    """Input containing the credit report ID to download"""
+    input: DownloadCreditReportInput!
+  ): DownloadCreditReportResponse
 
-	"""
-	Fetch Credit Reports with various filtering and pagination options.
-	"""
-	creditReports(
-		"""
-		Filter conditions for credit reports
-		"""
-		where: CreditReportWhereInput
+  """Fetch Credit Reports with various filtering and pagination options."""
+  creditReports(
+    """Filter conditions for credit reports"""
+    where: CreditReportWhereInput
 
-		"""
-		Ordering options for the results
-		"""
-		order: [CreditReportOrder!]
+    """Ordering options for the results"""
+    order: [CreditReportOrder!]
 
-		"""
-		Number of records to skip (offset-based pagination)
-		"""
-		skip: Int
+    """Number of records to skip (offset-based pagination)"""
+    skip: Int
 
-		"""
-		Search term for filtering results
-		"""
-		search: String
+    """Search term for filtering results"""
+    search: String
 
-		"""
-		Cursor for forward pagination (fetch records after this cursor)
-		"""
-		after: String
+    """Cursor for forward pagination (fetch records after this cursor)"""
+    after: String
 
-		"""
-		Number of records to fetch (forward pagination)
-		"""
-		first: Int
+    """Number of records to fetch (forward pagination)"""
+    first: Int
 
-		"""
-		Cursor for backward pagination (fetch records before this cursor)
-		"""
-		before: String
+    """Cursor for backward pagination (fetch records before this cursor)"""
+    before: String
 
-		"""
-		Number of records to fetch (backward pagination)
-		"""
-		last: Int
-	): CreditReportsResponse
+    """Number of records to fetch (backward pagination)"""
+    last: Int
+  ): CreditReportsResponse
 
-	"""
-	Fetch Creditors.
-	"""
-	creditors(
-		"""
-		Filter conditions for creditors
-		"""
-		where: CreditorWhereInput
+  """Fetch Creditors."""
+  creditors(
+    """Filter conditions for creditors"""
+    where: CreditorWhereInput
 
-		"""
-		Number of records to skip (offset-based pagination)
-		"""
-		skip: Int
+    """Number of records to skip (offset-based pagination)"""
+    skip: Int
 
-		"""
-		Search term for filtering creditors by name
-		"""
-		search: String
+    """Search term for filtering creditors by name"""
+    search: String
 
-		"""
-		Cursor for forward pagination (fetch records after this cursor)
-		"""
-		after: String
+    """Cursor for forward pagination (fetch records after this cursor)"""
+    after: String
 
-		"""
-		Number of records to fetch (forward pagination)
-		"""
-		first: Int
+    """Number of records to fetch (forward pagination)"""
+    first: Int
 
-		"""
-		Cursor for backward pagination (fetch records before this cursor)
-		"""
-		before: String
+    """Cursor for backward pagination (fetch records before this cursor)"""
+    before: String
 
-		"""
-		Number of records to fetch (backward pagination)
-		"""
-		last: Int
-	): CreditorResponse
+    """Number of records to fetch (backward pagination)"""
+    last: Int
+  ): CreditorResponse
 
-	"""
-	Lookup the user verification / consent for a contact. Can be used to determine if a customer has already provided consent to pull the credit report from a specific credit report vendor
-	"""
-	userVerification(
-		"""
-		Requesting organization contact ID to lookup verification status
-		"""
-		reqOrgContactId: String!
-	): UserVerificationResponse
+  """
+  Lookup the user verification / consent for a contact. Can be used to determine if a customer has already provided consent to pull the credit report from a specific credit report vendor
+  """
+  userVerification(
+    """Requesting organization contact ID to lookup verification status"""
+    reqOrgContactId: String!
+  ): UserVerificationResponse
 
-	"""
-	Spinwheel user verification/consent KBA questions for a customer (step 1 of 2)
-	"""
-	kbaQuestions(
-		"""
-		Input containing customer identity and address information for KBA verification
-		"""
-		input: KbaQuestionsInput!
-	): KbaQuestionsResponse!
+  """
+  Spinwheel user verification/consent KBA questions for a customer (step 1 of 2)
+  """
+  kbaQuestions(
+    """
+    Input containing customer identity and address information for KBA verification
+    """
+    input: KbaQuestionsInput!
+  ): KbaQuestionsResponse!
 }
 
 type Mutation {
-	"""
-	Associate a Sigma lead ID with an existing credit report
-	"""
-	addLeadIdToCreditReport(
-		"""
-		Input containing the credit report ID and lead ID to associate
-		"""
-		input: AddLeadIdToCreditReportInput!
-	): GetCreditReportResponse!
+  """Associate a Sigma lead ID with an existing credit report"""
+  addLeadIdToCreditReport(
+    """Input containing the credit report ID and lead ID to associate"""
+    input: AddLeadIdToCreditReportInput!
+  ): GetCreditReportResponse!
 
-	"""
-	Called by underwriting to create a joint credit report. Reports must be from same vendor.
-	"""
-	jointCreditReport(
-		"""
-		Input containing the primary and secondary credit report IDs to combine
-		"""
-		input: JointCreditReportInput!
-	): JointCreditReportResponse!
+  """
+  Called by underwriting to create a joint credit report. Reports must be from same vendor.
+  """
+  jointCreditReport(
+    """
+    Input containing the primary and secondary credit report IDs to combine
+    """
+    input: JointCreditReportInput!
+  ): JointCreditReportResponse!
 
-	"""
-	Pull a credit report from various credit bureaus. The credit report will be in a normalized common format.
+  """
+  Pull a credit report from various credit bureaus. The credit report will be in a normalized common format.
+  
+  Available sources:
+  - SPINWHEEL: Requires reqOrgContactId and completed user verification
+  - CRS_TRANSUNION: Requires firstName, lastName, addressLine1, city, state, zip (ssn, dob optional)
+  - CRS_EQUIFAX: Requires firstName, lastName, ssn, city, state, addressLine1 (dob, zip optional)
+  - ARRAY_EQUIFAX: Requires firstName, lastName, ssn, dob, addressLine1, city, state, zip
+  - ARRAY_EQUIFAX_KBA: Requires userVerificationId from KBA verification
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU: Requires firstName, lastName, ssn, addressLine1, city, state, zip
+  """
+  pullCreditReport(
+    """Input containing the credit report source and applicant details"""
+    input: PullCreditReportInput!
+  ): PullCreditReportResponse!
 
-	Available sources:
-	- SPINWHEEL: Requires reqOrgContactId and completed user verification
-	- CRS_TRANSUNION: Requires firstName, lastName, addressLine1, city, state, zip (ssn, dob optional)
-	- CRS_EQUIFAX: Requires firstName, lastName, ssn, city, state, addressLine1 (dob, zip optional)
-	- ARRAY_EQUIFAX: Requires firstName, lastName, ssn, dob, addressLine1, city, state, zip
-	- ARRAY_EQUIFAX_KBA: Requires userVerificationId from KBA verification
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU: Requires firstName, lastName, ssn, addressLine1, city, state, zip
-	"""
-	pullCreditReport(
-		"""
-		Input containing the credit report source and applicant details
-		"""
-		input: PullCreditReportInput!
-	): PullCreditReportResponse!
+  """
+  Input: Intake a raw credit report data from supported vendors (CRS, Spinwheel)
+  Output: Normalized credit report and creditReportId required for underwriting.
+  """
+  normalizeRawReport(
+    """
+    Input containing the raw credit report data and metadata for normalization
+    """
+    input: NormalizeRawReportInput!
+  ): NormalizeRawReportResponse!
 
-	"""
-	Input: Intake a raw credit report data from supported vendors (CRS, Spinwheel)
-	Output: Normalized credit report and creditReportId required for underwriting.
-	"""
-	normalizeRawReport(
-		"""
-		Input containing the raw credit report data and metadata for normalization
-		"""
-		input: NormalizeRawReportInput!
-	): NormalizeRawReportResponse!
+  """
+  Create a user verification object, used in consumer-facing workflow w.r.t Array-Equifax
+  """
+  createUserVerification(
+    """Input containing customer details for verification setup"""
+    input: CreateUserVerificationInput!
+  ): CreateUserVerificationResponse!
 
-	"""
-	Create a user verification object, used in consumer-facing workflow w.r.t Array-Equifax
-	"""
-	createUserVerification(
-		"""
-		Input containing customer details for verification setup
-		"""
-		input: CreateUserVerificationInput!
-	): CreateUserVerificationResponse!
+  """
+  Send SMS verification code to customer for Spinwheel user verification/consent (step 1 of 2). Customer consent is required to pull Spinwheel credit report.
+  """
+  sendSMSVerificationCode(
+    """
+    Input containing phone number and customer details for SMS verification
+    """
+    input: SMSVerificationInput!
+  ): SMSVerificationResponse!
 
-	"""
-	Send SMS verification code to customer for Spinwheel user verification/consent (step 1 of 2). Customer consent is required to pull Spinwheel credit report.
-	"""
-	sendSMSVerificationCode(
-		"""
-		Input containing phone number and customer details for SMS verification
-		"""
-		input: SMSVerificationInput!
-	): SMSVerificationResponse!
+  """
+  Validate Spinwheel verification code sent to customer (step 2 of 2). This will give the requesting organzation consent to pull the Spinwheel credit report.
+  """
+  verifySMSCode(
+    """Input containing the verification code to validate"""
+    input: VerifySMSCodeInput!
+  ): VerifySMSCodeResponse!
 
-	"""
-	Validate Spinwheel verification code sent to customer (step 2 of 2). This will give the requesting organzation consent to pull the Spinwheel credit report.
-	"""
-	verifySMSCode(
-		"""
-		Input containing the verification code to validate
-		"""
-		input: VerifySMSCodeInput!
-	): VerifySMSCodeResponse!
+  """
+  Create a creditor using the creditor name. Return the creditor ID. If the creditor already exists then the existing creditor ID will be returned.
+  """
+  createCreditor(
+    """Input containing the creditor name to create or lookup"""
+    input: CreateCreditorInput!
+  ): CreateCreditorResponse!
 
-	"""
-	Create a creditor using the creditor name. Return the creditor ID. If the creditor already exists then the existing creditor ID will be returned.
-	"""
-	createCreditor(
-		"""
-		Input containing the creditor name to create or lookup
-		"""
-		input: CreateCreditorInput!
-	): CreateCreditorResponse!
-
-	"""
-	Spinwheel user verification/consent submit KBA answers (step 2 of 2)
-	"""
-	sendKbaAnswers(
-		"""
-		Input containing the KBA answers for verification
-		"""
-		input: SendKbaAnswersInput!
-	): SendKbaAnswersResponse!
+  """Spinwheel user verification/consent submit KBA answers (step 2 of 2)"""
+  sendKbaAnswers(
+    """Input containing the KBA answers for verification"""
+    input: SendKbaAnswersInput!
+  ): SendKbaAnswersResponse!
 }
 
 input AddLeadIdToCreditReportInput {
-	"""
-	Internal credit report ID
-	"""
-	creditReportId: String!
+  """Internal credit report ID"""
+  creditReportId: String!
 
-	"""
-	Sigma lead ID
-	"""
-	leadId: String!
+  """Sigma lead ID"""
+  leadId: String!
 }
 
-"""
-Input for Downloading the Credit Report Base-64 encoded PDF
-"""
+"""Input for Downloading the Credit Report Base-64 encoded PDF"""
 input DownloadCreditReportInput {
-	"""
-	Internal credit report ID
-	"""
-	creditReportId: String!
+  """Internal credit report ID"""
+  creditReportId: String!
 }
 
-"""
-DownloadCreditReportResponse Response
-"""
+"""DownloadCreditReportResponse Response"""
 type DownloadCreditReportResponse {
-	"""
-	Base64-encoded PDF
-	"""
-	data: String
+  """Base64-encoded PDF"""
+  data: String
 
-	"""
-	Error(s) message list
-	"""
-	errors: [DownloadCreditReportResponseError]
+  """Error(s) message list"""
+  errors: [DownloadCreditReportResponseError]
 }
 
-"""
-Download document Response Error
-"""
+"""Download document Response Error"""
 type DownloadCreditReportResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-File metadata
-"""
+"""File metadata"""
 type FileMetadata {
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String
+  """Requesting organization contact ID"""
+  reqOrgContactId: String
 
-	"""
-	Credit report user ID
-	"""
-	creditReportUserId: String
+  """Credit report user ID"""
+  creditReportUserId: String
 
-	"""
-	Credit Report Vendor source e.g. SPINWHEEL, CRS Equifax, or CRS TransUnion
-	"""
-	source: String
+  """
+  Credit Report Vendor source e.g. SPINWHEEL, CRS Equifax, or CRS TransUnion
+  """
+  source: String
 
-	"""
-	ISO 8601 format date string
-	"""
-	uploadDate: String
+  """ISO 8601 format date string"""
+  uploadDate: String
 
-	"""
-	Document name
-	"""
-	fileName: String
+  """Document name"""
+  fileName: String
 
-	"""
-	File type
-	"""
-	contentType: String
+  """File type"""
+  contentType: String
 
-	"""
-	Size in bytes
-	"""
-	fileSize: String
+  """Size in bytes"""
+  fileSize: String
 
-	"""
-	Document type
-	"""
-	type: String
+  """Document type"""
+  type: String
 }
 
-"""
-Get Credit Report Response
-"""
+"""Get Credit Report Response"""
 type GetCreditReportResponse {
-	"""
-	Single CreditReport
-	"""
-	data: CreditReportNode
+  """Single CreditReport"""
+  data: CreditReportNode
 
-	"""
-	List of error messages
-	"""
-	errors: [GetCreditReportResponseError]
+  """List of error messages"""
+  errors: [GetCreditReportResponseError]
 }
 
-"""
-Get Credit Report Response Error
-"""
+"""Get Credit Report Response Error"""
 type GetCreditReportResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Credit Report Debt
-"""
+"""Credit Report Debt"""
 type CreditReportDebt {
-	"""
-	Debt ID
-	"""
-	id: ID!
+  """Debt ID"""
+  id: ID!
 
-	"""
-	creditor ID
-	"""
-	creditorId: String
+  """creditor ID"""
+  creditorId: String
 
-	"""
-	This is replaced by accountNumber
-	@deprecated Use accountNumber instead
-	"""
-	externalDebtId: String @deprecated(reason: "Use accountNumber instead")
+  """
+  This is replaced by accountNumber
+  @deprecated Use accountNumber instead
+  """
+  externalDebtId: String @deprecated(reason: "Use accountNumber instead")
 
-	"""
-	Original credit report account number
-	"""
-	accountNumber: String
+  """Original credit report account number"""
+  accountNumber: String
 
-	"""
-	Applicants state of residence.
-	"""
-	applicantState: String
+  """Applicants state of residence."""
+  applicantState: String
 
-	"""
-	ECOA code
-	"""
-	ecoaCode: String
+  """ECOA code"""
+  ecoaCode: String
 
-	"""
-	Creditor name from credit report
-	"""
-	creditorName: String
+  """Creditor name from credit report"""
+  creditorName: String
 
-	"""
-	Parent creditor name
-	"""
-	parentCreditorName: String
+  """Parent creditor name"""
+  parentCreditorName: String
 
-	"""
-	Parent creditor ID
-	"""
-	parentCreditorId: String
+  """Parent creditor ID"""
+  parentCreditorId: String
 
-	"""
-	Original creditor name from credit report
-	"""
-	originalCreditorName: String
+  """Original creditor name from credit report"""
+  originalCreditorName: String
 
-	"""
-	Creditor type
-	"""
-	creditorType: String
+  """Creditor type"""
+  creditorType: String
 
-	"""
-	Account type
-	"""
-	accountType: String
+  """Account type"""
+  accountType: String
 
-	"""
-	Portfolio type
-	"""
-	portfolioType: String
+  """Portfolio type"""
+  portfolioType: String
 
-	"""
-	Debt type
-	"""
-	debtType: String
+  """Debt type"""
+  debtType: String
 
-	"""
-	Current debt balance
-	"""
-	currentBalance: Float
+  """Current debt balance"""
+  currentBalance: Float
 
-	"""
-	Date the debt was opened
-	"""
-	openDate: String
+  """Date the debt was opened"""
+  openDate: String
 
-	"""
-	Date of last payment
-	"""
-	lastPaymentDate: String
+  """Date of last payment"""
+  lastPaymentDate: String
 
-	"""
-	True if the most recent payment has been made as of the date this credit report was pulled
-	"""
-	hasLastPayment: Boolean
+  """
+  True if the most recent payment has been made as of the date this credit report was pulled
+  """
+  hasLastPayment: Boolean
 
-	"""
-	Narrative codes that might include bankruptcy codes
-	"""
-	narrativeCodes: [String]
+  """Narrative codes that might include bankruptcy codes"""
+  narrativeCodes: [String]
 
-	"""
-	Bankruptcy date filed
-	"""
-	bankruptcyDateFiled: String
+  """@deprecated Bankruptcy date is tracked on PublicRecord instead."""
+  bankruptcyDateFiled: String @deprecated(reason: "Bankruptcy date is tracked on PublicRecord instead.")
 
-	"""
-	Applicant Id
-	"""
-	applicantId: String
+  """Applicant Id"""
+  applicantId: String
 
-	"""
-	CoApplicant Id
-	"""
-	coApplicantId: String
+  """CoApplicant Id"""
+  coApplicantId: String
 
-	"""
-	Original debt balance
-	"""
-	originalBalance: Float
+  """Original debt balance"""
+  originalBalance: Float
 
-	"""
-	Flag to show if the debt is in collection
-	"""
-	isCollection: Boolean
+  """Flag to show if the debt is in collection"""
+  isCollection: Boolean
 
-	"""
-	account rating /delinquency value
-	"""
-	delinquency: String
+  """account rating /delinquency value"""
+  delinquency: String
 
-	"""
-	Monthly payment
-	"""
-	monthlyPayment: Float
+  """Monthly payment"""
+  monthlyPayment: Float
 
-	"""
-	Forth Debt Type ID
-	"""
-	forthDebtTypeId: String
+  """Forth Debt Type ID"""
+  forthDebtTypeId: String
 
-	"""
-	Remarks
-	"""
-	remarks: [String]
+  """Remarks"""
+  remarks: [String]
 }
 
 scalar Date
 
-"""
-CreditReportsResponse
-"""
+"""CreditReportsResponse"""
 type CreditReportsResponse {
-	"""
-	Credit Report Connection.
-	"""
-	data: CreditReportConnection
+  """Credit Report Connection."""
+  data: CreditReportConnection
 
-	"""
-	Error(s) mesage list
-	"""
-	errors: [CreditReportsResponseError]
+  """Error(s) mesage list"""
+  errors: [CreditReportsResponseError]
 }
 
-"""
-Pagination connection for Credit Reports.
-"""
+"""Pagination connection for Credit Reports."""
 type CreditReportConnection {
-	"""
-	Pagination information
-	"""
-	pageInfo: PageInfo!
+  """Pagination information"""
+  pageInfo: PageInfo!
 
-	"""
-	List of credit report edges
-	"""
-	edges: [CreditReportEdge]!
+  """List of credit report edges"""
+  edges: [CreditReportEdge]!
 
-	"""
-	Total number of credit reports matching the query
-	"""
-	totalCount: Int!
+  """Total number of credit reports matching the query"""
+  totalCount: Int!
 }
 
-"""
-Edge type for Credit Reports.
-"""
+"""Edge type for Credit Reports."""
 type CreditReportEdge {
-	"""
-	The credit report data
-	"""
-	node: CreditReportNode
+  """The credit report data"""
+  node: CreditReportNode
 
-	"""
-	Cursor for pagination
-	"""
-	cursor: String!
+  """Cursor for pagination"""
+  cursor: String!
 }
 
-"""
-CreditReportsResponse Error
-"""
+"""CreditReportsResponse Error"""
 type CreditReportsResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Where conditions for filtering Credit Reports.
-"""
+"""Where conditions for filtering Credit Reports."""
 input CreditReportWhereInput {
-	"""
-	Filter by requesting organization contact ID
-	"""
-	reqOrgContactId: String
+  """Filter by requesting organization contact ID"""
+  reqOrgContactId: String
 
-	"""
-	Filter by credit report source (e.g., CRS_TRANSUNION, CRS_EQUIFAX, SPINWHEEL)
-	"""
-	source: String
+  """
+  Filter by credit report source (e.g., CRS_TRANSUNION, CRS_EQUIFAX, SPINWHEEL)
+  """
+  source: String
 
-	"""
-	List of credit report IDs to filter by. Maximum of 20 IDs allowed.
-	"""
-	creditReportIds: [String!]
+  """List of credit report IDs to filter by. Maximum of 20 IDs allowed."""
+  creditReportIds: [String!]
 }
 
-"""
-Ordering options for Credit Reports.
-"""
+"""Ordering options for Credit Reports."""
 input CreditReportOrder {
-	"""
-	Field to order by
-	"""
-	field: CreditReportOrderField!
+  """Field to order by"""
+  field: CreditReportOrderField!
 
-	"""
-	Order direction (ASC or DESC)
-	"""
-	direction: OrderDirection!
+  """Order direction (ASC or DESC)"""
+  direction: OrderDirection!
 }
 
-"""
-Fields that can be ordered in Credit Reports.
-"""
+"""Fields that can be ordered in Credit Reports."""
 enum CreditReportOrderField {
-	"""
-	Order by creation date
-	"""
-	createdAt
+  """Order by creation date"""
+  createdAt
 
-	"""
-	Order by requesting organization contact ID
-	"""
-	reqOrgContactId
+  """Order by requesting organization contact ID"""
+  reqOrgContactId
 }
 
-"""
-Credit Report Node
-"""
+"""Credit Report Node"""
 type CreditReportNode {
-	"""
-	Credit report ID
-	"""
-	id: ID!
+  """Credit report ID"""
+  id: ID!
 
-	"""
-	Requesting organization ID
-	"""
-	reqOrgId: String
+  """Requesting organization ID"""
+  reqOrgId: String
 
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String
+  """Requesting organization contact ID"""
+  reqOrgContactId: String
 
-	"""
-	Sigma lead ID
-	"""
-	leadId: String
+  """Sigma lead ID"""
+  leadId: String
 
-	"""
-	State where customer resides
-	"""
-	applicantResidenceState: String
+  """State where customer resides"""
+  applicantResidenceState: String
 
-	"""
-	Public records
-	"""
-	publicRecords: [PublicRecord]
+  """Public records"""
+  publicRecords: [PublicRecord]
 
-	"""
-	Credit report user ID
-	"""
-	creditReportUserId: String
+  """Credit report user ID"""
+  creditReportUserId: String
 
-	"""
-	Debts as JSON data
-	"""
-	debts: [CreditReportDebt]
+  """Debts as JSON data"""
+  debts: [CreditReportDebt]
 
-	"""
-	Source of the credit report, e.g., Spinwheel, CRS Equifax, or CRS TransUnion
-	"""
-	source: String
+  """
+  Source of the credit report, e.g., Spinwheel, CRS Equifax, or CRS TransUnion
+  """
+  source: String
 
-	"""
-	File metadata.
-	"""
-	fileMetadata: FileMetadata
+  """File metadata."""
+  fileMetadata: FileMetadata
 
-	"""
-	Current status of the credit report: PENDING, IN_PROGRESS, COMPLETED, FAILED
-	"""
-	reportStatus: String
+  """
+  Current status of the credit report: PENDING, IN_PROGRESS, COMPLETED, FAILED
+  """
+  reportStatus: String
 
-	"""
-	IN_PROGRESS, COMPLETED
-	"""
-	fileStatus: String
+  """IN_PROGRESS, COMPLETED"""
+  fileStatus: String
 
-	"""
-	Date the credit report was created
-	"""
-	createdAt: Date
+  """Date the credit report was created"""
+  createdAt: Date
 
-	"""
-	Applicant's first name
-	"""
-	applicantFirstName: String
+  """Applicant's first name"""
+  applicantFirstName: String
 
-	"""
-	Applicant's middle name
-	"""
-	applicantMiddleName: String
+  """Applicant's middle name"""
+  applicantMiddleName: String
 
-	"""
-	Applicant's last name
-	"""
-	applicantLastName: String
+  """Applicant's last name"""
+  applicantLastName: String
 
-	"""
-	Applicant's ssn name
-	"""
-	applicantSsn: String
+  """Applicant's ssn name"""
+  applicantSsn: String
 
-	"""
-	Applicant's dob
-	"""
-	applicantDob: String
+  """Applicant's dob"""
+  applicantDob: String
 
-	"""
-	Applicant's alternative names
-	"""
-	applicantAlternativeNames: [AlternativeName]
+  """Applicant's alternative names"""
+  applicantAlternativeNames: [AlternativeName]
 
-	"""
-	Credit scores from various credit evaluation models
-	"""
-	scores: [Score]
+  """Credit scores from various credit evaluation models"""
+  scores: [Score]
 
-	"""
-	Date the credit report was requested
-	"""
-	reportRequestedAt: Date
+  """Date the credit report was requested"""
+  reportRequestedAt: Date
 }
 
-"""
-Alternative name associated with the applicant
-"""
+"""Alternative name associated with the applicant"""
 type AlternativeName {
-	"""
-	Alternative first name
-	"""
-	firstName: String
+  """Alternative first name"""
+  firstName: String
 
-	"""
-	Alternative last name
-	"""
-	lastName: String
+  """Alternative last name"""
+  lastName: String
 
-	"""
-	Full alternative name (unparsed)
-	"""
-	unparsedName: String
+  """Full alternative name (unparsed)"""
+  unparsedName: String
 }
 
-"""
-CreditorResponse
-"""
+"""CreditorResponse"""
 type CreditorResponse {
-	"""
-	Creditor Connection.
-	"""
-	data: CreditorConnection
+  """Creditor Connection."""
+  data: CreditorConnection
 
-	"""
-	Error(s) mesage list
-	"""
-	errors: [CreditorResponseError]
+  """Error(s) mesage list"""
+  errors: [CreditorResponseError]
 }
 
-"""
-Pagination connection for Creditors.
-"""
+"""Pagination connection for Creditors."""
 type CreditorConnection {
-	"""
-	Pagination information
-	"""
-	pageInfo: PageInfo!
+  """Pagination information"""
+  pageInfo: PageInfo!
 
-	"""
-	List of creditor edges
-	"""
-	edges: [CreditorEdge]!
+  """List of creditor edges"""
+  edges: [CreditorEdge]!
 
-	"""
-	Total number of creditors matching the query
-	"""
-	totalCount: Int!
+  """Total number of creditors matching the query"""
+  totalCount: Int!
 }
 
-"""
-Edge type for Creditor.
-"""
+"""Edge type for Creditor."""
 type CreditorEdge {
-	"""
-	The creditor data
-	"""
-	node: CreditorNode
+  """The creditor data"""
+  node: CreditorNode
 
-	"""
-	Cursor for pagination
-	"""
-	cursor: String!
+  """Cursor for pagination"""
+  cursor: String!
 }
 
-"""
-CreditorResponse Error
-"""
+"""CreditorResponse Error"""
 type CreditorResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Where conditions for filtering Creditorslist.
-"""
+"""Where conditions for filtering Creditorslist."""
 input CreditorWhereInput {
-	"""
-	ISO time format with optional time offset.
-	Valid examples:-  2025-01-01T00:00:00.233Z | 2025-01-01T00:00:00.233 | 2025-01-01T00:00:00.233-0000 | 2025-01-01T00:00:00.233-00:00 | 2025-01-01T00:00:00.233+07:00
-	"""
-	updatedAfter: String
+  """
+  ISO time format with optional time offset.
+  Valid examples:-  2025-01-01T00:00:00.233Z | 2025-01-01T00:00:00.233 | 2025-01-01T00:00:00.233-0000 | 2025-01-01T00:00:00.233-00:00 | 2025-01-01T00:00:00.233+07:00
+  """
+  updatedAfter: String
 }
 
-"""
-Creditor Node
-"""
+"""Creditor Node"""
 type CreditorNode {
-	"""
-	Creditor ID
-	"""
-	creditorId: ID!
+  """Creditor ID"""
+  creditorId: ID!
 
-	"""
-	Creditor Name
-	"""
-	creditorName: String!
+  """Creditor Name"""
+  creditorName: String!
 
-	"""
-	Creditor created at date ISO format
-	"""
-	createdAt: String
+  """Creditor created at date ISO format"""
+  createdAt: String
 }
 
-"""
-Input for Joint Credit Report
-"""
+"""Input for Joint Credit Report"""
 input JointCreditReportInput {
-	"""
-	Credit report ID for the primary applicant
-	"""
-	primaryReportId: String!
+  """Credit report ID for the primary applicant"""
+  primaryReportId: String!
 
-	"""
-	Credit report ID for the co-applicant/secondary applicant
-	"""
-	secondaryReportId: String!
+  """Credit report ID for the co-applicant/secondary applicant"""
+  secondaryReportId: String!
 }
 
-"""
-Joint Credit Report Response
-"""
+"""Joint Credit Report Response"""
 type JointCreditReportResponse {
-	data: JointCreditReportResponseResult
-	errors: [JointCreditReportResponseError]
+  data: JointCreditReportResponseResult
+  errors: [JointCreditReportResponseError]
 }
 
 type JointCreditReportResponseResult {
-	"""
-	Credit report ID (for the jointly created report)
-	"""
-	creditReportId: String!
+  """Credit report ID (for the jointly created report)"""
+  creditReportId: String!
 
-	"""
-	Primary applicant normalized credit report
-	"""
-	normalizedPrimaryApplicantReport: CreditReportNode
+  """Primary applicant normalized credit report"""
+  normalizedPrimaryApplicantReport: CreditReportNode
 
-	"""
-	Co-applicant normalized credit report
-	"""
-	normalizedCoApplicantReport: CreditReportNode
+  """Co-applicant normalized credit report"""
+  normalizedCoApplicantReport: CreditReportNode
 
-	"""
-	Joint debts from both applicants
-	"""
-	jointDebts: [CreditReportDebt]
+  """Joint debts from both applicants"""
+  jointDebts: [CreditReportDebt]
 }
 
-"""
-Joint Credit Report Response Error
-"""
+"""Joint Credit Report Response Error"""
 type JointCreditReportResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Credit report pull sources for the pullCreditReport mutation
-"""
+"""Credit report pull sources for the pullCreditReport mutation"""
 enum CREDIT_REPORT_PULL_SOURCE {
-	"""
-	Product: EquifaxVantageScore3.0 | Data Provider: Spinwheel
-	"""
-	SPINWHEEL
+  """Product: EquifaxVantageScore3.0 | Data Provider: Spinwheel"""
+  SPINWHEEL
 
-	"""
-	Product: basic/tu-prequal-vantage4 | Data Provider: CRS
-	"""
-	CRS_TRANSUNION
+  """Product: basic/tu-prequal-vantage4 | Data Provider: CRS"""
+  CRS_TRANSUNION
 
-	"""
-	Product: efx-prequal-vantage4 | Data Provider: CRS
-	"""
-	CRS_EQUIFAX
+  """Product: efx-prequal-vantage4 | Data Provider: CRS"""
+  CRS_EQUIFAX
 
-	"""
-	Product: efx1bReportScore | Data Provider: Array
-	"""
-	ARRAY_EQUIFAX
+  """Product: efx1bReportScore | Data Provider: Array"""
+  ARRAY_EQUIFAX
 
-	"""
-	Product: efx1bReportScore | Data Provider: Array
-	"""
-	ARRAY_EQUIFAX_KBA
+  """Product: efx1bReportScore | Data Provider: Array"""
+  ARRAY_EQUIFAX_KBA
 
-	"""
-	Product: standard/tu-prequal-vantage4 | Data Provider: CRS
-	"""
-	CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """Product: standard/tu-prequal-vantage4 | Data Provider: CRS"""
+  CRS_STANDARD_PREQUAL_VANTAGE4_TU
 }
 
-"""
-Input for Pulling Credit Report
-"""
+"""Input for Pulling Credit Report"""
 input PullCreditReportInput {
-	"""
-	Credit Report Source to specify where to pull the credit report from. Possible values are:
-	- SPINWHEEL
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- ARRAY_EQUIFAX
-	- ARRAY_EQUIFAX_KBA
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	creditReportSource: CREDIT_REPORT_PULL_SOURCE!
+  """
+  Credit Report Source to specify where to pull the credit report from. Possible values are:
+  - SPINWHEEL
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - ARRAY_EQUIFAX
+  - ARRAY_EQUIFAX_KBA
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  creditReportSource: CREDIT_REPORT_PULL_SOURCE!
 
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Requesting organization contact ID"""
+  reqOrgContactId: String!
 
-	"""
-	Sigma lead ID (optional)
-	"""
-	leadId: String
+  """Sigma lead ID (optional)"""
+  leadId: String
 
-	"""
-	Contact first name
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	firstName: String
+  """
+  Contact first name
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  firstName: String
 
-	"""
-	Contact middle name
-	*** OPTIONAL when creditReportSource is:
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	middleName: String
+  """
+  Contact middle name
+  *** OPTIONAL when creditReportSource is:
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  middleName: String
 
-	"""
-	Contact last name
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	lastName: String
+  """
+  Contact last name
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  lastName: String
 
-	"""
-	Contact name suffix (e.g., Jr., Sr., II, III)
-	*** OPTIONAL when creditReportSource is:
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	suffix: String
+  """
+  Contact name suffix (e.g., Jr., Sr., II, III)
+  *** OPTIONAL when creditReportSource is:
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  suffix: String
 
-	"""
-	Contact social security number
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	ssn: String
+  """
+  Contact social security number
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  ssn: String
 
-	"""
-	Contact date of birth in yyyy-mm-dd format 1990-04-12
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	dob: String
+  """
+  Contact date of birth in yyyy-mm-dd format 1990-04-12
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  dob: String
 
-	"""
-	Contact address line 1
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	addressLine1: String
+  """
+  Contact address line 1
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  addressLine1: String
 
-	"""
-	Contact address line 2
-	*** OPTIONAL when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	addressLine2: String
+  """
+  Contact address line 2
+  *** OPTIONAL when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  addressLine2: String
 
-	"""
-	Contact address city
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	city: String
+  """
+  Contact address city
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  city: String
 
-	"""
-	Contact address state
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_TRANSUNION
-	- CRS_EQUIFAX
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	state: String
+  """
+  Contact address state
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_TRANSUNION
+  - CRS_EQUIFAX
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  state: String
 
-	"""
-	Contact address zip code
-	*** REQUIRED when creditReportSource is:
-	- ARRAY_EQUIFAX
-	- CRS_TRANSUNION
-	- CRS_STANDARD_PREQUAL_VANTAGE4_TU
-	"""
-	zip: String
+  """
+  Contact address zip code
+  *** REQUIRED when creditReportSource is:
+  - ARRAY_EQUIFAX
+  - CRS_TRANSUNION
+  - CRS_STANDARD_PREQUAL_VANTAGE4_TU
+  """
+  zip: String
 
-	"""
-	User verification id
-	*** REQUIRED when creditReportSource is ARRAY_EQUIFAX_KBA
-	"""
-	userVerificationId: String
+  """
+  User verification id
+  *** REQUIRED when creditReportSource is ARRAY_EQUIFAX_KBA
+  """
+  userVerificationId: String
 }
 
-"""
-Pull Credit Report Response
-"""
+"""Pull Credit Report Response"""
 type PullCreditReportResponse {
-	"""
-	Success message
-	"""
-	data: PullCreditReportResponseResult
+  """Success message"""
+  data: PullCreditReportResponseResult
 
-	"""
-	List of error messages
-	"""
-	errors: [PullCreditReportResponseResponseError]
+  """List of error messages"""
+  errors: [PullCreditReportResponseResponseError]
 }
 
-"""
-Pull Credit Report Response Result
-"""
+"""Pull Credit Report Response Result"""
 type PullCreditReportResponseResult {
-	"""
-	Credit report ID
-	"""
-	creditReportId: String!
+  """Credit report ID"""
+  creditReportId: String!
 
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String
+  """Requesting organization contact ID"""
+  reqOrgContactId: String
 
-	"""
-	Sigma lead ID
-	"""
-	leadId: String
+  """Sigma lead ID"""
+  leadId: String
 
-	"""
-	State where customer resides
-	"""
-	applicantResidenceState: String
+  """State where customer resides"""
+  applicantResidenceState: String
 
-	"""
-	Public records
-	"""
-	publicRecords: [PublicRecord]
+  """Public records"""
+  publicRecords: [PublicRecord]
 
-	"""
-	Credit Report Source
-	"""
-	source: String!
+  """Credit Report Source"""
+  source: String!
 
-	"""
-	Current status of the credit report: PENDING, IN_PROGRESS, COMPLETED, FAILED
-	"""
-	reportStatus: String!
+  """
+  Current status of the credit report: PENDING, IN_PROGRESS, COMPLETED, FAILED
+  """
+  reportStatus: String!
 
-	"""
-	IN_PROGRESS, COMPLETED
-	"""
-	fileStatus: String!
+  """IN_PROGRESS, COMPLETED"""
+  fileStatus: String!
 
-	"""
-	List of debts on the credit report
-	"""
-	debts: [CreditReportDebt]
+  """List of debts on the credit report"""
+  debts: [CreditReportDebt]
 }
 
-"""
-Pull Credit Report Response Response Error
-"""
+"""Pull Credit Report Response Response Error"""
 type PullCreditReportResponseResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Public Record
-"""
+"""Public Record"""
 type PublicRecord {
-	"""
-	Bankruptcy code
-	"""
-	bankruptcyCode: String!
+  """Bankruptcy code"""
+  bankruptcyCode: String!
 
-	"""
-	Bankruptcy date filed
-	"""
-	bankruptcyDateFiled: String
+  """Bankruptcy date filed"""
+  bankruptcyDateFiled: String
 
-	"""
-	Bankruptcy disposition type
-	"""
-	bankruptcyDispositionType: String
+  """Bankruptcy disposition type"""
+  bankruptcyDispositionType: String
 }
 
 scalar JSON
 
-"""
-Supported report types for normalizing raw credit report data
-"""
+"""Supported report types for normalizing raw credit report data"""
 enum SUPPORTED_REPORT_PRODUCTS {
-	"""
-	Product: basic/tu-prequal-vantage4 | Data Provider: CRS
-	"""
-	CRS_TRANSUNION
+  """Product: basic/tu-prequal-vantage4 | Data Provider: CRS"""
+  CRS_TRANSUNION
 
-	"""
-	Product: efx-prequal-vantage4 | Data Provider: CRS
-	"""
-	CRS_EQUIFAX
+  """Product: efx-prequal-vantage4 | Data Provider: CRS"""
+  CRS_EQUIFAX
 
-	"""
-	Product: EquifaxVantageScore3.0 | Data Provider: Spinwheel
-	"""
-	SPINWHEEL
+  """Product: EquifaxVantageScore3.0 | Data Provider: Spinwheel"""
+  SPINWHEEL
 
-	"""
-	Product: efx1bReportScore | Data Provider: Array
-	"""
-	ARRAY_EQUIFAX
+  """Product: efx1bReportScore | Data Provider: Array"""
+  ARRAY_EQUIFAX
 
-	"""
-	Product: standard/prequal-vantage4 | Data Provider: CRS
-	"""
-	CRS_STANDARD_PREQUAL_VANTAGE4
+  """Product: standard/prequal-vantage4 | Data Provider: CRS"""
+  CRS_STANDARD_PREQUAL_VANTAGE4
 
-	"""
-	Product: MISMO 2.3.1 | Data Provider: Forth API
-	"""
-	FORTH_API_MISMO_2_3_1
+  """Product: MISMO 2.3.1 | Data Provider: Forth API"""
+  FORTH_API_MISMO_2_3_1
 }
 
 input NormalizeRawReportInput {
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Requesting organization contact ID"""
+  reqOrgContactId: String!
 
-	"""
-	Requesting organization co-contact ID
-	"""
-	reqOrgSecondaryContactId: String
+  """Requesting organization co-contact ID"""
+  reqOrgSecondaryContactId: String
 
-	"""
-	Supported credit report products.
-	** Note when using SPINWHEEL **
-	- We normalize credit reports from the user object in spinwheel
-	- reportJson must be a response from https://docs.spinwheel.io/reference/get-user-profile
-	"""
-	reportType: SUPPORTED_REPORT_PRODUCTS!
+  """
+  Supported credit report products.
+  ** Note when using SPINWHEEL **
+  - We normalize credit reports from the user object in spinwheel
+  - reportJson must be a response from https://docs.spinwheel.io/reference/get-user-profile
+  """
+  reportType: SUPPORTED_REPORT_PRODUCTS!
 
-	"""
-	Direct JSON object containing the raw credit report response from the vendor.
-	"""
-	reportJson: JSON!
+  """
+  Direct JSON object containing the raw credit report response from the vendor.
+  """
+  reportJson: JSON!
 
-	"""
-	Optional override for the report requested date.
-	Format: YYYY-MM-DD
-	Only required for CRS reports (CRS_TRANSUNION, CRS_EQUIFAX) where the raw data
-	does not include this field. Used to support downstream checks such as
-	"30-day credit reports".
-	"""
-	reportRequestedAt: String
+  """
+  Optional override for the report requested date.
+  Format: YYYY-MM-DD
+  Only required for CRS reports (CRS_TRANSUNION, CRS_EQUIFAX) where the raw data
+  does not include this field. Used to support downstream checks such as
+  "30-day credit reports".
+  """
+  reportRequestedAt: String
 
-	"""
-	Optional base64 encoded PDF string of the credit report.
-	"""
-	pdfBase64: String
+  """Optional base64 encoded PDF string of the credit report."""
+  pdfBase64: String
 
-	"""
-	Optional lead ID to associate with the credit report.
-	"""
-	leadId: String
+  """Optional lead ID to associate with the credit report."""
+  leadId: String
 }
 
 type NormalizeRawReportResponse {
-	"""
-	Normalized Credit Report
-	"""
-	data: NormalizeRawReportResponseResult
+  """Normalized Credit Report"""
+  data: NormalizeRawReportResponseResult
 
-	"""
-	List of error messages
-	"""
-	errors: [NormalizeRawReportResponseError]
+  """List of error messages"""
+  errors: [NormalizeRawReportResponseError]
 }
 
-"""
-normalizeRawReport Success Response
-"""
+"""normalizeRawReport Success Response"""
 type NormalizeRawReportResponseResult {
-	"""
-	Credit report ID
-	"""
-	creditReportId: String
+  """Credit report ID"""
+  creditReportId: String
 
-	"""
-	Secondary Credit report ID
-	"""
-	secondaryCreditReportId: String
+  """Secondary Credit report ID"""
+  secondaryCreditReportId: String
 
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Requesting organization contact ID"""
+  reqOrgContactId: String!
 
-	"""
-	State where customer resides
-	"""
-	applicantResidenceState: String
+  """State where customer resides"""
+  applicantResidenceState: String
 
-	"""
-	List of debts
-	"""
-	debts: [CreditReportDebt]
+  """List of debts"""
+  debts: [CreditReportDebt]
 }
 
-"""
-normalizeRawReport Error Response
-"""
+"""normalizeRawReport Error Response"""
 type NormalizeRawReportResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Score Factor associated with a credit score
-"""
+"""Score Factor associated with a credit score"""
 type ScoreFactor {
-	"""
-	Factors of the borrower's credit which give context to the referenced credit score. The factor is normally a numeric code.
-	"""
-	scoreFactorCode: String
+  """
+  Factors of the borrower's credit which give context to the referenced credit score. The factor is normally a numeric code.
+  """
+  scoreFactorCode: String
 
-	"""
-	The text remarks associated with a Score Factor.
-	"""
-	scoreFactorText: String
+  """The text remarks associated with a Score Factor."""
+  scoreFactorText: String
 }
 
-"""
-Credit score information from credit evaluation models
-"""
+"""Credit score information from credit evaluation models"""
 type Score {
-	"""
-	The name of a risk model as provided by the repository bureaus.
-	"""
-	modelName: String
+  """The name of a risk model as provided by the repository bureaus."""
+  modelName: String
 
-	"""
-	This element describes the source of the credit file, Equifax, Experian, Trans Union or Unspecified if the specific sources are not specified.
-	"""
-	sourceType: String
+  """
+  This element describes the source of the credit file, Equifax, Experian, Trans Union or Unspecified if the specific sources are not specified.
+  """
+  sourceType: String
 
-	"""
-	Numeric credit score resulting from credit evaluation model.
-	"""
-	scoreValue: String
+  """Numeric credit score resulting from credit evaluation model."""
+  scoreValue: String
 
-	"""
-	Factors of the borrower's credit which give context to the referenced credit score.
-	"""
-	scoreFactors: [ScoreFactor]
+  """
+  Factors of the borrower's credit which give context to the referenced credit score.
+  """
+  scoreFactors: [ScoreFactor]
 }
 
 type UserVerificationNode {
-	"""
-	user verification ID
-	"""
-	id: ID
+  """user verification ID"""
+  id: ID
 
-	"""
-	Requesting Organization Contact ID
-	"""
-	reqOrgContactId: String
+  """Requesting Organization Contact ID"""
+  reqOrgContactId: String
 
-	"""
-	Credit Report User ID
-	"""
-	creditReportUserId: String
+  """Credit Report User ID"""
+  creditReportUserId: String
 
-	"""
-	Requesting Organization ID
-	"""
-	reqOrgId: String
+  """Requesting Organization ID"""
+  reqOrgId: String
 
-	"""
-	Customer verification status. Possible values:
-	- NOT_STARTED: The verification process has not started.
-	- IN_PROGRESS: The verification process is ongoing.
-	- FAILED: The verification process failed.
-	- PASSED: The verification process was successful.
-	- BAD_REQUEST: The request was invalid.
+  """
+  Customer verification status. Possible values:
+  - NOT_STARTED: The verification process has not started.
+  - IN_PROGRESS: The verification process is ongoing.
+  - FAILED: The verification process failed.
+  - PASSED: The verification process was successful.
+  - BAD_REQUEST: The request was invalid.
+  
+  KBA-specific statuses:
+  - UNABLE_TO_GET_KBA_QUESTIONS: Unable to retrieve KBA questions.
+  
+  SMS-specific statuses:
+  - UNABLE_TO_SEND_SMS: Unable to send SMS for verification.
+  - REQUIRES_KBA: Additional KBA verification is required.
+  - OTP_EXPIRED: The OTP has expired.
+  - OTP_INCORRECT: The OTP entered is incorrect.
+  - RETRY_AFTER_5MIN: Too many failed attempts, retry after 5 minutes.
+  """
+  status: String
 
-	KBA-specific statuses:
-	- UNABLE_TO_GET_KBA_QUESTIONS: Unable to retrieve KBA questions.
+  """User verification date"""
+  verificationDate: String
 
-	SMS-specific statuses:
-	- UNABLE_TO_SEND_SMS: Unable to send SMS for verification.
-	- REQUIRES_KBA: Additional KBA verification is required.
-	- OTP_EXPIRED: The OTP has expired.
-	- OTP_INCORRECT: The OTP entered is incorrect.
-	- RETRY_AFTER_5MIN: Too many failed attempts, retry after 5 minutes.
-	"""
-	status: String
+  """User consent date"""
+  userConsentDate: String
 
-	"""
-	User verification date
-	"""
-	verificationDate: String
+  """Verification type cna be SMS or KBA"""
+  verificationType: String
 
-	"""
-	User consent date
-	"""
-	userConsentDate: String
-
-	"""
-	Verification type cna be SMS or KBA
-	"""
-	verificationType: String
-
-	"""
-	Verification Source
-	"""
-	verificationSource: String
+  """Verification Source"""
+  verificationSource: String
 }
 
 type UserVerificationResponseError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-User verification lookup response
-"""
+"""User verification lookup response"""
 type UserVerificationResponse {
-	"""
-	User verification data
-	"""
-	data: UserVerificationNode
+  """User verification data"""
+  data: UserVerificationNode
 
-	"""
-	List of error messages
-	"""
-	errors: [UserVerificationResponseError]
+  """List of error messages"""
+  errors: [UserVerificationResponseError]
 }
 
 """
 Input to create a user verification object (this is used in consumer-facing workflow w.r.t Array-Equifax)
 """
 input CreateUserVerificationInput {
-	"""
-	Reqesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Reqesting organization contact ID"""
+  reqOrgContactId: String!
 
-	"""
-	Contact first name
-	"""
-	firstName: String!
+  """Contact first name"""
+  firstName: String!
 
-	"""
-	Contact middle name
-	"""
-	middleName: String
+  """Contact middle name"""
+  middleName: String
 
-	"""
-	Contact last name
-	"""
-	lastName: String!
+  """Contact last name"""
+  lastName: String!
 
-	"""
-	Contact date of birth in yyyy-mm-dd format 1990-04-12
-	"""
-	dob: String!
+  """Contact date of birth in yyyy-mm-dd format 1990-04-12"""
+  dob: String!
 
-	"""
-	Contact social security number
-	"""
-	ssn: String!
+  """Contact social security number"""
+  ssn: String!
 
-	"""
-	Full address street
-	"""
-	fullAddress: String!
+  """Full address street"""
+  fullAddress: String!
 
-	"""
-	Contact address city
-	"""
-	city: String!
+  """Contact address city"""
+  city: String!
 
-	"""
-	Contact address state
-	"""
-	state: String!
+  """Contact address state"""
+  state: String!
 
-	"""
-	Contact address zip code
-	"""
-	zip: String!
+  """Contact address zip code"""
+  zip: String!
 
-	"""
-	Contact phone number
-	"""
-	phone: String!
+  """Contact phone number"""
+  phone: String!
 
-	"""
-	Contact email address
-	"""
-	email: String!
+  """Contact email address"""
+  email: String!
 
-	"""
-	Verification type
-	"""
-	verificationType: String!
+  """Verification type"""
+  verificationType: String!
 }
 
-"""
-Create user verification response
-"""
+"""Create user verification response"""
 type CreateUserVerificationResponse {
-	"""
-	Created user verification data
-	"""
-	data: UserVerificationNode
+  """Created user verification data"""
+  data: UserVerificationNode
 
-	"""
-	List of error messages
-	"""
-	errors: [CreateUserVerificationResponseError]
+  """List of error messages"""
+  errors: [CreateUserVerificationResponseError]
 }
 
-"""
-CreateUserVerificationResponseError object
-"""
+"""CreateUserVerificationResponseError object"""
 type CreateUserVerificationResponseError {
-	"""
-	CreateUserVerification error message
-	"""
-	message: String
+  """CreateUserVerification error message"""
+  message: String
 }
 
-"""
-Input for Spinwheel SMS Verification
-"""
+"""Input for Spinwheel SMS Verification"""
 input SMSVerificationInput {
-	"""
-	phone number in E.164 format +11231231234
-	"""
-	phoneNumber: String!
+  """phone number in E.164 format +11231231234"""
+  phoneNumber: String!
 
-	"""
-	dob in yyyy-mm-dd format 1990-04-12
-	"""
-	dateOfBirth: String!
+  """dob in yyyy-mm-dd format 1990-04-12"""
+  dateOfBirth: String!
 
-	"""
-	Reqesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Reqesting organization contact ID"""
+  reqOrgContactId: String!
 }
 
-"""
-SMS Verification Response
-"""
+"""SMS Verification Response"""
 type SMSVerificationResponse {
-	"""
-	Success message
-	"""
-	data: SMSVerificationResult
+  """Success message"""
+  data: SMSVerificationResult
 
-	"""
-	List of error messages
-	"""
-	errors: [SMSVerificationResponseError]
+  """List of error messages"""
+  errors: [SMSVerificationResponseError]
 }
 
-"""
-SMS Verification Result
-"""
+"""SMS Verification Result"""
 type SMSVerificationResult {
-	"""
-	SMS Verification success message
-	"""
-	message: String
+  """SMS Verification success message"""
+  message: String
 }
 
-"""
-SMS Verification Response Error
-"""
+"""SMS Verification Response Error"""
 type SMSVerificationResponseError {
-	"""
-	SMS verification error message
-	"""
-	message: String
+  """SMS verification error message"""
+  message: String
 }
 
-"""
-Input for Spinwheel SMS Code Verification
-"""
+"""Input for Spinwheel SMS Code Verification"""
 input VerifySMSCodeInput {
-	"""
-	Reqesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Reqesting organization contact ID"""
+  reqOrgContactId: String!
 
-	"""
-	Verification code that spinwheel sends via SMS
-	"""
-	verificationCode: String!
+  """Verification code that spinwheel sends via SMS"""
+  verificationCode: String!
 }
 
-"""
-Verify SMS Code Response
-"""
+"""Verify SMS Code Response"""
 type VerifySMSCodeResponse {
-	"""
-	Success message
-	"""
-	data: SMSVerificationResult
+  """Success message"""
+  data: SMSVerificationResult
 
-	"""
-	List of error messages
-	"""
-	errors: [SMSVerificationResponseError]
+  """List of error messages"""
+  errors: [SMSVerificationResponseError]
 }
 
-"""
-Input for creating a new creditor entry by using the creditor name
-"""
+"""Input for creating a new creditor entry by using the creditor name"""
 input CreateCreditorInput {
-	"""
-	Creditor name
-	"""
-	creditorName: String!
+  """Creditor name"""
+  creditorName: String!
 }
 
 type CreateCreditorResponse {
-	"""
-	Success message
-	"""
-	data: CreateCreditorResult
+  """Success message"""
+  data: CreateCreditorResult
 
-	"""
-	List of error messages
-	"""
-	errors: [CreateCreditorError]
+  """List of error messages"""
+  errors: [CreateCreditorError]
 }
 
-"""
-Result of creating or looking up a creditor
-"""
+"""Result of creating or looking up a creditor"""
 type CreateCreditorResult {
-	"""
-	Name of the creditor
-	"""
-	creditorName: String!
+  """Name of the creditor"""
+  creditorName: String!
 
-	"""
-	Unique identifier for the creditor
-	"""
-	creditorId: String!
+  """Unique identifier for the creditor"""
+  creditorId: String!
 
-	"""
-	Name of the parent creditor (if applicable)
-	"""
-	parentCreditorName: String
+  """Name of the parent creditor (if applicable)"""
+  parentCreditorName: String
 
-	"""
-	Unique identifier for the parent creditor (if applicable)
-	"""
-	parentCreditorId: String
+  """Unique identifier for the parent creditor (if applicable)"""
+  parentCreditorId: String
 }
 
 type CreateCreditorError {
-	"""
-	Error message
-	"""
-	message: String
+  """Error message"""
+  message: String
 }
 
-"""
-Input for KBA question request
-"""
+"""Input for KBA question request"""
 input KbaQuestionsInput {
-	"""
-	customer first name
-	"""
-	firstName: String!
+  """customer first name"""
+  firstName: String!
 
-	"""
-	customer last name
-	"""
-	lastName: String!
+  """customer last name"""
+  lastName: String!
 
-	"""
-	dob in yyyy-mm-dd format 1990-04-12
-	"""
-	dateOfBirth: String!
+  """dob in yyyy-mm-dd format 1990-04-12"""
+  dateOfBirth: String!
 
-	"""
-	Contact SSN without hyphens
-	"""
-	ssn: String!
+  """Contact SSN without hyphens"""
+  ssn: String!
 
-	"""
-	Customer address info
-	"""
-	addressLine1: String!
+  """Customer address info"""
+  addressLine1: String!
 
-	"""
-	Customer address info
-	"""
-	addressLine2: String
+  """Customer address info"""
+  addressLine2: String
 
-	"""
-	Customer address info
-	"""
-	city: String!
+  """Customer address info"""
+  city: String!
 
-	"""
-	Customer address info
-	"""
-	state: String!
+  """Customer address info"""
+  state: String!
 
-	"""
-	Customer address info
-	"""
-	zip: String!
+  """Customer address info"""
+  zip: String!
 
-	"""
-	Customer address info
-	"""
-	zipExtension: String
+  """Customer address info"""
+  zipExtension: String
 
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Requesting organization contact ID"""
+  reqOrgContactId: String!
 }
 
-"""
-Input for submitting KBA answers
-"""
+"""Input for submitting KBA answers"""
 input SendKbaAnswersInput {
-	"""
-	Requesting organization contact ID
-	"""
-	reqOrgContactId: String!
+  """Requesting organization contact ID"""
+  reqOrgContactId: String!
 
-	"""
-	KBA answers
-	"""
-	answers: [KbaAnswer!]!
+  """KBA answers"""
+  answers: [KbaAnswer!]!
 }
 
 input KbaAnswer {
-	"""
-	Question ID
-	"""
-	questionId: String!
+  """Question ID"""
+  questionId: String!
 
-	"""
-	Answer ID from list of options
-	"""
-	answerId: String!
+  """Answer ID from list of options"""
+  answerId: String!
 }
 
 type SendKbaAnswersResponse {
-	"""
-	Success message
-	"""
-	data: SendKbaAnswersResult
+  """Success message"""
+  data: SendKbaAnswersResult
 
-	"""
-	List of error messages
-	"""
-	errors: [SendKbaAnswersError]
+  """List of error messages"""
+  errors: [SendKbaAnswersError]
 }
 
-"""
-Result of submitting KBA answers
-"""
+"""Result of submitting KBA answers"""
 type SendKbaAnswersResult {
-	"""
-	Success or status message
-	"""
-	message: String
+  """Success or status message"""
+  message: String
 }
 
-"""
-KBA Questions Response
-"""
+"""KBA Questions Response"""
 type KbaQuestionsResponse {
-	"""
-	Success message
-	"""
-	data: KbaQuestions
+  """Success message"""
+  data: KbaQuestions
 
-	"""
-	List of errors
-	"""
-	errors: [SendKbaAnswersError]
+  """List of errors"""
+  errors: [SendKbaAnswersError]
 }
 
-"""
-KBA Questions
-"""
+"""KBA Questions"""
 type KbaQuestions {
-	"""
-	KBA Questions
-	"""
-	questions: [KbaQuestion]
+  """KBA Questions"""
+  questions: [KbaQuestion]
 }
 
-"""
-KBA Question
-"""
+"""KBA Question"""
 type KbaQuestion {
-	"""
-	KBA Question ID
-	"""
-	id: String!
+  """KBA Question ID"""
+  id: String!
 
-	"""
-	KBA Question
-	"""
-	question: String!
+  """KBA Question"""
+  question: String!
 
-	"""
-	KBA Questions answer options
-	"""
-	options: [kbaQuestionOption]
+  """KBA Questions answer options"""
+  options: [kbaQuestionOption]
 }
 
-"""
-KBA Questions answer option
-"""
+"""KBA Questions answer option"""
 type kbaQuestionOption {
-	"""
-	KBA Questions option ID
-	"""
-	id: String!
+  """KBA Questions option ID"""
+  id: String!
 
-	"""
-	KBA Questions option text
-	"""
-	text: String!
+  """KBA Questions option text"""
+  text: String!
 }
 
 type SendKbaAnswersError {
-	"""
-	KBA requesting questions error message
-	"""
-	message: String
+  """KBA requesting questions error message"""
+  message: String
 }

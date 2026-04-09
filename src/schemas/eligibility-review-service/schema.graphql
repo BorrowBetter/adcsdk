@@ -2539,7 +2539,9 @@ input PlanInputV2 {
   """Second payment amount. Ex: 100, 123.45,"""
   secondPaymentAmount: Float
 
-  """First payment date."""
+  """
+  First payment date. Accepted formats: MM/DD/YYYY, YYYY/MM/DD, YYYY-MM-DD. Stored as YYYY-MM-DD.
+  """
   firstPaymentDate: String
 
   """First draft exception. Ex: YES, NO"""
@@ -2554,7 +2556,9 @@ input PlanInputV2 {
   """EPF reduction. Ex: YES, NO"""
   epfReduction: String
 
-  """Second payment date."""
+  """
+  Second payment date. Accepted formats: MM/DD/YYYY, YYYY/MM/DD, YYYY-MM-DD. Stored as YYYY-MM-DD.
+  """
   secondPaymentDate: String
 
   """Enrollment plan ID."""

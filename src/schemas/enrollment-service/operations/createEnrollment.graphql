@@ -1,0 +1,10 @@
+mutation CreateEnrollment($input: CreateEnrollmentInput!) {
+	createEnrollment(input: $input) {
+		data {
+			enrollmentId
+		}
+		errors {
+			message
+		}
+	}
+}

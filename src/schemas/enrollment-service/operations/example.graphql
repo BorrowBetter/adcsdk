@@ -4,6 +4,12 @@ query GetEnrollmentStatus($enrollmentId: String!) {
 			contactId
 			qaCall
 			createContact
+			createEnrollmentPlan
+			createNotes
+			createDebts
+			createBudget
+			createBankAccount
+			createDocuments
 		}
 		errors {
 			message

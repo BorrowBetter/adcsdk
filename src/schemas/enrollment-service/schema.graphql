@@ -1,41 +1,22 @@
-"""
-Indicates exactly one field must be supplied and this field must not be `null`.
-"""
-directive @oneOf on INPUT_OBJECT
-
-"""
-Input for address information
-"""
+"""Input for address information"""
 input AddressInput {
-	"""
-	Primary address line (required)
-	"""
-	addressLine1: String!
+  """Primary address line (required)"""
+  addressLine1: String!
 
-	"""
-	Secondary address line (optional)
-	"""
-	addressLine2: String
+  """Secondary address line (optional)"""
+  addressLine2: String
 
-	"""
-	Tertiary address line (optional)
-	"""
-	addressLine3: String
+  """Tertiary address line (optional)"""
+  addressLine3: String
 
-	"""
-	City (required)
-	"""
-	city: String!
+  """City (required)"""
+  city: String!
 
-	"""
-	State abbreviation (required)
-	"""
-	state: String!
+  """State abbreviation (required)"""
+  state: String!
 
-	"""
-	ZIP code (required)
-	"""
-	zipCode: String!
+  """ZIP code (required)"""
+  zipCode: String!
 }
 
 """
@@ -43,265 +24,232 @@ Input for contact information.
 Note: Main applicant and co-applicant PII fields are sourced from UW data.
 """
 input ContactInfoInput {
-	"""
-	Employee classification (W-2, 1099, or Fixed Income)
-	"""
-	jobClassification: JobClassification!
+  """Employee classification (W-2, 1099, or Fixed Income)"""
+  jobClassification: JobClassification!
 
-	"""
-	Preferred language: 1 for English, 2 for Spanish (optional, defaults to English)
-	"""
-	language: String
+  """
+  Preferred language: 1 for English, 2 for Spanish (optional, defaults to English)
+  """
+  language: String
 
-	"""
-	Associated documents (optional)
-	"""
-	documents: [DocumentInput]
+  """Associated documents (optional)"""
+  documents: [DocumentInput]
 
-	"""
-	Notes associated with the contact (optional)
-	"""
-	notes: [NoteInput]
+  """Notes associated with the contact (optional)"""
+  notes: [NoteInput]
 }
 
-"""
-Input for document information
-"""
+"""Input for document information"""
 input DocumentInput {
-	"""
-	Name of the file
-	"""
-	fileName: String!
+  """Name of the file"""
+  fileName: String!
 
-	"""
-	URL where the file is stored
-	"""
-	fileUrl: String!
+  """URL where the file is stored"""
+  fileUrl: String!
 
-	"""
-	Description of the document
-	"""
-	description: String!
+  """Description of the document"""
+  description: String!
 
-	"""
-	Type of document (e.g., ID, proof of income)
-	"""
-	docType: String!
+  """Type of document (e.g., ID, proof of income)"""
+  docType: String!
 
-	"""
-	MIME content type (e.g., application/pdf, image/jpeg)
-	"""
-	contentType: String!
+  """MIME content type (e.g., application/pdf, image/jpeg)"""
+  contentType: String!
 
-	"""
-	Associated debt ID if document relates to a specific debt (optional)
-	"""
-	associatedDebtId: String
+  """Associated debt ID if document relates to a specific debt (optional)"""
+  associatedDebtId: String
 
-	"""
-	Additional metadata as JSON string (optional)
-	"""
-	metadata: String
+  """Additional metadata as JSON string (optional)"""
+  metadata: String
 }
 
-"""
-Supported CRM systems for enrollment destination
-"""
+"""Supported CRM systems for enrollment destination"""
 enum SupportedCrm {
-	FORTH
+  FORTH
 }
 
-"""
-Current status of the enrollment
-"""
+"""Current status of the enrollment"""
 enum EnrollmentStatus {
-	"""
-	The operation has not started yet
-	"""
-	PENDING
+  """The operation has not started yet"""
+  PENDING
 
-	"""
-	The operation is currently being processed
-	"""
-	IN_PROGRESS
+  """The operation is currently being processed"""
+  IN_PROGRESS
 
-	"""
-	The operation finished successfully
-	"""
-	COMPLETED
+  """The operation finished successfully"""
+  COMPLETED
 
-	"""
-	The operation encountered an error and did not complete
-	"""
-	FAILED
+  """The operation encountered an error and did not complete"""
+  FAILED
 
-	"""
-	The operation was skipped (e.g., no data to process)
-	"""
-	SKIPPED
+  """The operation was skipped (e.g., no data to process)"""
+  SKIPPED
 }
 
-"""
-Employee classification type for job classification field
-"""
+"""Employee classification type for job classification field"""
 enum JobClassification {
-	"""
-	Full-time/standard employee
-	"""
-	W_2
+  """Full-time/standard employee"""
+  W_2
 
-	"""
-	Independent contractor
-	"""
-	W_1099
+  """Independent contractor"""
+  W_1099
 
-	"""
-	Non-employment income
-	"""
-	FIXED_INCOME
+  """Non-employment income"""
+  FIXED_INCOME
 }
 
-"""
-Input for creating a new enrollment.
-"""
+"""Input for creating a new enrollment."""
 input CreateEnrollmentInput {
-	"""
-	Offer generation ID from the offer-generation-service
-	"""
-	ogId: String!
+  """Offer generation ID from the offer-generation-service"""
+  ogId: String!
 
-	"""
-	The leadId also known as the Third-party identifier (can contain non-numeric characters)
-	"""
-	leadId: String!
+  """
+  The leadId also known as the Third-party identifier (can contain non-numeric characters)
+  """
+  leadId: String!
 
-	"""
-	Contact information for the enrollment
-	"""
-	contactInfo: ContactInfoInput!
+  """Contact information for the enrollment"""
+  contactInfo: ContactInfoInput!
 }
 
 type Query {
-	"""
-	Get the status of an enrollment by enrollment ID
-	"""
-	enrollmentStatus(enrollmentId: String!): EnrollmentStatusResponse!
+  """Get the status of an enrollment by enrollment ID"""
+  enrollmentStatus(enrollmentId: String!): EnrollmentStatusResponse!
 }
 
 type Mutation {
-	"""
-	Create a new enrollment with the provided applicant information.
-	Returns the enrollment ID on success, or validation errors on failure.
-	"""
-	createEnrollment(input: CreateEnrollmentInput!): CreateEnrollmentResponse!
+  """
+  Create a new enrollment with the provided applicant information.
+  Returns the enrollment ID on success, or validation errors on failure.
+  """
+  createEnrollment(input: CreateEnrollmentInput!): CreateEnrollmentResponse!
+
+  """
+  Create a live call transfer: creates a lead in Sigma CRM and pushes
+  the lead into the configured dialer's call queue (Regal or Convoso).
+  Returns synchronously.
+  """
+  createLiveTransfer(input: CreateLiveTransferInput!): CreateLiveTransferResponse!
+
+  """
+  Create a minimal live transfer early in the funnel before eligibility.
+  Creates a Sigma CRM lead and dialer entry using only basic contact info.
+  Org routing is resolved from the caller's Azure AD identity.
+  """
+  createMinimalLiveTransfer(input: CreateMinimalLiveTransferInput!): CreateLiveTransferResponse!
 }
 
-"""
-Response type for createEnrollment mutation
-"""
+"""Response type for createEnrollment mutation"""
 type CreateEnrollmentResponse {
-	"""
-	Enrollment data on success
-	"""
-	data: Enrollment
+  """Enrollment data on success"""
+  data: Enrollment
 
-	"""
-	List of validation or processing errors
-	"""
-	errors: [EnrollmentError]
+  """List of validation or processing errors"""
+  errors: [EnrollmentError]
 }
 
-"""
-Enrollment entity representing a created enrollment
-"""
+"""Enrollment entity representing a created enrollment"""
 type Enrollment {
-	"""
-	Unique enrollment identifier
-	"""
-	enrollmentId: String!
+  """Unique enrollment identifier"""
+  enrollmentId: String!
 }
 
-"""
-Error type for enrollment operations
-"""
+"""Error type for enrollment operations"""
 type EnrollmentError {
-	"""
-	Error message describing the issue
-	"""
-	message: String
+  """Error message describing the issue"""
+  message: String
 }
 
-"""
-Response wrapper for enrollmentStatus query
-"""
+"""Response wrapper for enrollmentStatus query"""
 type EnrollmentStatusResponse {
-	"""
-	Enrollment status data on success
-	"""
-	data: EnrollmentStatusData
+  """Enrollment status data on success"""
+  data: EnrollmentStatusData
 
-	"""
-	List of errors if enrollment not found or processing failed
-	"""
-	errors: [EnrollmentError]
+  """List of errors if enrollment not found or processing failed"""
+  errors: [EnrollmentError]
 }
 
-"""
-Enrollment status data containing the current state
-"""
+"""Enrollment status data containing the current state"""
 type EnrollmentStatusData {
-	"""
-	Contact ID, populated once contact creation completes successfully
-	"""
-	contactId: String
+  """Contact ID, populated once contact creation completes successfully"""
+  contactId: String
 
-	"""
-	QA call status - indicates the current state of the enrollment processing
-	"""
-	qaCall: EnrollmentStatus!
+  """
+  QA call status - indicates the current state of the enrollment processing
+  """
+  qaCall: EnrollmentStatus!
 
-	"""
-	Contact creation status
-	"""
-	createContact: EnrollmentStatus!
+  """Contact creation status"""
+  createContact: EnrollmentStatus!
 
-	"""
-	Enrollment plan creation status
-	"""
-	createEnrollmentPlan: EnrollmentStatus!
+  """Enrollment plan creation status"""
+  createEnrollmentPlan: EnrollmentStatus!
 
-	"""
-	Notes creation status
-	"""
-	createNotes: EnrollmentStatus!
+  """Notes creation status"""
+  createNotes: EnrollmentStatus!
 
-	"""
-	Debts creation status
-	"""
-	createDebts: EnrollmentStatus!
+  """Debts creation status"""
+  createDebts: EnrollmentStatus!
 
-	"""
-	Budget creation status
-	"""
-	createBudget: EnrollmentStatus!
+  """Budget creation status"""
+  createBudget: EnrollmentStatus!
 
-	"""
-	Bank account creation status
-	"""
-	createBankAccount: EnrollmentStatus!
+  """Bank account creation status"""
+  createBankAccount: EnrollmentStatus!
 
-	"""
-	Documents creation status
-	"""
-	createDocuments: EnrollmentStatus!
+  """Documents creation status"""
+  createDocuments: EnrollmentStatus!
 }
 
-"""
-Input for note information
-"""
+input CreateLiveTransferInput {
+  """
+  UUID primary key of the underwriting result to use for lead creation.
+  The service fetches the full applicant profile (PII, financial data, etc.)
+  from the underwriting-service using this ID.
+  """
+  underwritingResultId: ID!
+}
+
+type LiveTransferResult {
+  """The Sigma CRM lead objectId, populated on successful Sigma creation"""
+  sigmaLeadId: String
+
+  """Dialer status: 'success', 'failed: <reason>', or error details"""
+  dialerStatus: String!
+
+  """Which dialer provider was used: 'regal' or 'convoso'"""
+  dialerProvider: String!
+
+  """
+  UUIDv4 generated for cross-system lead correlation (Sigma, Regal, Marketing Leads API)
+  """
+  marketingLeadId: String
+}
+
+type CreateLiveTransferResponse {
+  """Live transfer result data on success"""
+  data: LiveTransferResult
+
+  """List of errors if processing failed"""
+  errors: [EnrollmentError]
+}
+
+input CreateMinimalLiveTransferInput {
+  """Applicant's first name"""
+  firstName: String!
+
+  """Applicant's last name"""
+  lastName: String!
+
+  """Applicant's email address"""
+  email: String!
+
+  """Applicant's phone number (10-digit, E.164, or 11-digit format)"""
+  phone: String!
+}
+
+"""Input for note information"""
 input NoteInput {
-	"""
-	Content of the note
-	"""
-	content: String!
+  """Content of the note"""
+  content: String!
 }

@@ -1008,6 +1008,12 @@ input ApplicantContactInfoInput {
   """
   hardship: String
 
+  """Free-text description of the applicant's hardship situation."""
+  hardshipDescription: String
+
+  """Applicant classification."""
+  classification: String
+
   """
   Has the applicant filed bankruptcy.
   
@@ -1177,6 +1183,12 @@ input ApplicantContactInfoUpdateInput {
   - Significant medical expenses.
   """
   hardship: String
+
+  """Free-text description of the applicant's hardship situation."""
+  hardshipDescription: String
+
+  """Applicant classification."""
+  classification: String
 
   """
   Has the applicant filed bankruptcy.
@@ -1867,6 +1879,9 @@ type ApplicantContactInfo {
   """Applicant home address."""
   homeAddress: String
 
+  """Structured applicant home address."""
+  homeAddressInput: HomeAddressV2
+
   """Applicant state."""
   applicantState: String!
 
@@ -1896,6 +1911,12 @@ type ApplicantContactInfo {
 
   """Applicant hardship reason."""
   hardship: String
+
+  """Free-text description of the applicant's hardship situation."""
+  hardshipDescription: String
+
+  """Applicant classification."""
+  classification: String
 
   """Has the applicant filed bankruptcy."""
   filedBankruptcy: String
@@ -2035,6 +2056,15 @@ type Plan {
 
   """sentry fee opt-out by setting to false"""
   includeSentryFee: Boolean
+
+  """Estimated settlement fee percentage. Ex: 50"""
+  estimatedSettlementFee: Float
+
+  """Estimated settlement percentage amount."""
+  estimatedSettlementAmount: Float
+
+  """Total service fee amount."""
+  totalServiceFee: Float
 }
 
 type ApplicationUwResult {
@@ -2574,12 +2604,55 @@ input PlanInputV2 {
 
   """sentry fee opt-out by setting to false"""
   includeSentryFee: Boolean
+
+  """Estimated settlement fee percentage. Ex: 50"""
+  estimatedSettlementFee: Float
+
+  """Estimated settlement percentage amount."""
+  estimatedSettlementAmount: Float
+
+  """Total service fee amount."""
+  totalServiceFee: Float
 }
 
 """
 V2: Applicant contact and personal information for eligibility check.
 belongsToCompanyId is derived server-side from the requesting application's identity.
 """
+input HomeAddressInputV2 {
+  """Address line 1"""
+  addressLine1: String
+
+  """Address line 2"""
+  addressLine2: String
+
+  """City"""
+  city: String
+
+  """State"""
+  state: String
+
+  """ZIP code"""
+  zip: String
+}
+
+type HomeAddressV2 {
+  """Address line 1."""
+  addressLine1: String
+
+  """Address line 2."""
+  addressLine2: String
+
+  """City."""
+  city: String
+
+  """State."""
+  state: String
+
+  """ZIP code."""
+  zip: String
+}
+
 input ApplicantContactInfoInputV2 {
   """Employer name"""
   employerName: String
@@ -2595,8 +2668,15 @@ input ApplicantContactInfoInputV2 {
   """
   isMarriedToCoApplicant: Boolean
 
-  """Applicant home address"""
+  """
+  Legacy applicant home address string retained for backward compatibility.
+  """
   homeAddress: String
+
+  """
+  Canonical V2 structured applicant home address. When provided, V2 address checks use this field and homeAddress remains a legacy/backward-compatible string.
+  """
+  homeAddressInput: HomeAddressInputV2
 
   """
   Applicant state. Must be a valid U.S. state.
@@ -2653,6 +2733,12 @@ input ApplicantContactInfoInputV2 {
   - Significant medical expenses.
   """
   hardship: String
+
+  """Free-text description of the applicant's hardship situation."""
+  hardshipDescription: String
+
+  """Applicant classification."""
+  classification: String
 
   """
   Has the applicant filed bankruptcy.
@@ -2765,8 +2851,15 @@ input ApplicantContactInfoUpdateInputV2 {
   """
   isMarriedToCoApplicant: Boolean
 
-  """Applicant home address"""
+  """
+  Legacy applicant home address string retained for backward compatibility.
+  """
   homeAddress: String
+
+  """
+  Canonical V2 structured applicant home address. When provided, V2 address checks use this field and homeAddress remains a legacy/backward-compatible string.
+  """
+  homeAddressInput: HomeAddressInputV2
 
   """
   Applicant state. Must be a valid U.S. state.
@@ -2823,6 +2916,12 @@ input ApplicantContactInfoUpdateInputV2 {
   - Significant medical expenses.
   """
   hardship: String
+
+  """Free-text description of the applicant's hardship situation."""
+  hardshipDescription: String
+
+  """Applicant classification."""
+  classification: String
 
   """
   Has the applicant filed bankruptcy.
@@ -3167,6 +3266,13 @@ type EligibilityResponseErrorV2 {
   """
   debtId: String
 
+  """
+  Stable, opaque error code identifying the domain concern that failed (e.g. UW_R003, UW_D005).
+  
+  Null when the originating filter has no registered code.
+  """
+  errorCode: String
+
   """Human-readable descriptions of what caused the error."""
   message: [String]
 }
@@ -3209,6 +3315,13 @@ type UwEligibilityResultV2 {
 
   """Date and time this underwriting document revision was created"""
   createdAt: Date
+
+  """
+  True when this revision is the latest for its uwResultId. Mirrors the
+  `is_latest_revision` column on `underwriting_result`. Lets clients filter
+  or flag the canonical revision without a per-row max-revision derivation.
+  """
+  isLatestRevision: Boolean
 }
 
 """V2: Application-level underwriting result."""
@@ -3663,6 +3776,12 @@ input UwResultWhereInput {
 
   """Filter by specific revision number"""
   revision: Int
+
+  """
+  When true, return every revision of each matching row. Default behavior
+  (latest revision only) is preserved when omitted. Ignored when revision is set.
+  """
+  includeAllRevisions: Boolean
 }
 
 """Ordering options for UwResults."""

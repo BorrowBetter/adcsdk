@@ -33,7 +33,13 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 				applicantContactInfo {
 					employerName
 					isMarriedToCoApplicant
-					homeAddress
+					homeAddressInput {
+						addressLine1
+						addressLine2
+						city
+						state
+						zip
+					}
 					applicantState
 					ssn
 					dob
@@ -59,7 +65,13 @@ fragment EligibilityResponseV2Fields on EligibilityResponseV2 {
 				coApplicantContactInfo {
 					employerName
 					isMarriedToCoApplicant
-					homeAddress
+					homeAddressInput {
+						addressLine1
+						addressLine2
+						city
+						state
+						zip
+					}
 					applicantState
 					ssn
 					dob

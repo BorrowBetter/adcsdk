@@ -70,7 +70,12 @@ async function main() {
 				primaryReportId: creditReportId,
 				leadId: null,
 				applicantContactInfo: {
-					homeAddress: "22603 CHRISTINE STATION",
+					homeAddressInput: {
+						addressLine1: "22603 CHRISTINE STATION",
+						city: "Atlanta",
+						state: "GA",
+						zip: "30301",
+					},
 					applicantState: "GA",
 					ssn: "999887766",
 					dob: "1985-06-15",
@@ -305,7 +310,12 @@ async function main() {
 				revision: uwRevision,
 				updatedBy: "smoke",
 				applicantContactInfo: {
-					homeAddress: "22603 CHRISTINE STATION",
+					homeAddressInput: {
+						addressLine1: "22603 CHRISTINE STATION",
+						city: "Atlanta",
+						state: "GA",
+						zip: "30301",
+					},
 					applicantState: "GA",
 					employerName: "ACME CORPORATION",
 					jobTitle: "Analyst",

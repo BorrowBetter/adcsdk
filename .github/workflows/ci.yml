@@ -1,0 +1,63 @@
+# Runs lint/format (Biome) + typecheck (tsc) on every push and PR. This repo has
+# no test suite, so those two are the whole gate.
+#
+# The required status check for the org is the `ci` job at the bottom, not the
+# job that does the work. See org-require-ci in BorrowBetter/terraform-github.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint-typecheck:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Must run before typecheck: src/schemas/*/__generated__/ is gitignored,
+      # and src/index.ts imports from it, so tsc cannot resolve those modules
+      # until codegen emits them. Reads local SDL files only -- no network, no
+      # credentials, no Alleviate endpoint.
+      - run: npm run codegen
+
+      - run: npm run format:check
+
+      - run: npm run typecheck
+
+  # The org ruleset requires exactly one context, `ci`, across every repo.
+  # Repos do not agree on what they run, so they agree on the name of the job
+  # that reports -- this one fans in whatever runs above, and jobs can be added
+  # or split without touching the ruleset.
+  #
+  # `if: always()` is load-bearing. Without it this job is SKIPPED when a
+  # dependency fails, and a skipped check does not fail a required status check
+  # -- the gate would go green exactly when lint or typecheck broke.
+  #
+  # The condition deliberately ignores `skipped`, which is safe only because
+  # every job in `needs` runs unconditionally. Give one of them an `if:` or a
+  # path filter and add 'skipped' here too, or an upstream skip passes the gate.
+  ci:
+    # Explicit, even though it matches the job id -- this string is the org
+    # ruleset's required context, so it must not silently follow a rename.
+    name: ci
+    needs: [lint-typecheck]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gate on upstream jobs
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1

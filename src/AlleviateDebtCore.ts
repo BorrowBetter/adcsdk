@@ -2,9 +2,9 @@ import { GraphQLClient } from "graphql-request";
 import { AzureAuthProvider, InMemoryTokenCache } from "./auth.js";
 import { CONFIG } from "./config.js";
 import { getSdk as getCreditServiceSdk } from "./schemas/credit-service/__generated__/sdk.js";
+import { getSdk as getEligibilityReviewServiceSdk } from "./schemas/eligibility-review-service/__generated__/sdk.js";
 import { getSdk as getEnrollmentServiceSdk } from "./schemas/enrollment-service/__generated__/sdk.js";
 import { getSdk as getOfferServiceSdk } from "./schemas/offer-service/__generated__/sdk.js";
-import { getSdk as getEligibilityReviewServiceSdk } from "./schemas/eligibility-review-service/__generated__/sdk.js";
 import type { DebtCoreConfig } from "./types.js";
 
 /**
